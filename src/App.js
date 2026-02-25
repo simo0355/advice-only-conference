@@ -884,6 +884,43 @@ function Agenda() {
 }
 
 // ─── Speakers ──────────────────────────────────────────────────────────────
+function SpeakerCard({ s, delay }) {
+  const [expanded, setExpanded] = useState(false);
+  return (
+    <Reveal delay={delay}>
+      <div className="speaker-card" style={{ background: "rgba(255,255,255,0.05)", border: `1px solid rgba(24,185,197,0.25)`, borderRadius: 12, overflow: "hidden", display: "flex", flexDirection: "column" }}>
+        <div style={{ position: "relative", height: 220, overflow: "hidden", background: "rgba(255,255,255,0.04)" }}>
+          <img src={s.photo} alt={s.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} />
+          <div style={{ position: "absolute", top: 12, right: 12, background: C.amber, color: C.white, fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "0.68rem", letterSpacing: "0.08em", textTransform: "uppercase", padding: "4px 10px", borderRadius: 100 }}>
+            {s.day}
+          </div>
+        </div>
+        <div style={{ padding: "20px 22px 24px", flex: 1, display: "flex", flexDirection: "column" }}>
+          <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.25rem", color: C.white, marginBottom: 2 }}>{s.name}</div>
+          <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 500, fontSize: "0.78rem", color: C.teal, marginBottom: 2 }}>{s.title}</div>
+          <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.75rem", color: "rgba(255,255,255,0.4)", marginBottom: 16 }}>{s.org}</div>
+          <button
+            onClick={() => setExpanded(!expanded)}
+            style={{ background: "rgba(255,255,255,0.05)", border: `1px solid rgba(255,255,255,0.1)`, borderRadius: 6, padding: "9px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", marginBottom: expanded ? 12 : 0, transition: "background 0.2s" }}
+          >
+            <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.78rem", color: "rgba(255,255,255,0.7)", letterSpacing: "0.04em" }}>
+              {expanded ? "Hide Details" : "Presentation & Bio"}
+            </span>
+            <span style={{ color: C.teal, fontSize: "0.9rem", transition: "transform 0.25s", display: "inline-block", transform: expanded ? "rotate(180deg)" : "rotate(0deg)" }}>▾</span>
+          </button>
+          <div style={{ maxHeight: expanded ? 400 : 0, overflow: "hidden", transition: "max-height 0.35s ease" }}>
+            <div style={{ background: "rgba(255,255,255,0.05)", borderLeft: `3px solid ${C.amber}`, borderRadius: "0 6px 6px 0", padding: "10px 14px", marginBottom: 12 }}>
+              <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.68rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: C.amber, marginBottom: 3 }}>Presentation</div>
+              <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.88rem", color: C.white }}>{s.talk}</div>
+            </div>
+            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.8rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, margin: 0 }}>{s.bio}</p>
+          </div>
+        </div>
+      </div>
+    </Reveal>
+  );
+}
+
 function Speakers() {
   const confirmed = [
     {
@@ -918,52 +955,9 @@ function Speakers() {
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 24, marginBottom: 48 }}>
           {/* Confirmed speakers */}
-          {confirmed.map((s, i) => {
-            const [expanded, setExpanded] = useState(false);
-            return (
-            <Reveal key={s.name} delay={i * 0.08}>
-              <div className="speaker-card" style={{ background: "rgba(255,255,255,0.05)", border: `1px solid rgba(24,185,197,0.25)`, borderRadius: 12, overflow: "hidden", display: "flex", flexDirection: "column" }}>
-                {/* Photo */}
-                <div style={{ position: "relative", height: 220, overflow: "hidden", background: "rgba(255,255,255,0.04)" }}>
-                  <img
-                    src={s.photo}
-                    alt={s.name}
-                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
-                  />
-                  <div style={{ position: "absolute", top: 12, right: 12, background: C.amber, color: C.white, fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "0.68rem", letterSpacing: "0.08em", textTransform: "uppercase", padding: "4px 10px", borderRadius: 100 }}>
-                    {s.day}
-                  </div>
-                </div>
-                {/* Info */}
-                <div style={{ padding: "20px 22px 24px", flex: 1, display: "flex", flexDirection: "column" }}>
-                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.25rem", color: C.white, marginBottom: 2 }}>{s.name}</div>
-                  <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 500, fontSize: "0.78rem", color: C.teal, marginBottom: 2 }}>{s.title}</div>
-                  <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.75rem", color: "rgba(255,255,255,0.4)", marginBottom: 16 }}>{s.org}</div>
-
-                  {/* Expandable toggle */}
-                  <button
-                    onClick={() => setExpanded(!expanded)}
-                    style={{ background: "rgba(255,255,255,0.05)", border: `1px solid rgba(255,255,255,0.1)`, borderRadius: 6, padding: "9px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", marginBottom: expanded ? 12 : 0, transition: "background 0.2s" }}
-                  >
-                    <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.78rem", color: "rgba(255,255,255,0.7)", letterSpacing: "0.04em" }}>
-                      {expanded ? "Hide Details" : "Presentation & Bio"}
-                    </span>
-                    <span style={{ color: C.teal, fontSize: "0.9rem", transition: "transform 0.25s", display: "inline-block", transform: expanded ? "rotate(180deg)" : "rotate(0deg)" }}>▾</span>
-                  </button>
-
-                  {/* Expandable content */}
-                  <div style={{ maxHeight: expanded ? 400 : 0, overflow: "hidden", transition: "max-height 0.35s ease" }}>
-                    <div style={{ background: "rgba(255,255,255,0.05)", borderLeft: `3px solid ${C.amber}`, borderRadius: "0 6px 6px 0", padding: "10px 14px", marginBottom: 12 }}>
-                      <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.68rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: C.amber, marginBottom: 3 }}>Presentation</div>
-                      <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.88rem", color: C.white }}>{s.talk}</div>
-                    </div>
-                    <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.8rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, margin: 0 }}>{s.bio}</p>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-            );
-          })}
+          {confirmed.map((s, i) => (
+            <SpeakerCard key={s.name} s={s} delay={i * 0.08} />
+          ))}
 
           {/* Placeholder cards */}
           {Array.from({ length: placeholderCount }).map((_, n) => (
