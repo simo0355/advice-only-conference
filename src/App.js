@@ -368,7 +368,7 @@ function Nav({ scrolled }) {
     >
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", height: 72, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         {/* Logo */}
-        <a href="#" style={{ display: "flex", flexDirection: "column", lineHeight: 1 }}>
+        <a href="/" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ display: "flex", flexDirection: "column", lineHeight: 1, textDecoration: "none" }}>
           <span style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.35rem", color: C.white, letterSpacing: "0.02em" }}>
             Advice<span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 400, fontSize: "1.2rem" }}>-</span>Only
           </span>
@@ -548,7 +548,6 @@ function Hero() {
 
       {/* Badge */}
       <div className="fade-up" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(24,185,197,0.12)", border: `1px solid rgba(24,185,197,0.3)`, borderRadius: 100, padding: "7px 18px", marginBottom: 28 }}>
-        <span style={{ width: 7, height: 7, borderRadius: "50%", background: C.teal, display: "inline-block", animation: "pulse 2s infinite" }} />
         <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.75rem", letterSpacing: "0.14em", textTransform: "uppercase", color: C.teal }}>
           The Advice-Only Network Presents
         </span>
@@ -565,15 +564,26 @@ function Hero() {
 
       <div className="fade-up-3" style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center", alignItems: "center", marginBottom: 48 }}>
         {[
-          { icon: "📅", text: "June 23–24, 2026" },
-          { icon: "📍", text: "Open Book Space · Minneapolis, MN" },
-          { icon: "🎟️", text: "Limited Seats Available" },
-        ].map(({ icon, text }) => (
-          <div key={text} style={{ display: "flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 100, padding: "8px 16px" }}>
-            <span>{icon}</span>
-            <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.88rem", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>{text}</span>
-          </div>
-        ))}
+          { icon: "📅", text: "June 23–24, 2026", href: null },
+          { icon: "📍", text: "Open Book Space · Minneapolis, MN", href: "#venue" },
+          { icon: "🎟️", text: "Limited Seats Available", href: "#tickets" },
+        ].map(({ icon, text, href }) => {
+          const inner = (
+            <>
+              <span>{icon}</span>
+              <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.88rem", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>{text}</span>
+            </>
+          );
+          const sharedStyle = { display: "flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 100, padding: "8px 16px", textDecoration: "none", transition: "background 0.2s" };
+          return href ? (
+            <a key={text} href={href} onClick={(e) => { e.preventDefault(); document.getElementById(href.slice(1))?.scrollIntoView({ behavior: "smooth" }); }} style={{ ...sharedStyle, cursor: "pointer" }}
+              onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,0.14)"}
+              onMouseLeave={e => e.currentTarget.style.background = "rgba(255,255,255,0.07)"}
+            >{inner}</a>
+          ) : (
+            <div key={text} style={sharedStyle}>{inner}</div>
+          );
+        })}
       </div>
 
       <div className="fade-up-4" style={{ display: "flex", gap: 16, flexWrap: "wrap", justifyContent: "center", marginBottom: 60 }}>
@@ -595,7 +605,7 @@ function Hero() {
       </div>
 
       {/* Scroll arrow */}
-      <div style={{ position: "absolute", bottom: 32, left: "50%", transform: "translateX(-50%)", display: "flex", flexDirection: "column", alignItems: "center", gap: 6, cursor: "pointer", opacity: 0.5 }} onClick={() => document.getElementById("about").scrollIntoView({ behavior: "smooth" })}>
+      <div style={{ position: "absolute", bottom: 16, left: "50%", transform: "translateX(-50%)", display: "flex", flexDirection: "column", alignItems: "center", gap: 6, cursor: "pointer", opacity: 0.5 }} onClick={() => document.getElementById("about").scrollIntoView({ behavior: "smooth" })}>
         <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.68rem", letterSpacing: "0.14em", textTransform: "uppercase", color: C.white }}>Scroll</span>
         <div style={{ width: 24, height: 36, border: `2px solid rgba(255,255,255,0.4)`, borderRadius: 100, display: "flex", justifyContent: "center", paddingTop: 6 }}>
           <div style={{ width: 4, height: 8, background: C.white, borderRadius: 2, animation: "fadeUp 1.5s infinite" }} />
@@ -746,6 +756,7 @@ function Agenda() {
       ]},
       { time: "12:15 PM", title: "Lunch & Networking", type: "break", note: "Catered lunch · Open networking with all attendees" },
       { time: "1:30 PM", title: "Marketing an Advice-Only Practice in 2026", type: "session", note: "Performance Hall" },
+      { time: "2:00 PM", title: "Finding Financial Independence", type: "session", note: "Chris Mamula · Performance Hall" },
       { time: "2:45 PM", type: "concurrent", sessions: [
         { title: "Breakout Session · Topic TBD", room: "Performance Hall", type: "session" },
         { title: "Breakout Session · Topic TBD", room: "Breakout Room", type: "session" },
@@ -874,6 +885,19 @@ function Agenda() {
 
 // ─── Speakers ──────────────────────────────────────────────────────────────
 function Speakers() {
+  const confirmed = [
+    {
+      name: "Chris Mamula",
+      title: "Financial Planner & Writer",
+      org: "Author: Choose FI",
+      talk: "Finding Financial Independence",
+      day: "Day 2",
+      photo: "https://res.cloudinary.com/abundo-wealth-assets/image/upload/v1683570506/advice-only-network/advisor-assets/Mam-chris_H_S-15_3_2_b9x7li.jpg",
+      bio: "Chris retired from a career as a physical therapist at 41 using principles of traditional retirement planning combined with creative lifestyle design. He is the primary author of Choose FI: Your Blueprint to Financial Independence and writes about wealth building, investing, and the FIRE movement at Can I Retire Yet? He is now an advice-only financial planner at Abundo Wealth.",
+    },
+  ];
+  const placeholderCount = 3;
+
   return (
     <section id="speakers" style={{ padding: "96px 32px", background: C.navy }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -887,24 +911,72 @@ function Speakers() {
               Meet the Speakers
             </h2>
             <p style={{ fontFamily: "'Outfit', sans-serif", color: "rgba(255,255,255,0.55)", fontSize: "0.95rem", marginTop: 12 }}>
-              Speaker announcements coming very soon. Follow us to stay in the loop.
+              More speaker announcements coming soon. Follow us to stay in the loop.
             </p>
           </div>
         </Reveal>
 
-        {/* Placeholder speaker cards */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 20, marginBottom: 48 }}>
-          {[1, 2, 3, 4].map((n) => (
-            <Reveal key={n} delay={n * 0.08}>
-              <div className="speaker-card" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 10, padding: "32px 24px", textAlign: "center" }}>
-                <div style={{ width: 80, height: 80, borderRadius: "50%", background: `rgba(24,185,197,0.15)`, border: `2px dashed rgba(24,185,197,0.3)`, margin: "0 auto 16px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 24, marginBottom: 48 }}>
+          {/* Confirmed speakers */}
+          {confirmed.map((s, i) => {
+            const [expanded, setExpanded] = useState(false);
+            return (
+            <Reveal key={s.name} delay={i * 0.08}>
+              <div className="speaker-card" style={{ background: "rgba(255,255,255,0.05)", border: `1px solid rgba(24,185,197,0.25)`, borderRadius: 12, overflow: "hidden", display: "flex", flexDirection: "column" }}>
+                {/* Photo */}
+                <div style={{ position: "relative", height: 220, overflow: "hidden", background: "rgba(255,255,255,0.04)" }}>
+                  <img
+                    src={s.photo}
+                    alt={s.name}
+                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
+                  />
+                  <div style={{ position: "absolute", top: 12, right: 12, background: C.amber, color: C.white, fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "0.68rem", letterSpacing: "0.08em", textTransform: "uppercase", padding: "4px 10px", borderRadius: 100 }}>
+                    {s.day}
+                  </div>
+                </div>
+                {/* Info */}
+                <div style={{ padding: "20px 22px 24px", flex: 1, display: "flex", flexDirection: "column" }}>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.25rem", color: C.white, marginBottom: 2 }}>{s.name}</div>
+                  <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 500, fontSize: "0.78rem", color: C.teal, marginBottom: 2 }}>{s.title}</div>
+                  <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.75rem", color: "rgba(255,255,255,0.4)", marginBottom: 16 }}>{s.org}</div>
+
+                  {/* Expandable toggle */}
+                  <button
+                    onClick={() => setExpanded(!expanded)}
+                    style={{ background: "rgba(255,255,255,0.05)", border: `1px solid rgba(255,255,255,0.1)`, borderRadius: 6, padding: "9px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", marginBottom: expanded ? 12 : 0, transition: "background 0.2s" }}
+                  >
+                    <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.78rem", color: "rgba(255,255,255,0.7)", letterSpacing: "0.04em" }}>
+                      {expanded ? "Hide Details" : "Presentation & Bio"}
+                    </span>
+                    <span style={{ color: C.teal, fontSize: "0.9rem", transition: "transform 0.25s", display: "inline-block", transform: expanded ? "rotate(180deg)" : "rotate(0deg)" }}>▾</span>
+                  </button>
+
+                  {/* Expandable content */}
+                  <div style={{ maxHeight: expanded ? 400 : 0, overflow: "hidden", transition: "max-height 0.35s ease" }}>
+                    <div style={{ background: "rgba(255,255,255,0.05)", borderLeft: `3px solid ${C.amber}`, borderRadius: "0 6px 6px 0", padding: "10px 14px", marginBottom: 12 }}>
+                      <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.68rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: C.amber, marginBottom: 3 }}>Presentation</div>
+                      <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.88rem", color: C.white }}>{s.talk}</div>
+                    </div>
+                    <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.8rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, margin: 0 }}>{s.bio}</p>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+            );
+          })}
+
+          {/* Placeholder cards */}
+          {Array.from({ length: placeholderCount }).map((_, n) => (
+            <Reveal key={n} delay={(confirmed.length + n) * 0.08}>
+              <div className="speaker-card" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 12, padding: "32px 24px", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 260 }}>
+                <div style={{ width: 80, height: 80, borderRadius: "50%", background: `rgba(24,185,197,0.1)`, border: `2px dashed rgba(24,185,197,0.25)`, margin: "0 auto 16px", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <span style={{ fontSize: "1.8rem" }}>🎙️</span>
                 </div>
                 <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "1rem", color: C.white, marginBottom: 4 }}>
-                  Speaker {n}
+                  Coming Soon
                 </div>
-                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.8rem", color: "rgba(255,255,255,0.4)" }}>
-                  Announcement Coming Soon
+                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.8rem", color: "rgba(255,255,255,0.3)" }}>
+                  Announcement Pending
                 </div>
               </div>
             </Reveal>
@@ -999,9 +1071,7 @@ function Venue() {
                     </div>
                   </div>
                   <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.9rem", color: C.grayMid, lineHeight: 1.65, marginBottom: 16, flex: 1 }}>{s.desc}</p>
-                  <a href={s.link} target="_blank" rel="noopener noreferrer" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.82rem", color: C.teal, letterSpacing: "0.06em", textTransform: "uppercase", display: "inline-flex", alignItems: "center", gap: 6, transition: "gap 0.2s", marginTop: "auto" }}>
-                    View Space →
-                  </a>
+
                 </div>
               </div>
             </Reveal>
