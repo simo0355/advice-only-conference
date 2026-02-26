@@ -738,7 +738,7 @@ function Agenda() {
       { time: "1:30 PM", title: "Keynote Presentation", type: "keynote", note: "Performance Hall · Speaker TBD" },
       { time: "2:45 PM", type: "concurrent", sessions: [
         { title: "Breakout Session · Topic TBD", room: "Performance Hall", type: "session" },
-        { title: "Breakout Session · Topic TBD", room: "Breakout Room", type: "session" },
+        { title: "Optimizing Your Website for SEO & AEO", room: "Breakout Room", type: "session", speaker: "Alex Ammar · Paradox Financial" },
       ]},
       { time: "4:00 PM", title: "Panel: The Future of Advice-Only Planning", type: "keynote", note: "Moderated panel with industry leaders" },
       { time: "5:30 PM", title: "Evening Event & Networking 🎉", type: "break", note: "Celebrate Day 1 with your fellow attendees" },
@@ -756,7 +756,7 @@ function Agenda() {
       ]},
       { time: "12:15 PM", title: "Lunch & Networking", type: "break", note: "Catered lunch · Open networking with all attendees" },
       { time: "1:30 PM", title: "Marketing an Advice-Only Practice in 2026", type: "session", note: "Performance Hall" },
-      { time: "2:00 PM", title: "Finding Financial Independence", type: "session", note: "Chris Mamula · Performance Hall" },
+      { time: "2:00 PM", title: "The Intersection of Advice-Only and the FIRE Movement", type: "session", note: "Chris Mamula · Performance Hall" },
       { time: "2:45 PM", type: "concurrent", sessions: [
         { title: "Breakout Session · Topic TBD", room: "Performance Hall", type: "session" },
         { title: "Breakout Session · Topic TBD", room: "Breakout Room", type: "session" },
@@ -840,6 +840,7 @@ function Agenda() {
                               <span style={{ fontSize: "0.65rem" }}>📍</span>
                               <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.72rem", fontWeight: 600, color: C.grayMid, letterSpacing: "0.04em" }}>{s.room}</span>
                             </div>
+                            {s.speaker && <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.75rem", color: C.grayMid, marginTop: 5 }}>{s.speaker}</div>}
                           </div>
                         );
                       })}
@@ -889,8 +890,8 @@ function SpeakerCard({ s, delay }) {
   return (
     <Reveal delay={delay}>
       <div className="speaker-card" style={{ background: "rgba(255,255,255,0.05)", border: `1px solid rgba(24,185,197,0.25)`, borderRadius: 12, overflow: "hidden", display: "flex", flexDirection: "column" }}>
-        <div style={{ position: "relative", height: "min(55vw, 280px)", overflow: "hidden", background: "rgba(255,255,255,0.04)" }}>
-          <img src={s.photo} alt={s.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 25%" }} />
+        <div style={{ position: "relative", height: "min(70vw, 300px)", overflow: "hidden", background: "rgba(255,255,255,0.04)" }}>
+          <img src={s.photo} alt={s.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 35%" }} />
           <div style={{ position: "absolute", top: 12, right: 12, background: C.amber, color: C.white, fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "0.68rem", letterSpacing: "0.08em", textTransform: "uppercase", padding: "4px 10px", borderRadius: 100 }}>
             {s.day}
           </div>
@@ -927,7 +928,7 @@ function Speakers() {
       name: "Chris Mamula",
       title: "Financial Planner & Writer",
       org: "Author: Choose FI",
-      talk: "Finding Financial Independence",
+      talk: "The Intersection of Advice-Only and the FIRE Movement",
       day: "Day 2",
       photo: "https://res.cloudinary.com/abundo-wealth-assets/image/upload/v1683570506/advice-only-network/advisor-assets/Mam-chris_H_S-15_3_2_b9x7li.jpg",
       bio: "Chris retired from a career as a physical therapist at 41 using principles of traditional retirement planning combined with creative lifestyle design. He is the primary author of Choose FI: Your Blueprint to Financial Independence and writes about wealth building, investing, and the FIRE movement at Can I Retire Yet? He is now an advice-only financial planner at Abundo Wealth.",
@@ -1532,7 +1533,7 @@ function Footer() {
 }
 
 // ─── App ───────────────────────────────────────────────────────────────────
-export default function App() {
+export default function AdviceOnlyConference() {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
