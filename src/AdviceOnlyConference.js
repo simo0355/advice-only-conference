@@ -559,7 +559,7 @@ function Hero() {
       </h1>
 
       <p className="fade-up-2" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 400, fontSize: "clamp(1rem, 2.5vw, 1.25rem)", color: "rgba(255,255,255,0.72)", maxWidth: 620, lineHeight: 1.6, marginBottom: 32 }}>
-        Two days. One movement. The only conference built exclusively for advice-only financial planners — where pure advice meets real community.
+        Two days. One movement. The only conference built exclusively for Advice-Only financial planners — where pure advice meets real community.
       </p>
 
       <div className="fade-up-3" style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center", alignItems: "center", marginBottom: 48 }}>
@@ -636,7 +636,7 @@ function About() {
                 Where the Advice<span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 400, fontSize: "0.9em" }}>-</span>Only Movement Comes Alive
               </h2>
               <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "1.05rem", lineHeight: 1.75, color: C.bodyText, marginBottom: 20 }}>
-                The Advice-Only Conference is the first-of-its-kind gathering exclusively for advice-only financial planners. Hosted by The Advice-Only Network in the heart of downtown Minneapolis, this is your chance to connect with the most forward-thinking minds in advice-only financial planning.
+                The Advice-Only Conference is the first-of-its-kind gathering exclusively for Advice-Only financial planners. Hosted by The Advice-Only Network in the heart of downtown Minneapolis, this is your chance to connect with the most forward-thinking minds in Advice-Only financial planning.
               </p>
               <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "1.05rem", lineHeight: 1.75, color: C.bodyText, marginBottom: 32 }}>
                 No product pitches. No commission-hungry sales reps. Just real advisors doing real work for real people — and two days to celebrate what makes our model the future of financial planning.
@@ -684,9 +684,9 @@ function About() {
 function WhyAttend() {
   const reasons = [
     { icon: "🤝", title: "Real Community", desc: "Connect face-to-face with advisors who share your values. Build partnerships, referral relationships, and lifelong friendships with those who get it." },
-    { icon: "🎓", title: "Actionable Education", desc: "Deep-dive sessions on building and scaling an advice-only practice, compliance, marketing, pricing strategies, and the business of serving clients on your terms." },
+    { icon: "🎓", title: "Actionable Education", desc: "Deep-dive sessions on building and scaling an Advice-Only practice, compliance, marketing, pricing strategies, and the business of serving clients on your terms." },
     { icon: "💡", title: "Fresh Inspiration", desc: "Reignite your passion for the work. Leave Minneapolis buzzing with new ideas, renewed energy, and a clear vision for where your practice is headed." },
-    { icon: "📢", title: "Shape the Movement", desc: "Be part of defining what advice-only means for the next decade. Your voice and your presence help build the future of fiduciary planning." },
+    { icon: "📢", title: "Shape the Movement", desc: "Be part of defining what Advice-Only means for the next decade. Your voice and your presence help build the future of fiduciary planning." },
     { icon: "🏙️", title: "Beautiful Venue", desc: "Hosted at the iconic Open Book space in downtown Minneapolis — exposed brick, natural light, and a literary creative energy that inspires greatness." },
     { icon: "🎉", title: "Celebrate the Win", desc: "You chose the hardest, most principled path in financial planning. Come celebrate that with people who understand exactly what you've built." },
   ];
@@ -727,11 +727,11 @@ function Agenda() {
       { time: "8:00 AM", title: "Registration & Morning Coffee", type: "break", note: "Registration open until 2:00 PM · Performance Hall Lobby" },
       { time: "9:00 AM", title: "Opening Keynote", type: "keynote", note: "Welcome to the Advice-Only Conference — Setting the stage for two transformative days" },
       { time: "10:00 AM", type: "concurrent", sessions: [
-        { title: "Pricing Strategy for Advice-Only Advisors", room: "Performance Hall", type: "session" },
-        { title: "Building Your Advice-Only Practice From Scratch", room: "Breakout Room", type: "session" },
+        { title: "Building Your Advice-Only Practice From Scratch", room: "Performance Hall", type: "session" },
+        { title: "Breakout Session · Topic TBD", room: "Breakout Room", type: "session" },
       ]},
       { time: "11:15 AM", type: "concurrent", sessions: [
-        { title: "Breakout Session · Topic TBD", room: "Performance Hall", type: "session" },
+        { title: "Pricing Strategy for Advice-Only Advisors", room: "Performance Hall", type: "session" },
         { title: "Breakout Session · Topic TBD", room: "Breakout Room", type: "session" },
       ]},
       { time: "12:30 PM", title: "Lunch & Networking", type: "break", note: "Catered lunch · Open networking with all attendees" },
@@ -930,8 +930,8 @@ function Speakers() {
       org: "Author: Choose FI",
       talk: "The Intersection of Advice-Only and the FIRE Movement",
       day: "Day 2",
-      photo: "https://res.cloudinary.com/abundo-wealth-assets/image/upload/v1683570506/advice-only-network/advisor-assets/Mam-chris_H_S-15_3_2_b9x7li.jpg",
-      bio: "Chris retired from a career as a physical therapist at 41 using principles of traditional retirement planning combined with creative lifestyle design. He is the primary author of Choose FI: Your Blueprint to Financial Independence and writes about wealth building, investing, and the FIRE movement at Can I Retire Yet? He is now an advice-only financial planner at Abundo Wealth.",
+      photo: "https://res.cloudinary.com/abundo-wealth-assets/image/upload/v1683570506/Advice-Only-network/advisor-assets/Mam-chris_H_S-15_3_2_b9x7li.jpg",
+      bio: "Chris retired from a career as a physical therapist at 41 using principles of traditional retirement planning combined with creative lifestyle design. He is the primary author of Choose FI: Your Blueprint to Financial Independence and writes about wealth building, investing, and the FIRE movement at Can I Retire Yet? He is now an Advice-Only financial planner at Abundo Wealth.",
     },
   ];
   const placeholderCount = 3;
@@ -1126,12 +1126,12 @@ function Venue() {
 // ─── Hotels ────────────────────────────────────────────────────────────────
 function Hotels() {
   const amenities = [
-    { icon: "🍹", label: "Check in at the bar", desc: "Receive your room key and a complimentary handcrafted cocktail at Bar Moxy" },
-    { icon: "📶", label: "Free Wi-Fi", desc: "Complimentary high-speed Wi-Fi for all guests" },
-    { icon: "💪", label: "24/7 Fitness Center", desc: "Round-the-clock gym with cardio, free weights, and a Moxy bike" },
-    { icon: "🚇", label: "Light Rail Access", desc: "Steps from the Light Rail — easy access to the venue, airport, and all of downtown" },
-    { icon: "🐾", label: "Pet Friendly", desc: "Pets welcome (1 pet, up to 30 lbs, $35/night fee)" },
-    { icon: "🅿️", label: "On-Site Parking", desc: "Self-parking with in/out privileges available at $40/day" },
+    { icon: "🍹", label: "W XYZ Bar", desc: "Socialize at the lively on-site W XYZ bar — perfect for connecting with fellow attendees after sessions" },
+    { icon: "📶", label: "Free Wi-Fi", desc: "Complimentary high-speed Wi-Fi throughout the hotel for all guests" },
+    { icon: "💪", label: "24/7 Fitness Center", desc: "Round-the-clock gym to keep your routine going during the conference" },
+    { icon: "🏊", label: "Indoor Pool & Hot Tub", desc: "Unwind after a full day of sessions with a swim or soak" },
+    { icon: "🐾", label: "Pet Friendly", desc: "Pets welcome at no extra charge — bring your furry travel companion" },
+    { icon: "🚇", label: "Light Rail Access", desc: "Easy access to Light Rail — connect to the venue, airport, and all of downtown" },
   ];
 
   return (
@@ -1167,11 +1167,11 @@ function Hotels() {
                   </span>
                 </div>
                 <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "clamp(1.8rem, 3vw, 2.6rem)", color: C.white, lineHeight: 1.05, marginBottom: 8 }}>
-                  Moxy Minneapolis Downtown
+                  Aloft Minneapolis
                 </h3>
                 <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.88rem", color: "rgba(255,255,255,0.55)", display: "flex", alignItems: "center", gap: 6 }}>
                   <span>📍</span>
-                  <span>247 Chicago Avenue South, Minneapolis, MN 55415</span>
+                  <span>900 Washington Avenue South, Minneapolis, MN 55415</span>
                 </div>
               </div>
 
@@ -1198,7 +1198,7 @@ function Hotels() {
 
               {/* Description */}
               <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "1rem", color: C.bodyText, lineHeight: 1.75, marginBottom: 32, maxWidth: 720 }}>
-                Moxy Minneapolis is a hip, modern hotel right in the heart of Downtown East — within short walking distance from the conference venue. Known for its playful energy, it's the perfect place to unwind after a full day of sessions. Check in at Bar Moxy, cocktail in hand, and connect with fellow attendees in the lobby's communal gathering spaces.
+                Aloft Minneapolis is a vibrant, loft-inspired hotel located in the Mill District of downtown Minneapolis — directly across the street from the conference venue. With its signature W XYZ bar, indoor pool, and energetic communal spaces, it's the perfect place to unwind and keep the conversations going after each day's sessions.
               </p>
 
               {/* Amenities grid */}
@@ -1223,9 +1223,9 @@ function Hotels() {
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, flexWrap: "wrap", borderTop: `1px solid ${C.grayLight}`, paddingTop: 24 }}>
                 <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
                   {[
-                    { label: "Check-in", value: "4:00 PM" },
-                    { label: "Check-out", value: "11:00 AM" },
-                    { label: "Phone", value: "+1 612-400-1810" },
+                    { label: "Check-in", value: "3:00 PM" },
+                    { label: "Check-out", value: "12:00 PM" },
+                    { label: "Phone", value: "+1 612-455-8400" },
                   ].map(({ label, value }) => (
                     <div key={label}>
                       <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.68rem", letterSpacing: "0.12em", textTransform: "uppercase", color: C.grayMid, marginBottom: 3 }}>{label}</div>
@@ -1235,7 +1235,7 @@ function Hotels() {
                 </div>
                 <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                   <a
-                    href="https://www.marriott.com/en-us/hotels/mspod-moxy-minneapolis-downtown/overview/"
+                    href="https://www.marriott.com/en-us/hotels/mspal-aloft-minneapolis/overview/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="cta-primary"
@@ -1244,7 +1244,7 @@ function Hotels() {
                     Book at $199/night →
                   </a>
                   <a
-                    href="https://maps.google.com/?q=Moxy+Minneapolis+Downtown+247+Chicago+Avenue+South"
+                    href="https://maps.google.com/?q=Aloft+Minneapolis+900+Washington+Avenue+South"
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{ display: "inline-flex", alignItems: "center", border: `2px solid ${C.grayLight}`, color: C.grayMid, fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.85rem", letterSpacing: "0.04em", padding: "10px 22px", borderRadius: 4, transition: "border-color 0.2s, color 0.2s" }}
@@ -1370,15 +1370,15 @@ function Tickets() {
 function FAQ() {
   const [open, setOpen] = useState(null);
   const items = [
-    { q: "Who is this conference for?", a: "The Advice-Only Conference is designed for advice-only financial planners, advisors considering making the switch to an advice-only model, and anyone who believes in the future of real financial planning with reduced conflicts of interest." },
-    { q: "What does 'advice-only' mean?", a: "Advice-only financial planners charge solely for their advice — no commissions, no assets under management fees, no product sales. They provide pure, fiduciary guidance with reduced conflicts of interest." },
+    { q: "Who is this conference for?", a: "The Advice-Only Conference is designed for Advice-Only financial planners, advisors considering making the switch to an Advice-Only model, and anyone who believes in the future of real financial planning with reduced conflicts of interest." },
+    { q: "What does 'Advice-Only' mean?", a: "Advice-only financial planners charge solely for their advice — no commissions, no assets under management fees, no product sales. They provide pure, fiduciary guidance with reduced conflicts of interest." },
     { q: "Where exactly is the venue?", a: "The conference is held at Open Book Space in downtown Minneapolis, Minnesota. Open Book is a celebrated literary and creative center with beautiful event spaces featuring exposed brick, natural light, and a warm, inspiring atmosphere." },
     { q: "What's the dress code?", a: "Come as you are! We want you to be comfortable, so wear whatever you feel good in. This is a welcoming, relaxed environment — there's no need to dress up." },
     { q: "What is your inclusion & harassment policy?", a: "The Advice-Only Conference is committed to being a safe, welcoming, and harassment-free experience for everyone — regardless of gender, gender identity, age, sexual orientation, disability, physical appearance, race, ethnicity, religion, or any other characteristic. We do not tolerate harassment of any kind. All attendees, speakers, sponsors, and staff are expected to treat one another with respect and kindness. Anyone asked to stop harassing behavior is expected to comply immediately. If you experience or witness harassment, please report it to a conference organizer right away. We are here to support you." },
     { q: "Will sessions be recorded?", a: "The 2026 conference will not be recorded. This first year is all about being in the room — the conversations, connections, and energy that can only happen in person. That said, we hope to have recordings available for future conferences, so stay tuned as the event grows." },
     { q: "Is there a refund policy?", a: "Yes. We want to be fair and transparent — just like our advisors. If you cancel more than 60 days before the conference (before April 24, 2026), you'll receive a full refund. Cancellations between 30 and 60 days out (April 24 – May 24, 2026) are eligible for a 50% refund. Cancellations within 30 days of the conference (after May 24, 2026) are non-refundable, as costs are locked in by that point. However, ticket transfers are always welcome — if you can't make it, you're free to send a colleague in your place at no charge. Just email us at info@adviceonlynetwork.com to arrange a transfer." },
-    { q: "How can I become a sponsor?", a: "We're actively seeking sponsors who align with the advice-only philosophy. Reach out to us at info@adviceonlynetwork.com to discuss sponsorship opportunities." },
-    { q: "Is this event open to press and media?", a: "Yes! We welcome journalists, industry observers, and curious members of the financial media community. If you're interested in attending as a member of the press or covering the advice-only movement, please reach out to us at info@adviceonlynetwork.com with a brief note about your outlet or interest. We'll be happy to discuss press access and credentials." },
+    { q: "How can I become a sponsor?", a: "We're actively seeking sponsors who align with the Advice-Only philosophy. Reach out to us at info@adviceonlynetwork.com to discuss sponsorship opportunities." },
+    { q: "Is this event open to press and media?", a: "Yes! We welcome journalists, industry observers, and curious members of the financial media community. If you're interested in attending as a member of the press or covering the Advice-Only movement, please reach out to us at info@adviceonlynetwork.com with a brief note about your outlet or interest. We'll be happy to discuss press access and credentials." },
   ];
   return (
     <section id="faq" style={{ padding: "96px 32px", background: C.cream }}>
@@ -1431,7 +1431,7 @@ function PressStrip() {
               Press & Media Inquiries
             </div>
             <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.88rem", color: C.grayMid, lineHeight: 1.6, maxWidth: 520 }}>
-              Journalists and industry observers are welcome. We'd love to have curious voices in the room as the advice-only movement grows. Reach out to discuss press credentials.
+              Journalists and industry observers are welcome. We'd love to have curious voices in the room as the Advice-Only movement grows. Reach out to discuss press credentials.
             </p>
           </div>
         </div>
@@ -1497,7 +1497,7 @@ function Footer() {
             <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.4rem", color: C.white, marginBottom: 4 }}>Advice-Only Conference</div>
             <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.75rem", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: C.amber, marginBottom: 16 }}>June 23–24, 2026 · Minneapolis</div>
             <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.88rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, maxWidth: 320 }}>
-              Hosted by The Advice-Only Network — the premier directory for advice-only financial planners across the country.
+              Hosted by The Advice-Only Network — the premier directory for Advice-Only financial planners across the country.
             </p>
           </div>
           <div>
@@ -1509,6 +1509,11 @@ function Footer() {
                   onMouseLeave={e => e.target.style.color = "rgba(255,255,255,0.5)"}>{l}</a>
               </div>
             ))}
+            <div style={{ marginBottom: 8 }}>
+              <a href="/terms" style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.9rem", color: "rgba(255,255,255,0.5)", transition: "color 0.2s" }}
+                onMouseEnter={e => e.target.style.color = C.white}
+                onMouseLeave={e => e.target.style.color = "rgba(255,255,255,0.5)"}>Terms & Conditions</a>
+            </div>
           </div>
           <div>
             <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "0.78rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: 16 }}>Contact</div>
