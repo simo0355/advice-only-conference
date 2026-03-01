@@ -1139,127 +1139,88 @@ function Hotels() {
             <div className="section-label">Where to Stay</div>
             <div className="divider divider-center" />
             <h2 className="section-heading" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", marginBottom: 12 }}>
-              Our Official Conference Hotel
+              Recommended Hotels
             </h2>
-            <p style={{ fontFamily: "'Outfit', sans-serif", color: C.grayMid, maxWidth: 560, margin: "0 auto", lineHeight: 1.7 }}>
-              We've secured a special block rate exclusively for Advice-Only Conference attendees. Book early — rooms at this rate are limited.
+            <p style={{ fontFamily: "'Outfit', sans-serif", color: C.grayMid, maxWidth: 600, margin: "0 auto", lineHeight: 1.7 }}>
+              We are currently in the process of securing a conference room block. In the meantime, if you'd like to book your hotel now, we recommend either of the two options below — both are within close walking distance to the venue.
             </p>
           </div>
         </Reveal>
 
-        {/* Main Hotel Card */}
-        <Reveal delay={0.1}>
-          <div style={{ background: C.white, borderRadius: 16, overflow: "hidden", border: `1px solid ${C.grayLight}`, boxShadow: "0 12px 48px rgba(11,31,58,0.1)", marginBottom: 32 }}>
+        {/* Two hotel cards */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(440px, 1fr))", gap: 24 }}>
 
-            {/* Top banner */}
-            <div style={{ background: `linear-gradient(135deg, ${C.navy} 0%, #0F2847 60%, #0A3D62 100%)`, padding: "36px 40px", display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 24, flexWrap: "wrap" }}>
-              <div>
-                {/* Official block badge */}
-                <div style={{ display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(159,140,73,0.15)", border: `1px solid rgba(159,140,73,0.4)`, borderRadius: 100, padding: "5px 14px", marginBottom: 14 }}>
-                  <span style={{ fontSize: "0.75rem" }}>🏨</span>
-                  <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "0.7rem", letterSpacing: "0.14em", textTransform: "uppercase", color: C.amber }}>
-                    Official Conference Hotel · Block Rate
-                  </span>
-                </div>
-                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "clamp(1.8rem, 3vw, 2.6rem)", color: C.white, lineHeight: 1.05, marginBottom: 8 }}>
+          {/* Aloft */}
+          <Reveal delay={0.1}>
+            <div style={{ background: C.white, borderRadius: 16, overflow: "hidden", border: `1px solid ${C.grayLight}`, boxShadow: "0 8px 32px rgba(11,31,58,0.08)", height: "100%", display: "flex", flexDirection: "column" }}>
+              <div style={{ background: `linear-gradient(135deg, ${C.navy} 0%, #0F2847 100%)`, padding: "28px 32px" }}>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.9rem", color: C.white, lineHeight: 1.05, marginBottom: 8 }}>
                   Aloft Minneapolis
                 </h3>
-                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.88rem", color: "rgba(255,255,255,0.55)", display: "flex", alignItems: "center", gap: 6 }}>
+                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.82rem", color: "rgba(255,255,255,0.5)", display: "flex", alignItems: "center", gap: 6 }}>
                   <span>📍</span>
                   <span>900 Washington Avenue South, Minneapolis, MN 55415</span>
                 </div>
               </div>
-
-              {/* Price callout */}
-              <div style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.14)", borderRadius: 12, padding: "20px 28px", textAlign: "center", flexShrink: 0 }}>
-                <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.7rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 6 }}>
-                  Conference Rate
-                </div>
-                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "3rem", color: C.amber, lineHeight: 1 }}>
-                  $199
-                </div>
-                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.78rem", color: "rgba(255,255,255,0.5)", marginTop: 4 }}>
-                  per night
-                </div>
-                <div style={{ width: "100%", height: 1, background: "rgba(255,255,255,0.1)", margin: "12px 0" }} />
-                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.72rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.5 }}>
-                  Limited rooms available<br />at this rate
-                </div>
-              </div>
-            </div>
-
-            {/* Body */}
-            <div style={{ padding: "32px 40px" }}>
-
-              {/* Description */}
-              <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "1rem", color: C.bodyText, lineHeight: 1.75, marginBottom: 32, maxWidth: 720 }}>
-                Aloft Minneapolis is a vibrant, loft-inspired hotel located in the Mill District of downtown Minneapolis, directly across the street from the conference venue. With its signature W XYZ bar, indoor pool, and energetic communal spaces, it's the perfect place to unwind and keep the conversations going after each day's sessions.
-              </p>
-
-              {/* Amenities grid */}
-              <div style={{ marginBottom: 32 }}>
-                <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "0.72rem", letterSpacing: "0.14em", textTransform: "uppercase", color: C.grayMid, marginBottom: 16 }}>
-                  Hotel Highlights
-                </div>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 12 }}>
-                  {amenities.map(({ icon, label, desc }) => (
-                    <div key={label} style={{ display: "flex", gap: 12, alignItems: "flex-start", background: C.creamLight, borderRadius: 8, padding: "14px 16px" }}>
-                      <span style={{ fontSize: "1.2rem", flexShrink: 0, marginTop: 1 }}>{icon}</span>
-                      <div>
-                        <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "0.88rem", color: C.navy, marginBottom: 2 }}>{label}</div>
-                        <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.78rem", color: C.grayMid, lineHeight: 1.5 }}>{desc}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Check-in details + CTA row */}
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, flexWrap: "wrap", borderTop: `1px solid ${C.grayLight}`, paddingTop: 24 }}>
-                <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
-                  {[
-                    { label: "Check-in", value: "3:00 PM" },
-                    { label: "Check-out", value: "12:00 PM" },
-                    { label: "Phone", value: "+1 612-455-8400" },
-                  ].map(({ label, value }) => (
-                    <div key={label}>
-                      <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.68rem", letterSpacing: "0.12em", textTransform: "uppercase", color: C.grayMid, marginBottom: 3 }}>{label}</div>
-                      <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.95rem", color: C.navy }}>{value}</div>
-                    </div>
-                  ))}
-                </div>
+              <div style={{ padding: "24px 32px 32px", flex: 1, display: "flex", flexDirection: "column" }}>
+                <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.95rem", color: C.bodyText, lineHeight: 1.75, marginBottom: 24, flex: 1 }}>
+                  A vibrant, loft-inspired hotel in the Mill District, directly across the street from the conference venue. Features the W XYZ bar, indoor pool, and energetic communal spaces.
+                </p>
                 <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                  <a
-                    href="https://www.marriott.com/en-us/hotels/mspal-aloft-minneapolis/overview/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="cta-primary"
-                    style={{ background: C.navy, color: C.white, fontSize: "0.85rem", padding: "12px 24px" }}
-                  >
-                    Book at $199/night →
+                  <a href="https://www.marriott.com/en-us/hotels/mspal-aloft-minneapolis/overview/" target="_blank" rel="noopener noreferrer"
+                    className="cta-primary" style={{ background: C.navy, color: C.white, fontSize: "0.85rem", padding: "12px 24px" }}>
+                    View Hotel →
                   </a>
-                  <a
-                    href="https://maps.google.com/?q=Aloft+Minneapolis+900+Washington+Avenue+South"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <a href="https://maps.google.com/?q=Aloft+Minneapolis+900+Washington+Avenue+South" target="_blank" rel="noopener noreferrer"
                     style={{ display: "inline-flex", alignItems: "center", border: `2px solid ${C.grayLight}`, color: C.grayMid, fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.85rem", letterSpacing: "0.04em", padding: "10px 22px", borderRadius: 4, transition: "border-color 0.2s, color 0.2s" }}
                     onMouseEnter={e => { e.currentTarget.style.borderColor = C.navy; e.currentTarget.style.color = C.navy; }}
-                    onMouseLeave={e => { e.currentTarget.style.borderColor = C.grayLight; e.currentTarget.style.color = C.grayMid; }}
-                  >
-                    📍 Get Directions
+                    onMouseLeave={e => { e.currentTarget.style.borderColor = C.grayLight; e.currentTarget.style.color = C.grayMid; }}>
+                    📍 Directions
                   </a>
                 </div>
               </div>
             </div>
-          </div>
-        </Reveal>
+          </Reveal>
 
-        {/* Marriott Bonvoy note */}
-        <Reveal delay={0.15}>
-          <div style={{ background: C.white, borderRadius: 10, border: `1px solid ${C.grayLight}`, padding: "20px 28px", display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
-            <span style={{ fontSize: "1.4rem", flexShrink: 0 }}>ℹ️</span>
-            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.88rem", color: C.grayMid, lineHeight: 1.65, flex: 1 }}>
-              <strong style={{ color: C.navy }}>Marriott Bonvoy members</strong> receive complimentary Wi-Fi when booking direct. Use the conference block code at checkout to unlock the $199/night rate. Questions about the hotel block? Email us at{" "}
+          {/* Moxy */}
+          <Reveal delay={0.15}>
+            <div style={{ background: C.white, borderRadius: 16, overflow: "hidden", border: `1px solid ${C.grayLight}`, boxShadow: "0 8px 32px rgba(11,31,58,0.08)", height: "100%", display: "flex", flexDirection: "column" }}>
+              <div style={{ background: `linear-gradient(135deg, #0F2847 0%, #0A3D62 100%)`, padding: "28px 32px" }}>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.9rem", color: C.white, lineHeight: 1.05, marginBottom: 8 }}>
+                  Moxy Minneapolis Downtown
+                </h3>
+                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.82rem", color: "rgba(255,255,255,0.5)", display: "flex", alignItems: "center", gap: 6 }}>
+                  <span>📍</span>
+                  <span>247 Chicago Avenue South, Minneapolis, MN 55415</span>
+                </div>
+              </div>
+              <div style={{ padding: "24px 32px 32px", flex: 1, display: "flex", flexDirection: "column" }}>
+                <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.95rem", color: C.bodyText, lineHeight: 1.75, marginBottom: 24, flex: 1 }}>
+                  A hip, modern hotel right in the heart of Downtown East within short walking distance from the venue. Known for its playful energy, Bar Moxy, and lively communal lobby spaces.
+                </p>
+                <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                  <a href="https://www.marriott.com/en-us/hotels/mspod-moxy-minneapolis-downtown/overview/" target="_blank" rel="noopener noreferrer"
+                    className="cta-primary" style={{ background: C.navy, color: C.white, fontSize: "0.85rem", padding: "12px 24px" }}>
+                    View Hotel →
+                  </a>
+                  <a href="https://maps.google.com/?q=Moxy+Minneapolis+Downtown+247+Chicago+Avenue+South" target="_blank" rel="noopener noreferrer"
+                    style={{ display: "inline-flex", alignItems: "center", border: `2px solid ${C.grayLight}`, color: C.grayMid, fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.85rem", letterSpacing: "0.04em", padding: "10px 22px", borderRadius: 4, transition: "border-color 0.2s, color 0.2s" }}
+                    onMouseEnter={e => { e.currentTarget.style.borderColor = C.navy; e.currentTarget.style.color = C.navy; }}
+                    onMouseLeave={e => { e.currentTarget.style.borderColor = C.grayLight; e.currentTarget.style.color = C.grayMid; }}>
+                    📍 Directions
+                  </a>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+        </div>
+
+        {/* Coming soon note */}
+        <Reveal delay={0.2}>
+          <div style={{ background: C.white, borderRadius: 10, border: `1px solid ${C.grayLight}`, borderLeft: `4px solid ${C.teal}`, padding: "20px 28px", marginTop: 24 }}>
+            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.88rem", color: C.grayMid, lineHeight: 1.65, margin: 0 }}>
+              <strong style={{ color: C.navy }}>Room block coming soon.</strong> We are actively working to secure a discounted group rate for attendees. Once confirmed, booking details will be shared here and via email. Questions? Reach out at{" "}
               <a href="mailto:info@adviceonlynetwork.com" style={{ color: C.teal, fontWeight: 600 }}>info@adviceonlynetwork.com</a>.
             </p>
           </div>
