@@ -736,9 +736,9 @@ function Agenda() {
         { title: "Breakout Session · Topic TBD", room: "Breakout Room", type: "session" },
       ]},
       { time: "12:30 PM", title: "Lunch & Networking", type: "break", note: "Catered lunch · Open networking with all attendees" },
-      { time: "1:30 PM", title: "Keynote Presentation", type: "keynote", note: "Performance Hall · Speaker TBD" },
+      { time: "1:30 PM", title: "Death and Money Make People Funny: Supporting Clients Facing Mortality", type: "keynote", note: "Performance Hall · Rose Zealand · Golden Thread Collaborate" },
       { time: "2:45 PM", type: "concurrent", sessions: [
-        { title: "Breakout Session · Topic TBD", room: "Performance Hall", type: "session" },
+        { title: "The Business Case for Advice-Only", room: "Performance Hall", type: "session", speaker: "Steven Fox · AdviceOnly" },
         { title: "Optimizing Your Website for SEO & AEO", room: "Breakout Room", type: "session", speaker: "Alex Ammar · Paradox Financial" },
       ]},
       { time: "4:00 PM", title: "Panel: The Future of Advice-Only Planning", type: "keynote", note: "Performance Hall · Moderated panel with industry leaders" },
@@ -934,8 +934,35 @@ function Speakers() {
       photo: "https://res.cloudinary.com/abundo-wealth-assets/image/upload/v1683570506/Advice-Only-network/advisor-assets/Mam-chris_H_S-15_3_2_b9x7li.jpg",
       bio: "Chris retired from a career as a physical therapist at 41 using principles of traditional retirement planning combined with creative lifestyle design. He is the primary author of Choose FI: Your Blueprint to Financial Independence and writes about wealth building, investing, and the FIRE movement at Can I Retire Yet? He is now an Advice-Only financial planner at Abundo Wealth.",
     },
+    {
+      name: "Rose Zealand",
+      title: "Financial Planner & Death Doula",
+      org: "Golden Thread Collaborate",
+      talk: "Death and Money Make People Funny: Supporting Clients Facing Mortality",
+      day: "Day 1",
+      photo: "/rose-zealand.png",
+      bio: "Rose Zealand brings a doula-informed approach to financial planning, specializing in supporting clients at end-of-life. Her work explores how advisors can deepen client relationships by navigating the common disconnect between advisor urgency and client readiness — particularly when it comes to estate planning, beneficiary updates, and other mortality-adjacent financial decisions.",
+    },
+    {
+      name: "Steven Fox",
+      title: "Financial Planner",
+      org: "AdviceOnly",
+      talk: "The Business Case for Advice-Only",
+      day: "Day 1",
+      photo: "/steven-fox.png",
+      bio: "Steven Fox is the founder of AdviceOnly, a firm dedicated to delivering pure, conflict-free financial advice. He is a passionate advocate for the Advice-Only model and brings a practitioner's perspective to building a sustainable, values-driven financial planning business.",
+    },
+    {
+      name: "Alex Ammar",
+      title: "Financial Planner & Strategist",
+      org: "Paradox Financial",
+      talk: "Optimizing Your Website for SEO & AEO",
+      day: "Day 1",
+      photo: "/alex-ammar.png",
+      bio: "Alex Ammar is the founder of Paradox Financial, an Advice-Only financial planning firm. He combines deep financial planning expertise with a strong grasp of digital marketing, helping Advice-Only advisors think strategically about how they show up online and attract the right clients.",
+    },
   ];
-  const placeholderCount = 3;
+  const placeholderCount = 0;
 
   return (
     <section id="speakers" style={{ padding: "96px 32px", background: C.navy }}>
