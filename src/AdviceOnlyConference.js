@@ -745,25 +745,24 @@ function Agenda() {
       { time: "5:30 PM", title: "Evening Event & Networking 🎉", type: "break", note: "Celebrate Day 1 with your fellow attendees" },
     ],
     2: [
-      { time: "8:30 AM", title: "Registration & Morning Coffee", type: "break", note: "Come early, connect deeply" },
-      { time: "9:00 AM", title: "Day 2 Keynote", type: "keynote", note: "Performance Hall · Speaker & topic TBD" },
+      { time: "8:30 AM", title: "Morning Coffee", type: "break", note: "Come early, connect deeply" },
+      { time: "9:00 AM", title: "The Intersection of Advice-Only and the FIRE Movement", type: "keynote", note: "Performance Hall · Chris Mamula" },
       { time: "10:00 AM", type: "concurrent", sessions: [
         { title: "Compliance for Advice-Only Advisors", room: "Performance Hall", type: "session" },
         { title: "Tech Stack Deep Dive: What You Do (and Don't) Need", room: "Breakout Room", type: "session" },
       ]},
       { time: "11:15 AM", type: "concurrent", sessions: [
-        { title: "Breakout Session · Topic TBD", room: "Performance Hall", type: "session" },
-        { title: "Breakout Session · Topic TBD", room: "Breakout Room", type: "session" },
+        { title: "Delivering Ongoing Financial Planning", room: "Performance Hall", type: "session" },
+        { title: "Delivering Hourly or Project Based Financial Planning", room: "Breakout Room", type: "session" },
       ]},
       { time: "12:15 PM", title: "Lunch & Networking", type: "break", note: "Catered lunch · Open networking with all attendees" },
-      { time: "1:15 PM", title: "Marketing an Advice-Only Practice in 2026", type: "break", note: "Performance Hall" },
-      { time: "2:00 PM", title: "The Intersection of Advice-Only and the FIRE Movement", type: "break", note: "Chris Mamula · Performance Hall" },
+      { time: "1:30 PM", title: "Marketing an Advice-Only Practice in 2026", type: "break", note: "Performance Hall" },
       { time: "2:45 PM", type: "concurrent", sessions: [
         { title: "Breakout Session · Topic TBD", room: "Performance Hall", type: "session" },
         { title: "Breakout Session · Topic TBD", room: "Breakout Room", type: "session" },
       ]},
       { time: "4:00 PM", title: "Closing Keynote", type: "keynote", note: "Performance Hall · Speaker & topic TBD" },
-      { time: "5:00 PM", title: "Farewells & Departures 🥂", type: "break", note: "Celebrating two great days together" },
+      { time: "5:00 PM", title: "Farewells & Departures", type: "break", note: "Celebrating two great days together" },
     ],
   };
   const typeColors = {
