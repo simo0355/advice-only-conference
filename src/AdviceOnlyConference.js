@@ -27,8 +27,8 @@ document.head.appendChild(fontLink);
 const globalStyle = document.createElement("style");
 globalStyle.textContent = `
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Outfit', sans-serif; background: ${C.creamLight}; color: ${C.bodyText}; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body { font-family: 'Outfit', sans-serif; background: ${C.creamLight}; color: ${C.bodyText}; max-width: 100%; overflow-x: hidden; }
   ::selection { background: ${C.amber}; color: ${C.navy}; }
   a { text-decoration: none; color: inherit; }
 
@@ -619,7 +619,7 @@ function About() {
     { value: "10+", label: "Expert Speakers" },
   ];
   return (
-    <section id="about" style={{ padding: "96px 32px", background: C.creamLight }}>
+    <section id="about" style={{ padding: isMobile ? "60px 20px" : "96px 32px", background: C.creamLight }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 40 : 80, alignItems: "center" }}>
           <Reveal>
@@ -649,10 +649,10 @@ function About() {
                 {stats.map(({ value, label }, i) => (
                   <div key={label} style={{
                     background: i % 2 === 0 ? C.navy : C.navyDark,
-                    padding: "36px 28px",
+                    padding: isMobile ? "24px 16px" : "36px 28px",
                     textAlign: "center",
                   }}>
-                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "3.2rem", color: C.amber, lineHeight: 1 }}>{value}</div>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: isMobile ? "2.4rem" : "3.2rem", color: C.amber, lineHeight: 1 }}>{value}</div>
                     <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 500, fontSize: "0.8rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)", marginTop: 8 }}>{label}</div>
                   </div>
                 ))}
@@ -684,8 +684,9 @@ function WhyAttend() {
     { title: "Beautiful Venue", desc: "Hosted at the iconic Open Book space in downtown Minneapolis — natural light and a literary creative energy that inspires greatness." },
     { title: "Celebrate the Win", desc: "You chose the hardest, most principled path in financial planning. Come celebrate that with people who understand exactly what you've built." },
   ];
+  const isMobile = useIsMobile();
   return (
-    <section style={{ padding: "96px 32px", background: C.cream }}>
+    <section style={{ padding: isMobile ? "60px 20px" : "96px 32px", background: C.cream }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <Reveal>
           <div style={{ textAlign: "center", marginBottom: 60 }}>
@@ -696,13 +697,13 @@ function WhyAttend() {
             </h2>
           </div>
         </Reveal>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(440px, 1fr))", gap: 0, border: `1px solid ${C.grayLight}`, borderRadius: 12, overflow: "hidden", background: C.white }}>
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(440px, 1fr))", gap: 0, border: `1px solid ${C.grayLight}`, borderRadius: 12, overflow: "hidden", background: C.white }}>
           {reasons.map(({ title, desc }, i) => (
             <Reveal key={title} delay={i * 0.06}>
               <div style={{
-                padding: "32px 36px",
-                borderRight: i % 2 === 0 ? `1px solid ${C.grayLight}` : "none",
-                borderBottom: i < 4 ? `1px solid ${C.grayLight}` : "none",
+                padding: isMobile ? "24px 20px" : "32px 36px",
+                borderRight: !isMobile && i % 2 === 0 ? `1px solid ${C.grayLight}` : "none",
+                borderBottom: isMobile ? (i < reasons.length - 1 ? `1px solid ${C.grayLight}` : "none") : (i < 4 ? `1px solid ${C.grayLight}` : "none"),
                 display: "flex", gap: 20, alignItems: "flex-start"
               }}>
                 <div style={{ width: 3, flexShrink: 0, alignSelf: "stretch", background: C.amber, borderRadius: 2, marginTop: 2 }} />
@@ -772,7 +773,7 @@ function Agenda() {
     break: { bg: `rgba(154,146,134,0.06)`, border: C.grayMid, dot: C.grayMid },
   };
   return (
-    <section id="agenda" style={{ padding: "96px 32px", background: C.creamLight }}>
+    <section id="agenda" style={{ padding: isMobile ? "60px 20px" : "96px 32px", background: C.creamLight }}>
       <div style={{ maxWidth: 900, margin: "0 auto" }}>
         <Reveal>
           <div style={{ textAlign: "center", marginBottom: 48 }}>
@@ -923,6 +924,7 @@ function SpeakerCard({ s, delay }) {
 }
 
 function Speakers() {
+  const isMobile = useIsMobile();
   const confirmed = [
     {
       name: "Chris Mamula",
@@ -964,7 +966,7 @@ function Speakers() {
   const placeholderCount = 0;
 
   return (
-    <section id="speakers" style={{ padding: "96px 32px", background: C.navy }}>
+    <section id="speakers" style={{ padding: isMobile ? "60px 20px" : "96px 32px", background: C.navy }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <Reveal>
           <div style={{ textAlign: "center", marginBottom: 60 }}>
@@ -1025,6 +1027,7 @@ function Speakers() {
 
 // ─── Venue ─────────────────────────────────────────────────────────────────
 function Venue() {
+  const isMobile = useIsMobile();
   const spaces = [
     {
       name: "Performance Hall",
@@ -1052,7 +1055,7 @@ function Venue() {
     },
   ];
   return (
-    <section id="venue" style={{ padding: "96px 32px", background: C.cream }}>
+    <section id="venue" style={{ padding: isMobile ? "60px 20px" : "96px 32px", background: C.cream }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <Reveal>
           <div style={{ textAlign: "center", marginBottom: 60 }}>
@@ -1148,6 +1151,7 @@ function Venue() {
 
 // ─── Hotels ────────────────────────────────────────────────────────────────
 function Hotels() {
+  const isMobile = useIsMobile();
   const amenities = [
     { icon: "🍹", label: "W XYZ Bar", desc: "Socialize at the lively on-site W XYZ bar — perfect for connecting with fellow attendees after sessions" },
     { icon: "📶", label: "Free Wi-Fi", desc: "Complimentary high-speed Wi-Fi throughout the hotel for all guests" },
@@ -1156,7 +1160,7 @@ function Hotels() {
   ];
 
   return (
-    <section id="hotels" style={{ padding: "96px 32px", background: C.creamLight }}>
+    <section id="hotels" style={{ padding: isMobile ? "60px 20px" : "96px 32px", background: C.creamLight }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
 
         {/* Header */}
@@ -1174,7 +1178,7 @@ function Hotels() {
         </Reveal>
 
         {/* Two hotel cards */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(440px, 1fr))", gap: 24 }}>
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(440px, 1fr))", gap: 24 }}>
 
           {/* Aloft */}
           <Reveal delay={0.1}>
@@ -1259,6 +1263,7 @@ function Hotels() {
 
 // ─── Tickets ───────────────────────────────────────────────────────────────
 function Tickets() {
+  const isMobile = useIsMobile();
   const tiers = [
     {
       name: "General Admission",
@@ -1278,7 +1283,7 @@ function Tickets() {
     },
   ];
   return (
-    <section id="tickets" style={{ padding: "96px 32px", background: `linear-gradient(160deg, ${C.navyDark} 0%, #0F2847 60%, #0A3D62 100%)`, position: "relative", overflow: "hidden" }}>
+    <section id="tickets" style={{ padding: isMobile ? "60px 20px" : "96px 32px", background: `linear-gradient(160deg, ${C.navyDark} 0%, #0F2847 60%, #0A3D62 100%)`, position: "relative", overflow: "hidden" }}>
       <div style={{ position: "absolute", inset: 0, backgroundImage: `radial-gradient(circle at 20% 80%, rgba(24,185,197,0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(159,140,73,0.08) 0%, transparent 40%)`, pointerEvents: "none" }} />
       <div style={{ maxWidth: 1060, margin: "0 auto", position: "relative" }}>
         <Reveal>
@@ -1351,6 +1356,7 @@ function Tickets() {
 // ─── FAQ ───────────────────────────────────────────────────────────────────
 function FAQ() {
   const [open, setOpen] = useState(null);
+  const isMobile = useIsMobile();
   const items = [
     { q: "Who is this conference for?", a: "The Advice-Only Conference is designed for Advice-Only financial planners, advisors considering making the switch to an Advice-Only model, and anyone who believes in the future of real financial planning with reduced conflicts of interest." },
     { q: "What does 'Advice-Only' mean?", a: "Advice-Only financial planners charge solely for their advice — no commissions, no assets under management fees, and no product sales. They provide pure, fiduciary guidance with reduced conflicts of interest." },
@@ -1362,7 +1368,7 @@ function FAQ() {
     { q: "Is this event open to press and media?", a: "Yes! We welcome journalists, industry observers, and curious members of the financial media community. If you're interested in attending as a member of the press or covering the Advice-Only movement, please reach out to us at info@adviceonlynetwork.com with a brief note about your outlet or interest. We'll be happy to discuss press access and credentials." },
   ];
   return (
-    <section id="faq" style={{ padding: "96px 32px", background: C.cream }}>
+    <section id="faq" style={{ padding: isMobile ? "60px 20px" : "96px 32px", background: C.cream }}>
       <div style={{ maxWidth: 780, margin: "0 auto" }}>
         <Reveal>
           <div style={{ textAlign: "center", marginBottom: 56 }}>
@@ -1403,7 +1409,7 @@ function FAQ() {
 // ─── Press Strip ───────────────────────────────────────────────────────────
 function PressStrip() {
   return (
-    <section style={{ background: C.cream, borderTop: `1px solid ${C.grayLight}`, borderBottom: `1px solid ${C.grayLight}`, padding: "40px 32px" }}>
+    <section style={{ background: C.cream, borderTop: `1px solid ${C.grayLight}`, borderBottom: `1px solid ${C.grayLight}`, padding: "40px 20px" }}>
       <div style={{ maxWidth: 900, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32, flexWrap: "wrap" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
           <div>
@@ -1444,7 +1450,7 @@ function PressStrip() {
 // ─── Final CTA ─────────────────────────────────────────────────────────────
 function FinalCTA() {
   return (
-    <section style={{ padding: "80px 32px", background: C.navy }}>
+    <section style={{ padding: "60px 20px", background: C.navy }}>
       <Reveal>
         <div style={{ maxWidth: 740, margin: "0 auto", textAlign: "center" }}>
           <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "clamp(2.4rem, 5vw, 4rem)", color: C.white, lineHeight: 1.05, marginBottom: 20 }}>
@@ -1470,7 +1476,7 @@ function FinalCTA() {
 function Footer() {
   const isMobile = useIsMobile();
   return (
-    <footer style={{ background: C.navyDark, borderTop: "1px solid rgba(255,255,255,0.06)", padding: "48px 32px 32px" }}>
+    <footer style={{ background: C.navyDark, borderTop: "1px solid rgba(255,255,255,0.06)", padding: isMobile ? "40px 20px 24px" : "48px 32px 32px" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "2fr 1fr 1fr", gap: isMobile ? 32 : 48, marginBottom: 40 }}>
           <div>
