@@ -29,6 +29,19 @@ globalStyle.textContent = `
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; overflow-x: hidden; }
   body { font-family: 'Outfit', sans-serif; background: ${C.creamLight}; color: ${C.bodyText}; max-width: 100%; overflow-x: hidden; }
+
+  @media (max-width: 768px) {
+    .cta-primary, .cta-secondary {
+      width: 100%;
+      text-align: center;
+      padding: 16px 24px;
+      font-size: 0.95rem;
+    }
+    .section-label { font-size: 0.7rem; }
+    .section-heading { font-size: 1.8rem !important; }
+    .agenda-tab { padding: 10px 18px; font-size: 0.82rem; }
+    .speaker-card { font-size: 1rem; }
+  }
   ::selection { background: ${C.amber}; color: ${C.navy}; }
   a { text-decoration: none; color: inherit; }
 
@@ -494,20 +507,21 @@ function Ticker() {
 
 // ─── Countdown Block ───────────────────────────────────────────────────────
 function CountdownUnit({ value, label }) {
+  const isMobile = useIsMobile();
   return (
-    <div style={{ textAlign: "center", minWidth: 70 }}>
+    <div style={{ textAlign: "center", minWidth: isMobile ? 60 : 70 }}>
       <div style={{
         fontFamily: "'Cormorant Garamond', serif",
-        fontSize: "clamp(2.4rem, 5vw, 3.8rem)",
+        fontSize: isMobile ? "2rem" : "clamp(2.4rem, 5vw, 3.8rem)",
         fontWeight: 700,
         color: C.white,
         lineHeight: 1,
         background: "rgba(255,255,255,0.07)",
         borderRadius: 6,
-        padding: "10px 18px",
+        padding: isMobile ? "8px 12px" : "10px 18px",
         backdropFilter: "blur(4px)",
         border: "1px solid rgba(255,255,255,0.12)",
-        minWidth: 82,
+        minWidth: isMobile ? 60 : 82,
       }}>
         {String(value).padStart(2, "0")}
       </div>
@@ -562,7 +576,7 @@ function Hero() {
         Two days. One movement. The only conference built exclusively for Advice-Only financial planners — where pure advice meets real community.
       </p>
 
-      <div className="fade-up-3" style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center", alignItems: "center", marginBottom: 48 }}>
+      <div className="fade-up-3" style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 10, flexWrap: "wrap", justifyContent: "center", alignItems: "center", marginBottom: 40, width: isMobile ? "100%" : "auto" }}>
         {[
           { icon: "📅", text: "June 23–24, 2026", href: null },
           { icon: "📍", text: "Open Book Space · Minneapolis, MN", href: "#venue" },
@@ -571,10 +585,10 @@ function Hero() {
           const inner = (
             <>
               <span>{icon}</span>
-              <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.88rem", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>{text}</span>
+              <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: isMobile ? "0.95rem" : "0.88rem", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>{text}</span>
             </>
           );
-          const sharedStyle = { display: "flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 100, padding: "8px 16px", textDecoration: "none", transition: "background 0.2s" };
+          const sharedStyle = { display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 100, padding: isMobile ? "12px 20px" : "8px 16px", textDecoration: "none", transition: "background 0.2s", width: isMobile ? "100%" : "auto" };
           return href ? (
             <a key={text} href={href} onClick={(e) => { e.preventDefault(); document.getElementById(href.slice(1))?.scrollIntoView({ behavior: "smooth" }); }} style={{ ...sharedStyle, cursor: "pointer" }}
               onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,0.14)"}
@@ -586,7 +600,7 @@ function Hero() {
         })}
       </div>
 
-      <div className="fade-up-4" style={{ display: "flex", gap: 16, flexWrap: "wrap", justifyContent: "center", marginBottom: 60 }}>
+      <div className="fade-up-4" style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 12, justifyContent: "center", marginBottom: 48, width: isMobile ? "100%" : "auto" }}>
         <a href="https://buy.stripe.com/9B600k2EVdeS8To4ja4Vy0a" target="_blank" rel="noopener noreferrer" className="cta-primary">Secure Your Spot</a>
         <a href="#about" className="cta-secondary" onClick={(e) => { e.preventDefault(); document.getElementById("about")?.scrollIntoView({ behavior: "smooth" }); }}>Learn More</a>
       </div>
@@ -635,7 +649,7 @@ function About() {
               <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "1.05rem", lineHeight: 1.75, color: C.bodyText, marginBottom: 32 }}>
                 No product pitches. No commission-hungry sales reps. Just real advisors doing real work for real people — and two days to celebrate what makes our model the future of financial planning.
               </p>
-              <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+              <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 12, flexWrap: "wrap" }}>
                 <a href="#agenda" className="cta-primary" style={{ background: C.navy, color: C.white }} onClick={(e) => { e.preventDefault(); document.getElementById("agenda")?.scrollIntoView({ behavior: "smooth" }); }}>View the Agenda</a>
                 <a href="https://buy.stripe.com/9B600k2EVdeS8To4ja4Vy0a" target="_blank" rel="noopener noreferrer" className="cta-primary">Get Your Ticket</a>
               </div>
@@ -813,40 +827,56 @@ function Agenda() {
         </Reveal>
 
         <div style={{ position: "relative" }}>
-          {/* Timeline line */}
-          <div style={{ position: "absolute", left: 78, top: 0, bottom: 0, width: 2, background: C.grayLight }} />
+          {/* Timeline line - hidden on mobile */}
+          {!isMobile && <div style={{ position: "absolute", left: 78, top: 0, bottom: 0, width: 2, background: C.grayLight }} />}
 
           {agenda[day].map((item, i) => {
             // ── Concurrent / parallel sessions ──
             if (item.type === "concurrent") {
               return (
                 <Reveal key={i} delay={i * 0.05}>
-                  <div style={{ display: "flex", gap: 24, marginBottom: 10, alignItems: "flex-start" }}>
-                    {/* Time */}
-                    <div style={{ minWidth: 68, textAlign: "right", fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.8rem", color: C.grayMid, paddingTop: 14, letterSpacing: "0.03em", flexShrink: 0 }}>
-                      {item.time}
-                    </div>
-                    {/* Dot */}
-                    <div style={{ position: "relative", zIndex: 1, marginTop: 16, flexShrink: 0 }}>
-                      <div style={{ width: 12, height: 12, borderRadius: "50%", background: C.teal, border: `3px solid ${C.creamLight}` }} />
-                    </div>
-                    {/* Side-by-side session cards */}
-                    <div style={{ flex: 1, display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 8 }}>
-                      {item.sessions.map((s, si) => {
-                        const col = typeColors[s.type];
-                        return (
-                          <div key={si} style={{ background: col.bg, borderLeft: `3px solid ${col.border}`, borderRadius: "0 8px 8px 0", padding: "12px 16px" }}>
-                            <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.92rem", color: C.navy, marginBottom: 5 }}>{s.title}</div>
-                            <div style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(11,31,58,0.06)", borderRadius: 100, padding: "3px 10px" }}>
-                              <span style={{ fontSize: "0.65rem" }}>📍</span>
-                              <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.72rem", fontWeight: 600, color: C.grayMid, letterSpacing: "0.04em" }}>{s.room}</span>
+                  {isMobile ? (
+                    <div style={{ marginBottom: 12 }}>
+                      <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "0.85rem", color: C.grayMid, marginBottom: 6, letterSpacing: "0.03em" }}>{item.time}</div>
+                      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                        {item.sessions.map((s, si) => {
+                          const col = typeColors[s.type];
+                          return (
+                            <div key={si} style={{ background: col.bg, borderLeft: `3px solid ${col.border}`, borderRadius: "0 8px 8px 0", padding: "12px 16px" }}>
+                              <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.95rem", color: C.navy, marginBottom: 5 }}>{s.title}</div>
+                              <div style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(11,31,58,0.06)", borderRadius: 100, padding: "3px 10px" }}>
+                                <span style={{ fontSize: "0.7rem" }}>📍</span>
+                                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.78rem", fontWeight: 600, color: C.grayMid }}>{s.room}</span>
+                              </div>
+                              {s.speaker && <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.82rem", color: C.grayMid, marginTop: 5 }}>{s.speaker}</div>}
                             </div>
-                            {s.speaker && <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.75rem", color: C.grayMid, marginTop: 5 }}>{s.speaker}</div>}
-                          </div>
-                        );
-                      })}
+                          );
+                        })}
+                      </div>
                     </div>
-                  </div>
+                  ) : (
+                    <div style={{ display: "flex", gap: 24, marginBottom: 10, alignItems: "flex-start" }}>
+                      <div style={{ minWidth: 68, textAlign: "right", fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.8rem", color: C.grayMid, paddingTop: 14, letterSpacing: "0.03em", flexShrink: 0 }}>{item.time}</div>
+                      <div style={{ position: "relative", zIndex: 1, marginTop: 16, flexShrink: 0 }}>
+                        <div style={{ width: 12, height: 12, borderRadius: "50%", background: C.teal, border: `3px solid ${C.creamLight}` }} />
+                      </div>
+                      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+                        {item.sessions.map((s, si) => {
+                          const col = typeColors[s.type];
+                          return (
+                            <div key={si} style={{ background: col.bg, borderLeft: `3px solid ${col.border}`, borderRadius: "0 8px 8px 0", padding: "12px 16px" }}>
+                              <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.92rem", color: C.navy, marginBottom: 5 }}>{s.title}</div>
+                              <div style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(11,31,58,0.06)", borderRadius: 100, padding: "3px 10px" }}>
+                                <span style={{ fontSize: "0.65rem" }}>📍</span>
+                                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.72rem", fontWeight: 600, color: C.grayMid, letterSpacing: "0.04em" }}>{s.room}</span>
+                              </div>
+                              {s.speaker && <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.75rem", color: C.grayMid, marginTop: 5 }}>{s.speaker}</div>}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
                 </Reveal>
               );
             }
@@ -855,18 +885,26 @@ function Agenda() {
             const col = typeColors[item.type];
             return (
               <Reveal key={i} delay={i * 0.05}>
-                <div style={{ display: "flex", gap: 24, marginBottom: 10, alignItems: "flex-start" }}>
-                  <div style={{ minWidth: 68, textAlign: "right", fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.8rem", color: C.grayMid, paddingTop: 14, letterSpacing: "0.03em" }}>
-                    {item.time}
+                {isMobile ? (
+                  <div style={{ marginBottom: 10 }}>
+                    <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "0.85rem", color: C.grayMid, marginBottom: 6, letterSpacing: "0.03em" }}>{item.time}</div>
+                    <div style={{ background: col.bg, borderLeft: `3px solid ${col.border}`, borderRadius: "0 8px 8px 0", padding: "12px 16px" }}>
+                      <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.95rem", color: C.navy }}>{item.title}</div>
+                      {item.note && <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.82rem", color: C.grayMid, marginTop: 3 }}>{item.note}</div>}
+                    </div>
                   </div>
-                  <div style={{ position: "relative", zIndex: 1, marginTop: 16 }}>
-                    <div style={{ width: 12, height: 12, borderRadius: "50%", background: col.dot, border: `3px solid ${C.creamLight}`, flexShrink: 0 }} />
+                ) : (
+                  <div style={{ display: "flex", gap: 24, marginBottom: 10, alignItems: "flex-start" }}>
+                    <div style={{ minWidth: 68, textAlign: "right", fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.8rem", color: C.grayMid, paddingTop: 14, letterSpacing: "0.03em" }}>{item.time}</div>
+                    <div style={{ position: "relative", zIndex: 1, marginTop: 16 }}>
+                      <div style={{ width: 12, height: 12, borderRadius: "50%", background: col.dot, border: `3px solid ${C.creamLight}`, flexShrink: 0 }} />
+                    </div>
+                    <div style={{ flex: 1, background: col.bg, borderLeft: `3px solid ${col.border}`, borderRadius: "0 8px 8px 0", padding: "12px 18px", marginBottom: 4 }}>
+                      <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "1rem", color: C.navy }}>{item.title}</div>
+                      {item.note && <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.82rem", color: C.grayMid, marginTop: 3 }}>{item.note}</div>}
+                    </div>
                   </div>
-                  <div style={{ flex: 1, background: col.bg, borderLeft: `3px solid ${col.border}`, borderRadius: "0 8px 8px 0", padding: "12px 18px", marginBottom: 4 }}>
-                    <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "1rem", color: C.navy }}>{item.title}</div>
-                    {item.note && <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.82rem", color: C.grayMid, marginTop: 3 }}>{item.note}</div>}
-                  </div>
-                </div>
+                )}
               </Reveal>
             );
           })}
@@ -888,34 +926,35 @@ function Agenda() {
 // ─── Speakers ──────────────────────────────────────────────────────────────
 function SpeakerCard({ s, delay }) {
   const [expanded, setExpanded] = useState(false);
+  const isMobile = useIsMobile();
   return (
     <Reveal delay={delay}>
       <div className="speaker-card" style={{ background: "rgba(255,255,255,0.05)", border: `1px solid rgba(24,185,197,0.25)`, borderRadius: 12, overflow: "hidden", display: "flex", flexDirection: "column" }}>
-        <div style={{ position: "relative", height: "min(70vw, 300px)", overflow: "hidden", background: "rgba(255,255,255,0.04)" }}>
+        <div style={{ position: "relative", height: isMobile ? "60vw" : "min(70vw, 300px)", overflow: "hidden", background: "rgba(255,255,255,0.04)" }}>
           <img src={s.photo} alt={s.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 35%" }} />
           <div style={{ position: "absolute", top: 12, right: 12, background: C.amber, color: C.white, fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "0.68rem", letterSpacing: "0.08em", textTransform: "uppercase", padding: "4px 10px", borderRadius: 100 }}>
             {s.day}
           </div>
         </div>
         <div style={{ padding: "20px 22px 24px", flex: 1, display: "flex", flexDirection: "column" }}>
-          <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.25rem", color: C.white, marginBottom: 2 }}>{s.name}</div>
-          <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 500, fontSize: "0.78rem", color: C.teal, marginBottom: 2 }}>{s.title}</div>
-          <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.75rem", color: "rgba(255,255,255,0.4)", marginBottom: 16 }}>{s.org}</div>
+          <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.35rem", color: C.white, marginBottom: 2 }}>{s.name}</div>
+          <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 500, fontSize: "0.85rem", color: C.teal, marginBottom: 2 }}>{s.title}</div>
+          <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.82rem", color: "rgba(255,255,255,0.4)", marginBottom: 16 }}>{s.org}</div>
           <button
             onClick={() => setExpanded(!expanded)}
-            style={{ background: "rgba(255,255,255,0.05)", border: `1px solid rgba(255,255,255,0.1)`, borderRadius: 6, padding: "9px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", marginBottom: expanded ? 12 : 0, transition: "background 0.2s" }}
+            style={{ background: "rgba(255,255,255,0.05)", border: `1px solid rgba(255,255,255,0.1)`, borderRadius: 6, padding: "11px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", marginBottom: expanded ? 12 : 0, transition: "background 0.2s" }}
           >
-            <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.78rem", color: "rgba(255,255,255,0.7)", letterSpacing: "0.04em" }}>
+            <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.85rem", color: "rgba(255,255,255,0.7)", letterSpacing: "0.04em" }}>
               {expanded ? "Hide Details" : "Presentation & Bio"}
             </span>
             <span style={{ color: C.teal, fontSize: "0.9rem", transition: "transform 0.25s", display: "inline-block", transform: expanded ? "rotate(180deg)" : "rotate(0deg)" }}>▾</span>
           </button>
           <div style={{ maxHeight: expanded ? 400 : 0, overflow: "hidden", transition: "max-height 0.35s ease" }}>
             <div style={{ background: "rgba(255,255,255,0.05)", borderLeft: `3px solid ${C.amber}`, borderRadius: "0 6px 6px 0", padding: "10px 14px", marginBottom: 12 }}>
-              <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.68rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: C.amber, marginBottom: 3 }}>Presentation</div>
-              <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.88rem", color: C.white }}>{s.talk}</div>
+              <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.72rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: C.amber, marginBottom: 3 }}>Presentation</div>
+              <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.92rem", color: C.white }}>{s.talk}</div>
             </div>
-            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.8rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, margin: 0 }}>{s.bio}</p>
+            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.85rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, margin: 0 }}>{s.bio}</p>
           </div>
         </div>
       </div>
@@ -1183,26 +1222,26 @@ function Hotels() {
           {/* Aloft */}
           <Reveal delay={0.1}>
             <div style={{ background: C.white, borderRadius: 16, overflow: "hidden", border: `1px solid ${C.grayLight}`, boxShadow: "0 8px 32px rgba(11,31,58,0.08)", height: "100%", display: "flex", flexDirection: "column" }}>
-              <div style={{ background: `linear-gradient(135deg, ${C.navy} 0%, #0F2847 100%)`, padding: "28px 32px" }}>
-                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.9rem", color: C.white, lineHeight: 1.05, marginBottom: 8 }}>
+              <div style={{ background: `linear-gradient(135deg, ${C.navy} 0%, #0F2847 100%)`, padding: isMobile ? "20px 20px" : "28px 32px" }}>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.7rem", color: C.white, lineHeight: 1.05, marginBottom: 8 }}>
                   Aloft Minneapolis
                 </h3>
-                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.82rem", color: "rgba(255,255,255,0.5)", display: "flex", alignItems: "center", gap: 6 }}>
+                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.85rem", color: "rgba(255,255,255,0.5)", display: "flex", alignItems: "center", gap: 6 }}>
                   <span>📍</span>
                   <span>900 Washington Avenue South, Minneapolis, MN 55415</span>
                 </div>
               </div>
-              <div style={{ padding: "24px 32px 32px", flex: 1, display: "flex", flexDirection: "column" }}>
+              <div style={{ padding: isMobile ? "20px" : "24px 32px 32px", flex: 1, display: "flex", flexDirection: "column" }}>
                 <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.95rem", color: C.bodyText, lineHeight: 1.75, marginBottom: 24, flex: 1 }}>
                   A vibrant, loft-inspired hotel in the Mill District, directly across the street from the conference venue. Features the W XYZ bar, indoor pool, and energetic communal spaces.
                 </p>
-                <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 12, flexWrap: "wrap" }}>
                   <a href="https://www.marriott.com/en-us/hotels/mspal-aloft-minneapolis/overview/" target="_blank" rel="noopener noreferrer"
-                    className="cta-primary" style={{ background: C.navy, color: C.white, fontSize: "0.85rem", padding: "12px 24px" }}>
+                    className="cta-primary" style={{ background: C.navy, color: C.white, fontSize: "0.9rem", padding: "14px 24px", textAlign: "center" }}>
                     View Hotel →
                   </a>
                   <a href="https://maps.google.com/?q=Aloft+Minneapolis+900+Washington+Avenue+South" target="_blank" rel="noopener noreferrer"
-                    style={{ display: "inline-flex", alignItems: "center", border: `2px solid ${C.grayLight}`, color: C.grayMid, fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.85rem", letterSpacing: "0.04em", padding: "10px 22px", borderRadius: 4, transition: "border-color 0.2s, color 0.2s" }}
+                    style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", border: `2px solid ${C.grayLight}`, color: C.grayMid, fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.9rem", letterSpacing: "0.04em", padding: "12px 22px", borderRadius: 4, transition: "border-color 0.2s, color 0.2s" }}
                     onMouseEnter={e => { e.currentTarget.style.borderColor = C.navy; e.currentTarget.style.color = C.navy; }}
                     onMouseLeave={e => { e.currentTarget.style.borderColor = C.grayLight; e.currentTarget.style.color = C.grayMid; }}>
                     📍 Directions
@@ -1215,26 +1254,26 @@ function Hotels() {
           {/* Moxy */}
           <Reveal delay={0.15}>
             <div style={{ background: C.white, borderRadius: 16, overflow: "hidden", border: `1px solid ${C.grayLight}`, boxShadow: "0 8px 32px rgba(11,31,58,0.08)", height: "100%", display: "flex", flexDirection: "column" }}>
-              <div style={{ background: `linear-gradient(135deg, #0F2847 0%, #0A3D62 100%)`, padding: "28px 32px" }}>
-                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.9rem", color: C.white, lineHeight: 1.05, marginBottom: 8 }}>
+              <div style={{ background: `linear-gradient(135deg, #0F2847 0%, #0A3D62 100%)`, padding: isMobile ? "20px" : "28px 32px" }}>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.7rem", color: C.white, lineHeight: 1.05, marginBottom: 8 }}>
                   Moxy Minneapolis Downtown
                 </h3>
-                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.82rem", color: "rgba(255,255,255,0.5)", display: "flex", alignItems: "center", gap: 6 }}>
+                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.85rem", color: "rgba(255,255,255,0.5)", display: "flex", alignItems: "center", gap: 6 }}>
                   <span>📍</span>
                   <span>247 Chicago Avenue South, Minneapolis, MN 55415</span>
                 </div>
               </div>
-              <div style={{ padding: "24px 32px 32px", flex: 1, display: "flex", flexDirection: "column" }}>
+              <div style={{ padding: isMobile ? "20px" : "24px 32px 32px", flex: 1, display: "flex", flexDirection: "column" }}>
                 <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.95rem", color: C.bodyText, lineHeight: 1.75, marginBottom: 24, flex: 1 }}>
                   A hip, modern hotel right in the heart of Downtown East within short walking distance from the venue. Known for its playful energy, Bar Moxy, and lively communal lobby spaces.
                 </p>
-                <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 12, flexWrap: "wrap" }}>
                   <a href="https://www.marriott.com/en-us/hotels/mspod-moxy-minneapolis-downtown/overview/" target="_blank" rel="noopener noreferrer"
-                    className="cta-primary" style={{ background: C.navy, color: C.white, fontSize: "0.85rem", padding: "12px 24px" }}>
+                    className="cta-primary" style={{ background: C.navy, color: C.white, fontSize: "0.9rem", padding: "14px 24px", textAlign: "center" }}>
                     View Hotel →
                   </a>
                   <a href="https://maps.google.com/?q=Moxy+Minneapolis+Downtown+247+Chicago+Avenue+South" target="_blank" rel="noopener noreferrer"
-                    style={{ display: "inline-flex", alignItems: "center", border: `2px solid ${C.grayLight}`, color: C.grayMid, fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.85rem", letterSpacing: "0.04em", padding: "10px 22px", borderRadius: 4, transition: "border-color 0.2s, color 0.2s" }}
+                    style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", border: `2px solid ${C.grayLight}`, color: C.grayMid, fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.9rem", letterSpacing: "0.04em", padding: "12px 22px", borderRadius: 4, transition: "border-color 0.2s, color 0.2s" }}
                     onMouseEnter={e => { e.currentTarget.style.borderColor = C.navy; e.currentTarget.style.color = C.navy; }}
                     onMouseLeave={e => { e.currentTarget.style.borderColor = C.grayLight; e.currentTarget.style.color = C.grayMid; }}>
                     📍 Directions
