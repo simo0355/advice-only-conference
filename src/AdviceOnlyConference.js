@@ -31,8 +31,10 @@ globalStyle.textContent = `
   body { font-family: 'Outfit', sans-serif; background: ${C.creamLight}; color: ${C.bodyText}; max-width: 100%; overflow-x: hidden; }
 
   @media (max-width: 768px) {
-    /* Global typography */
-    .section-label { font-size: 0.7rem; }
+    /* Nav */
+    .nav-desktop { display: none !important; }
+    .nav-mobile { display: flex !important; }
+    .nav-dropdown { display: block !important; }
     .section-heading { font-size: 1.8rem !important; }
 
     /* Buttons — full width, large tap targets */
@@ -344,12 +346,16 @@ document.head.appendChild(globalStyle);
 
 // ─── Mobile Hook ───────────────────────────────────────────────────────────
 function useIsMobile(breakpoint = 768) {
-  const [isMobile, setIsMobile] = useState(() => window.innerWidth < breakpoint);
+  const query = `(max-width: ${breakpoint}px)`;
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== "undefined" ? window.matchMedia(query).matches : false
+  );
   useEffect(() => {
-    const handler = () => setIsMobile(window.innerWidth < breakpoint);
-    window.addEventListener("resize", handler);
-    return () => window.removeEventListener("resize", handler);
-  }, [breakpoint]);
+    const mq = window.matchMedia(query);
+    const handler = (e) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, [query]);
   return isMobile;
 }
 
@@ -409,7 +415,6 @@ function Reveal({ children, delay = 0, style = {} }) {
 // ─── Navigation ────────────────────────────────────────────────────────────
 function Nav({ scrolled }) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const isMobile = useIsMobile();
   const links = ["About", "Agenda", "Speakers", "Venue", "Hotels", "Tickets", "FAQ"];
 
   const scrollTo = (id) => {
@@ -440,104 +445,73 @@ function Nav({ scrolled }) {
           </span>
         </a>
 
-        {/* Desktop nav */}
-        {!isMobile && (
-          <nav style={{ display: "flex", gap: 28, alignItems: "center" }}>
-            {links.slice(0, -1).map((l) => (
-              <a
-                key={l}
-                href={`#${l.toLowerCase()}`}
-                className="nav-link"
-                onClick={(e) => { e.preventDefault(); scrollTo(l.toLowerCase()); }}
-              >
-                {l}
-              </a>
-            ))}
-            <a
-              href="https://buy.stripe.com/9B600k2EVdeS8To4ja4Vy0a"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ticket-btn"
-              style={{ textDecoration: "none" }}
-            >
-              Get Tickets
+        {/* Desktop nav — hidden on mobile via CSS */}
+        <nav className="nav-desktop" style={{ display: "flex", gap: 28, alignItems: "center" }}>
+          {links.slice(0, -1).map((l) => (
+            <a key={l} href={`#${l.toLowerCase()}`} className="nav-link"
+              onClick={(e) => { e.preventDefault(); scrollTo(l.toLowerCase()); }}>
+              {l}
             </a>
-          </nav>
-        )}
+          ))}
+          <a href="https://buy.stripe.com/9B600k2EVdeS8To4ja4Vy0a" target="_blank" rel="noopener noreferrer"
+            className="ticket-btn" style={{ textDecoration: "none" }}>
+            Get Tickets
+          </a>
+        </nav>
 
-        {/* Mobile: ticket button + hamburger */}
-        {isMobile && (
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <a
-              href="https://buy.stripe.com/9B600k2EVdeS8To4ja4Vy0a"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ticket-btn"
-              style={{ textDecoration: "none", fontSize: "0.78rem", padding: "8px 14px" }}
-            >
-              Tickets
-            </a>
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              style={{ background: "none", border: "none", cursor: "pointer", padding: 4, display: "flex", flexDirection: "column", gap: 5 }}
-              aria-label="Toggle menu"
-            >
-              {[0, 1, 2].map((i) => (
-                <div key={i} style={{
-                  width: 24, height: 2,
-                  background: C.white,
-                  borderRadius: 2,
-                  transition: "all 0.25s ease",
-                  transform: mobileOpen
-                    ? i === 0 ? "rotate(45deg) translate(5px, 5px)"
-                    : i === 1 ? "scaleX(0)"
-                    : "rotate(-45deg) translate(5px, -5px)"
-                    : "none",
-                  opacity: mobileOpen && i === 1 ? 0 : 1,
-                }} />
-              ))}
-            </button>
-          </div>
-        )}
+        {/* Mobile controls — hidden on desktop via CSS */}
+        <div className="nav-mobile" style={{ display: "none", alignItems: "center", gap: 12 }}>
+          <a href="https://buy.stripe.com/9B600k2EVdeS8To4ja4Vy0a" target="_blank" rel="noopener noreferrer"
+            className="ticket-btn" style={{ textDecoration: "none", fontSize: "0.78rem", padding: "8px 14px" }}>
+            Tickets
+          </a>
+          <button onClick={() => setMobileOpen(!mobileOpen)}
+            style={{ background: "none", border: "none", cursor: "pointer", padding: 4, display: "flex", flexDirection: "column", gap: 5 }}
+            aria-label="Toggle menu">
+            {[0, 1, 2].map((i) => (
+              <div key={i} style={{
+                width: 24, height: 2,
+                background: C.white,
+                borderRadius: 2,
+                transition: "all 0.25s ease",
+                transform: mobileOpen
+                  ? i === 0 ? "rotate(45deg) translate(5px, 5px)"
+                  : i === 1 ? "scaleX(0)"
+                  : "rotate(-45deg) translate(5px, -5px)"
+                  : "none",
+                opacity: mobileOpen && i === 1 ? 0 : 1,
+              }} />
+            ))}
+          </button>
+        </div>
       </div>
 
       {/* Mobile dropdown */}
-      {isMobile && (
-        <div style={{
-          maxHeight: mobileOpen ? 420 : 0,
-          overflow: "hidden",
-          transition: "max-height 0.35s ease",
-          background: C.navyDark,
-          borderTop: mobileOpen ? `1px solid rgba(255,255,255,0.08)` : "none",
-        }}>
-          <div style={{ padding: "12px 24px 24px" }}>
-            {links.map((l) => (
-              <button
-                key={l}
-                onClick={() => scrollTo(l.toLowerCase())}
-                style={{
-                  display: "block",
-                  width: "100%",
-                  textAlign: "left",
-                  background: "none",
-                  border: "none",
-                  borderBottom: `1px solid rgba(255,255,255,0.06)`,
-                  padding: "14px 0",
-                  fontFamily: "'Outfit', sans-serif",
-                  fontWeight: 600,
-                  fontSize: "1rem",
-                  letterSpacing: "0.04em",
-                  color: C.white,
-                  cursor: "pointer",
-                  opacity: 0.85,
-                }}
-              >
-                {l}
-              </button>
-            ))}
-          </div>
+      <div className="nav-dropdown" style={{
+        maxHeight: mobileOpen ? 420 : 0,
+        overflow: "hidden",
+        transition: "max-height 0.35s ease",
+        background: C.navyDark,
+        borderTop: mobileOpen ? `1px solid rgba(255,255,255,0.08)` : "none",
+        display: "none",
+      }}>
+        <div style={{ padding: "12px 24px 24px" }}>
+          {links.map((l) => (
+            <button key={l} onClick={() => scrollTo(l.toLowerCase())}
+              style={{
+                display: "block", width: "100%", textAlign: "left",
+                background: "none", border: "none",
+                borderBottom: `1px solid rgba(255,255,255,0.06)`,
+                padding: "14px 0",
+                fontFamily: "'Outfit', sans-serif", fontWeight: 600,
+                fontSize: "1rem", letterSpacing: "0.04em",
+                color: C.white, cursor: "pointer", opacity: 0.85,
+              }}>
+              {l}
+            </button>
+          ))}
         </div>
-      )}
+      </div>
     </header>
   );
 }
