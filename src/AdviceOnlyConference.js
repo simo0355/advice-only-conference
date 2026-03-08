@@ -31,17 +31,67 @@ globalStyle.textContent = `
   body { font-family: 'Outfit', sans-serif; background: ${C.creamLight}; color: ${C.bodyText}; max-width: 100%; overflow-x: hidden; }
 
   @media (max-width: 768px) {
+    /* Global typography */
+    .section-label { font-size: 0.7rem; }
+    .section-heading { font-size: 1.8rem !important; }
+
+    /* Buttons — full width, large tap targets */
     .cta-primary, .cta-secondary {
       width: 100%;
       text-align: center;
-      padding: 16px 24px;
-      font-size: 0.95rem;
+      padding: 16px 20px !important;
+      font-size: 1rem !important;
+      display: block !important;
     }
-    .section-label { font-size: 0.7rem; }
-    .section-heading { font-size: 1.8rem !important; }
-    .agenda-tab { padding: 10px 18px; font-size: 0.82rem; }
-    .speaker-card { font-size: 1rem; }
+
+    /* Section padding */
+    section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 56px !important; padding-bottom: 56px !important; }
+
+    /* Hero pills — stack vertically */
+    .hero-pills { flex-direction: column !important; width: 100%; }
+    .hero-pill { width: 100% !important; justify-content: center !important; padding: 13px 20px !important; font-size: 0.95rem !important; }
+    .hero-ctas { flex-direction: column !important; width: 100%; gap: 12px !important; }
+
+    /* Agenda — hide desktop timeline line */
+    .agenda-timeline-line { display: none !important; }
+    .agenda-tab { padding: 10px 14px; font-size: 0.82rem; }
+
+    /* Speaker grid — single column */
+    .speakers-grid { grid-template-columns: 1fr !important; }
+
+    /* Venue grid — single column */
+    .venue-grid { grid-template-columns: 1fr !important; }
+
+    /* Hotel grid — single column */
+    .hotel-grid { grid-template-columns: 1fr !important; }
+    .hotel-btns { flex-direction: column !important; }
+    .hotel-card-header { padding: 20px !important; }
+    .hotel-card-body { padding: 20px !important; }
+
+    /* About section */
+    .about-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+    .about-ctas { flex-direction: column !important; }
+    .stats-cell { padding: 20px 12px !important; }
+    .stats-value { font-size: 2.4rem !important; }
+
+    /* Why Attend */
+    .why-grid { grid-template-columns: 1fr !important; }
+    .why-item { border-right: none !important; padding: 20px 18px !important; }
+
+    /* Footer */
+    .footer-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+
+    /* Press strip */
+    .press-strip-inner { flex-direction: column !important; gap: 16px !important; }
+
+    /* Map overlay pill — hide on mobile to prevent overflow */
+    .map-overlay { display: none !important; }
+
+    /* Countdown units — smaller */
+    .countdown-unit { min-width: 58px !important; }
+    .countdown-value { font-size: 2rem !important; padding: 8px 10px !important; min-width: 58px !important; }
   }
+
   ::selection { background: ${C.amber}; color: ${C.navy}; }
   a { text-decoration: none; color: inherit; }
 
@@ -509,8 +559,8 @@ function Ticker() {
 function CountdownUnit({ value, label }) {
   const isMobile = useIsMobile();
   return (
-    <div style={{ textAlign: "center", minWidth: isMobile ? 60 : 70 }}>
-      <div style={{
+    <div className="countdown-unit" style={{ textAlign: "center", minWidth: isMobile ? 60 : 70 }}>
+      <div className="countdown-value" style={{
         fontFamily: "'Cormorant Garamond', serif",
         fontSize: isMobile ? "2rem" : "clamp(2.4rem, 5vw, 3.8rem)",
         fontWeight: 700,
@@ -576,7 +626,7 @@ function Hero() {
         Two days. One movement. The only conference built exclusively for Advice-Only financial planners — where pure advice meets real community.
       </p>
 
-      <div className="fade-up-3" style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 10, flexWrap: "wrap", justifyContent: "center", alignItems: "center", marginBottom: 40, width: isMobile ? "100%" : "auto" }}>
+      <div className="fade-up-3 hero-pills" style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 10, flexWrap: "wrap", justifyContent: "center", alignItems: "center", marginBottom: 40, width: isMobile ? "100%" : "auto" }}>
         {[
           { icon: "📅", text: "June 23–24, 2026", href: null },
           { icon: "📍", text: "Open Book Space · Minneapolis, MN", href: "#venue" },
@@ -590,17 +640,17 @@ function Hero() {
           );
           const sharedStyle = { display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 100, padding: isMobile ? "12px 20px" : "8px 16px", textDecoration: "none", transition: "background 0.2s", width: isMobile ? "100%" : "auto" };
           return href ? (
-            <a key={text} href={href} onClick={(e) => { e.preventDefault(); document.getElementById(href.slice(1))?.scrollIntoView({ behavior: "smooth" }); }} style={{ ...sharedStyle, cursor: "pointer" }}
+            <a key={text} href={href} className="hero-pill" onClick={(e) => { e.preventDefault(); document.getElementById(href.slice(1))?.scrollIntoView({ behavior: "smooth" }); }} style={{ ...sharedStyle, cursor: "pointer" }}
               onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,0.14)"}
               onMouseLeave={e => e.currentTarget.style.background = "rgba(255,255,255,0.07)"}
             >{inner}</a>
           ) : (
-            <div key={text} style={sharedStyle}>{inner}</div>
+            <div key={text} className="hero-pill" style={sharedStyle}>{inner}</div>
           );
         })}
       </div>
 
-      <div className="fade-up-4" style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 12, justifyContent: "center", marginBottom: 48, width: isMobile ? "100%" : "auto" }}>
+      <div className="fade-up-4 hero-ctas" style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 12, justifyContent: "center", marginBottom: 48, width: isMobile ? "100%" : "auto" }}>
         <a href="https://buy.stripe.com/9B600k2EVdeS8To4ja4Vy0a" target="_blank" rel="noopener noreferrer" className="cta-primary">Secure Your Spot</a>
         <a href="#about" className="cta-secondary" onClick={(e) => { e.preventDefault(); document.getElementById("about")?.scrollIntoView({ behavior: "smooth" }); }}>Learn More</a>
       </div>
@@ -635,7 +685,7 @@ function About() {
   return (
     <section id="about" style={{ padding: isMobile ? "60px 20px" : "96px 32px", background: C.creamLight }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 40 : 80, alignItems: "center" }}>
+        <div className="about-grid" style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 40 : 80, alignItems: "center" }}>
           <Reveal>
             <div>
               <div className="section-label">About the Conference</div>
@@ -649,7 +699,7 @@ function About() {
               <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "1.05rem", lineHeight: 1.75, color: C.bodyText, marginBottom: 32 }}>
                 No product pitches. No commission-hungry sales reps. Just real advisors doing real work for real people — and two days to celebrate what makes our model the future of financial planning.
               </p>
-              <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 12, flexWrap: "wrap" }}>
+              <div className="about-ctas" style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 12, flexWrap: "wrap" }}>
                 <a href="#agenda" className="cta-primary" style={{ background: C.navy, color: C.white }} onClick={(e) => { e.preventDefault(); document.getElementById("agenda")?.scrollIntoView({ behavior: "smooth" }); }}>View the Agenda</a>
                 <a href="https://buy.stripe.com/9B600k2EVdeS8To4ja4Vy0a" target="_blank" rel="noopener noreferrer" className="cta-primary">Get Your Ticket</a>
               </div>
@@ -661,12 +711,12 @@ function About() {
               {/* Stats grid */}
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1, background: C.grayLight, borderRadius: 10, overflow: "hidden", boxShadow: "0 12px 40px rgba(11,31,58,0.08)", marginBottom: 28 }}>
                 {stats.map(({ value, label }, i) => (
-                  <div key={label} style={{
+                  <div key={label} className="stats-cell" style={{
                     background: i % 2 === 0 ? C.navy : C.navyDark,
                     padding: isMobile ? "24px 16px" : "36px 28px",
                     textAlign: "center",
                   }}>
-                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: isMobile ? "2.4rem" : "3.2rem", color: C.amber, lineHeight: 1 }}>{value}</div>
+                    <div className="stats-value" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: isMobile ? "2.4rem" : "3.2rem", color: C.amber, lineHeight: 1 }}>{value}</div>
                     <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 500, fontSize: "0.8rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)", marginTop: 8 }}>{label}</div>
                   </div>
                 ))}
@@ -711,7 +761,7 @@ function WhyAttend() {
             </h2>
           </div>
         </Reveal>
-        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(440px, 1fr))", gap: 0, border: `1px solid ${C.grayLight}`, borderRadius: 12, overflow: "hidden", background: C.white }}>
+        <div className="why-grid" style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(440px, 1fr))", gap: 0, border: `1px solid ${C.grayLight}`, borderRadius: 12, overflow: "hidden", background: C.white }}>
           {reasons.map(({ title, desc }, i) => (
             <Reveal key={title} delay={i * 0.06}>
               <div style={{
@@ -1022,7 +1072,7 @@ function Speakers() {
           </div>
         </Reveal>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 24, marginBottom: 48 }}>
+        <div className="speakers-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 24, marginBottom: 48 }}>
           {/* Confirmed speakers */}
           {confirmed.map((s, i) => (
             <SpeakerCard key={s.name} s={s} delay={i * 0.08} />
@@ -1109,7 +1159,7 @@ function Venue() {
           </div>
         </Reveal>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24, marginBottom: 48, alignItems: "stretch" }}>
+        <div className="venue-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24, marginBottom: 48, alignItems: "stretch" }}>
           {spaces.map((s, i) => (
             <Reveal key={s.name} delay={i * 0.1} style={{ height: "100%" }}>
               <div className="venue-card" style={{ display: "flex", flexDirection: "column", height: "100%" }}>
@@ -1217,7 +1267,7 @@ function Hotels() {
         </Reveal>
 
         {/* Two hotel cards */}
-        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(440px, 1fr))", gap: 24 }}>
+        <div className="hotel-grid" style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(440px, 1fr))", gap: 24 }}>
 
           {/* Aloft */}
           <Reveal delay={0.1}>
@@ -1449,7 +1499,7 @@ function FAQ() {
 function PressStrip() {
   return (
     <section style={{ background: C.cream, borderTop: `1px solid ${C.grayLight}`, borderBottom: `1px solid ${C.grayLight}`, padding: "40px 20px" }}>
-      <div style={{ maxWidth: 900, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32, flexWrap: "wrap" }}>
+      <div className="press-strip-inner" style={{ maxWidth: 900, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32, flexWrap: "wrap" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
           <div>
             <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "1rem", color: C.navy, marginBottom: 4 }}>
@@ -1517,7 +1567,7 @@ function Footer() {
   return (
     <footer style={{ background: C.navyDark, borderTop: "1px solid rgba(255,255,255,0.06)", padding: isMobile ? "40px 20px 24px" : "48px 32px 32px" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "2fr 1fr 1fr", gap: isMobile ? 32 : 48, marginBottom: 40 }}>
+        <div className="footer-grid" style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "2fr 1fr 1fr", gap: isMobile ? 32 : 48, marginBottom: 40 }}>
           <div>
             <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.4rem", color: C.white, marginBottom: 4 }}>Advice-Only Conference</div>
             <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.75rem", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: C.amber, marginBottom: 16 }}>June 23–24, 2026 · Minneapolis</div>
