@@ -973,7 +973,7 @@ function SpeakerCard({ s, delay }) {
             </span>
             <span style={{ color: C.teal, fontSize: "0.9rem", transition: "transform 0.25s", display: "inline-block", transform: expanded ? "rotate(180deg)" : "rotate(0deg)" }}>▾</span>
           </button>
-          <div style={{ maxHeight: expanded ? 400 : 0, overflow: "hidden", transition: "max-height 0.35s ease" }}>
+          <div style={{ maxHeight: expanded ? 600 : 0, overflow: "hidden", transition: "max-height 0.35s ease" }}>
             <div style={{ background: "rgba(255,255,255,0.05)", borderLeft: `3px solid ${C.amber}`, borderRadius: "0 6px 6px 0", padding: "10px 14px", marginBottom: 12 }}>
               <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.72rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: C.amber, marginBottom: 3 }}>Presentation</div>
               <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.92rem", color: C.white }}>{s.talk}</div>
@@ -1004,7 +1004,7 @@ function Speakers() {
       org: "Golden Thread Collaborative",
       talk: "Death and Money Make People Funny: Supporting Clients Facing Mortality",
       day: "Day 1",
-      photo: "/rose-zealand.png",
+      photo: "/rose_zealand.png",
       bio: "Rose Zealand is the founder of Golden Thread Collaborative, where she guides clients through the intersection of money, meaning, and mortality. A CERTIFIED FINANCIAL PLANNER®, Certified Financial Transitionist®, and End of Life Doula, Rose blends financial expertise with soulful care to support clients facing life-limiting diagnoses and their loved ones. Rose helps people navigate life's ultimate threshold with dignity, agency, and intentionality.",
     },
     {
