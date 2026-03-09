@@ -1,0 +1,105 @@
+@media (max-width: 768px) {
+  /* ── Nav ── */
+  .nav-desktop { display: none !important; }
+  .nav-mobile { display: flex !important; }
+  .nav-dropdown { display: block !important; }
+
+  /* ── Section padding ── */
+  section {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+
+  /* ── Typography ── */
+  .section-label { font-size: 0.7rem !important; }
+  .section-heading { font-size: 1.8rem !important; }
+
+  /* ── Buttons ── */
+  .cta-primary, .cta-secondary {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+    padding: 16px 20px !important;
+    font-size: 1rem !important;
+    box-sizing: border-box !important;
+  }
+
+  /* ── Hero ── */
+  .hero-pills {
+    flex-direction: column !important;
+    width: 100% !important;
+    align-items: stretch !important;
+  }
+  .hero-pill {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 13px 20px !important;
+    font-size: 0.95rem !important;
+  }
+  .hero-ctas {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px !important;
+  }
+
+  /* ── Countdown ── */
+  .countdown-unit { min-width: 58px !important; }
+  .countdown-value {
+    font-size: 2rem !important;
+    padding: 8px 10px !important;
+    min-width: 58px !important;
+  }
+
+  /* ── About ── */
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+  .about-ctas {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  .stats-cell { padding: 20px 12px !important; }
+  .stats-value { font-size: 2.4rem !important; }
+
+  /* ── Why Attend ── */
+  .why-grid { grid-template-columns: 1fr !important; }
+  .why-item {
+    border-right: none !important;
+    padding: 20px 18px !important;
+  }
+
+  /* ── Agenda ── */
+  .agenda-tab { padding: 10px 14px !important; font-size: 0.82rem !important; }
+  .agenda-timeline-line { display: none !important; }
+
+  /* ── Speakers ── */
+  .speakers-grid { grid-template-columns: 1fr !important; }
+
+  /* ── Venue ── */
+  .venue-grid { grid-template-columns: 1fr !important; }
+  .map-overlay { display: none !important; }
+
+  /* ── Hotels ── */
+  .hotel-grid { grid-template-columns: 1fr !important; }
+  .hotel-btns {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  .hotel-card-header { padding: 20px !important; }
+  .hotel-card-body { padding: 20px !important; }
+
+  /* ── Press strip ── */
+  .press-strip-inner {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  /* ── Footer ── */
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+}

@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="%PUBLIC_URL%/A_icon_Logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="The Advice-Only Conference 2026 — June 23–24 in Minneapolis, MN. The only conference built exclusively for Advice-Only financial planners." />
     <meta property="og:title" content="Advice-Only Conference 2026" />
@@ -12,6 +13,110 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>Advice-Only Conference 2026</title>
+    <style>
+      @media (max-width: 768px) {
+        .nav-desktop { display: none !important; }
+        .nav-mobile { display: flex !important; }
+        .nav-dropdown { display: block !important; }
+
+        section {
+          padding-left: 20px !important;
+          padding-right: 20px !important;
+          padding-top: 56px !important;
+          padding-bottom: 56px !important;
+        }
+
+        .section-label { font-size: 0.7rem !important; }
+        .section-heading { font-size: 1.8rem !important; }
+
+        .cta-primary, .cta-secondary {
+          display: block !important;
+          width: 100% !important;
+          text-align: center !important;
+          padding: 16px 20px !important;
+          font-size: 1rem !important;
+          box-sizing: border-box !important;
+        }
+
+        .hero-pills {
+          flex-direction: column !important;
+          width: 100% !important;
+          align-items: stretch !important;
+        }
+        .hero-pill {
+          width: 100% !important;
+          justify-content: center !important;
+          padding: 13px 20px !important;
+          font-size: 0.95rem !important;
+        }
+        .hero-ctas {
+          flex-direction: column !important;
+          width: 100% !important;
+          gap: 12px !important;
+        }
+
+        .countdown-unit { min-width: 58px !important; }
+        .countdown-value {
+          font-size: 2rem !important;
+          padding: 8px 10px !important;
+          min-width: 58px !important;
+        }
+
+        .about-grid {
+          grid-template-columns: 1fr !important;
+          gap: 36px !important;
+        }
+        .about-ctas {
+          flex-direction: column !important;
+          width: 100% !important;
+        }
+        .stats-cell { padding: 20px 12px !important; }
+        .stats-value { font-size: 2.4rem !important; }
+
+        .why-grid { grid-template-columns: 1fr !important; }
+        .why-item {
+          border-right: none !important;
+          padding: 20px 18px !important;
+        }
+
+        .agenda-tab { padding: 10px 14px !important; font-size: 0.82rem !important; }
+        .agenda-timeline-line { display: none !important; }
+
+        .speakers-grid { grid-template-columns: 1fr !important; }
+        .speaker-photo {
+          object-fit: contain !important;
+          object-position: center top !important;
+        }
+
+        .venue-grid { grid-template-columns: 1fr !important; }
+        .map-overlay {
+          left: 50% !important;
+          transform: translateX(-50%) !important;
+          width: calc(100% - 24px) !important;
+          white-space: normal !important;
+          flex-wrap: wrap !important;
+          font-size: 0.78rem !important;
+        }
+
+        .hotel-grid { grid-template-columns: 1fr !important; }
+        .hotel-btns {
+          flex-direction: column !important;
+          width: 100% !important;
+        }
+        .hotel-card-header { padding: 20px !important; }
+        .hotel-card-body { padding: 20px !important; }
+
+        .press-strip-inner {
+          flex-direction: column !important;
+          gap: 16px !important;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr !important;
+          gap: 28px !important;
+        }
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import "./AdviceOnlyConference.css";
 
 // ─── Color & Type Tokens ───────────────────────────────────────────────────
 const C = {
@@ -955,7 +956,7 @@ function SpeakerCard({ s, delay }) {
     <Reveal delay={delay}>
       <div className="speaker-card" style={{ background: "rgba(255,255,255,0.05)", border: `1px solid rgba(24,185,197,0.25)`, borderRadius: 12, overflow: "hidden", display: "flex", flexDirection: "column" }}>
         <div style={{ position: "relative", height: isMobile ? "60vw" : "min(70vw, 300px)", overflow: "hidden", background: "rgba(255,255,255,0.04)" }}>
-          <img src={s.photo} alt={s.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 35%" }} />
+          <img src={s.photo} alt={s.name} className="speaker-photo" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: s.photoPosition || "center 35%" }} />
           <div style={{ position: "absolute", top: 12, right: 12, background: C.amber, color: C.white, fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "0.68rem", letterSpacing: "0.08em", textTransform: "uppercase", padding: "4px 10px", borderRadius: 100 }}>
             {s.day}
           </div>
@@ -996,6 +997,7 @@ function Speakers() {
       talk: "The Intersection of Advice-Only and the FIRE Movement",
       day: "Day 2",
       photo: "https://res.cloudinary.com/abundo-wealth-assets/image/upload/v1683570506/Advice-Only-network/advisor-assets/Mam-chris_H_S-15_3_2_b9x7li.jpg",
+      photoPosition: "center top",
       bio: "Chris retired from a career as a physical therapist at 41 using principles of traditional retirement planning combined with creative lifestyle design. He is the primary author of Choose FI: Your Blueprint to Financial Independence and writes about wealth building, investing, and the FIRE movement at Can I Retire Yet? He is now an Advice-Only financial planner at Abundo Wealth.",
     },
     {
@@ -1023,6 +1025,7 @@ function Speakers() {
       talk: "Optimizing Your Website for SEO & AEO",
       day: "Day 1",
       photo: "/alex-ammar.png",
+      photoPosition: "center top",
       bio: "Alex Ammar is the founder of Paradox Financial, an Advice-Only financial planning firm. He combines deep financial planning expertise with a strong grasp of digital marketing, helping Advice-Only advisors think strategically about how they show up online and attract the right clients.",
     },
   ];
@@ -1176,7 +1179,7 @@ function Venue() {
               referrerPolicy="no-referrer-when-downgrade"
             />
             {/* Overlay pill with address + directions button */}
-            <div style={{
+            <div className="map-overlay" style={{
               position: "absolute",
               bottom: 16,
               left: "50%",
@@ -1189,7 +1192,6 @@ function Venue() {
               alignItems: "center",
               gap: 14,
               boxShadow: "0 4px 24px rgba(11,31,58,0.15)",
-              whiteSpace: "nowrap",
             }}>
               <span style={{ fontSize: "1rem" }}>📍</span>
               <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.88rem", color: C.navy }}>
