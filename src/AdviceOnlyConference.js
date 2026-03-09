@@ -1001,11 +1001,11 @@ function Speakers() {
     {
       name: "Rose Zealand",
       title: "Financial Planner & Death Doula",
-      org: "Golden Thread Collaborate",
+      org: "Golden Thread Collaborative",
       talk: "Death and Money Make People Funny: Supporting Clients Facing Mortality",
       day: "Day 1",
       photo: "/rose-zealand.png",
-      bio: "Rose Zealand brings a doula-informed approach to financial planning, specializing in supporting clients at end-of-life. Her work explores how advisors can deepen client relationships by navigating the common disconnect between advisor urgency and client readiness — particularly when it comes to estate planning, beneficiary updates, and other mortality-adjacent financial decisions.",
+      bio: "Rose Zealand is the founder of Golden Thread Collaborative, where she guides clients through the intersection of money, meaning, and mortality. A CERTIFIED FINANCIAL PLANNER®, Certified Financial Transitionist®, and End of Life Doula, Rose blends financial expertise with soulful care to support clients facing life-limiting diagnoses and their loved ones. Rose helps people navigate life's ultimate threshold with dignity, agency, and intentionality.",
     },
     {
       name: "Steven Fox",
