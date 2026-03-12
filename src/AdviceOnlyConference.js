@@ -792,7 +792,7 @@ function Agenda() {
         { title: "Tech Stack Deep Dive: What You Do (and Don't) Need", room: "Breakout Room", type: "session" },
       ]},
       { time: "11:15 AM", type: "concurrent", sessions: [
-        { title: "Delivering Ongoing Financial Planning", room: "Performance Hall", type: "session" },
+        { title: "Delivering Ongoing Financial Planning", room: "Performance Hall", type: "session", speaker: "Sarah Sprague Gerber · Momentum Financial Planning LLC" },
         { title: "Delivering Hourly or Project Based Financial Planning", room: "Breakout Room", type: "session" },
       ]},
       { time: "12:15 PM", title: "Lunch & Networking", type: "break", note: "Catered lunch · Open networking with all attendees" },
@@ -1027,6 +1027,15 @@ function Speakers() {
       photo: "/alex-ammar.png",
       photoPosition: "center top",
       bio: "Alex Ammar is the founder of Paradox Financial, an Advice-Only financial planning firm. He combines deep financial planning expertise with a strong grasp of digital marketing, helping Advice-Only advisors think strategically about how they show up online and attract the right clients.",
+    },
+    {
+      name: "Sarah Sprague Gerber",
+      title: "Financial Planner",
+      org: "Momentum Financial Planning LLC",
+      talk: "Delivering Ongoing Financial Planning",
+      day: "Day 2",
+      photo: "/sarah_gerber.png",
+      bio: "Sarah Sprague Gerber is the founder and principal financial planner at Momentum Financial Planning LLC, where she specializes in helping early-career individuals and new couples build a strong financial foundation. A CFP® and AFC®, Sarah found her way to financial planning through her own experience navigating personal finances after graduating from MIT. She completed UC Berkeley Extension's Personal Financial Planning program in 2018 and earned her CFP® in 2022.",
     },
   ];
   const placeholderCount = 0;
