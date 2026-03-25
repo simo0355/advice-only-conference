@@ -953,8 +953,8 @@ function SpeakerCard({ s, delay }) {
   const [expanded, setExpanded] = useState(false);
   const isMobile = useIsMobile();
   return (
-    <Reveal delay={delay}>
-      <div className="speaker-card" style={{ background: "rgba(255,255,255,0.05)", border: `1px solid rgba(24,185,197,0.25)`, borderRadius: 12, overflow: "hidden", display: "flex", flexDirection: "column" }}>
+    <Reveal delay={delay} style={{ height: "100%" }}>
+      <div className="speaker-card" style={{ background: "rgba(255,255,255,0.05)", border: `1px solid rgba(24,185,197,0.25)`, borderRadius: 12, overflow: "hidden", display: "flex", flexDirection: "column", height: "100%" }}>
         <div style={{ position: "relative", height: isMobile ? "60vw" : "min(70vw, 300px)", overflow: "hidden", background: "rgba(255,255,255,0.04)" }}>
           <img src={s.photo} alt={s.name} className="speaker-photo" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: s.photoPosition || "center 35%" }} />
           <div style={{ position: "absolute", top: 12, right: 12, background: C.amber, color: C.white, fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "0.68rem", letterSpacing: "0.08em", textTransform: "uppercase", padding: "4px 10px", borderRadius: 100 }}>
