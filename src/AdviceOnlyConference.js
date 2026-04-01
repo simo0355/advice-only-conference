@@ -768,39 +768,27 @@ function Agenda() {
       { time: "8:00 AM", title: "Registration & Morning Coffee", type: "break", note: "Performance Hall Lobby" },
       { time: "9:00 AM", title: "Opening Keynote", type: "keynote", note: "Performance Hall · Welcome to the Advice-Only Conference — Setting the stage for two transformative days" },
       { time: "10:00 AM", type: "concurrent", sessions: [
-        { title: "Building Your Advice-Only Practice From Scratch", room: "Performance Hall", type: "session" },
-        { title: "Breakout Session · Topic TBD", room: "Breakout Room", type: "session" },
+        { title: "Roundtable 1: Starting as Advice-Only", room: "Performance Hall", type: "session", speaker: "Pricing your first engagements · Finding your first clients · Handling the \"how do you get paid?\" question" },
+        { title: "Roundtable 2: Growing Your Advice-Only Practice", room: "Breakout Room", type: "session", speaker: "Raising fees · Systematizing delivery · Marketing at scale · Avoiding burnout" },
       ]},
-      { time: "11:15 AM", type: "concurrent", sessions: [
-        { title: "Pricing Strategy for Advice-Only Advisors", room: "Performance Hall", type: "session" },
-        { title: "Breakout Session · Topic TBD", room: "Breakout Room", type: "session" },
-      ]},
+      { time: "11:15 AM", title: "Building Your Advice-Only Practice From Scratch: From Compliance to Tech Stack", type: "session", note: "Performance Hall" },
       { time: "12:30 PM", title: "Lunch & Networking", type: "break", note: "Catered lunch · Open networking with all attendees" },
-      { time: "1:30 PM", title: "Death and Money Make People Funny: Supporting Clients Facing Mortality", type: "keynote", note: "Performance Hall · Rose Zealand · Golden Thread Collaborate" },
-      { time: "2:45 PM", type: "concurrent", sessions: [
-        { title: "The Business Case for Advice-Only", room: "Performance Hall", type: "session", speaker: "Steven Fox · AdviceOnly" },
-        { title: "Optimizing Your Website for SEO & AEO", room: "Breakout Room", type: "session", speaker: "Alex Ammar · Paradox Financial" },
-      ]},
-      { time: "4:00 PM", title: "Panel: The Future of Advice-Only Planning", type: "keynote", note: "Performance Hall · Moderated panel with industry leaders" },
-      { time: "5:30 PM", title: "Evening Event & Networking 🎉", type: "break", note: "Celebrate Day 1 with your fellow attendees" },
+      { time: "1:30 PM", title: "The Intersection of Advice-Only and the FIRE Movement", type: "keynote", note: "Performance Hall · Chris Mamula · Author: Choose FI" },
+      { time: "2:45 PM", title: "The Business Case for Advice-Only", type: "session", note: "Performance Hall · Steven Fox · AdviceOnly" },
+      { time: "4:00 PM", title: "Optimizing Your Website for SEO & AEO", type: "session", note: "Performance Hall · Alex Ammar · Paradox Financial" },
+      { time: "5:30 PM", title: "Evening Event & Networking 🎉", type: "break", note: "Minneapolis Pickleball Club · Food, drink, and pickleball!" },
     ],
     2: [
       { time: "8:30 AM", title: "Morning Coffee", type: "break", note: "Come early, connect deeply" },
-      { time: "9:00 AM", title: "The Intersection of Advice-Only and the FIRE Movement", type: "keynote", note: "Performance Hall · Chris Mamula" },
-      { time: "10:00 AM", type: "concurrent", sessions: [
-        { title: "Compliance for Advice-Only Advisors", room: "Performance Hall", type: "session" },
-        { title: "Tech Stack Deep Dive: What You Do (and Don't) Need", room: "Breakout Room", type: "session" },
-      ]},
+      { time: "9:00 AM", title: "Death and Money Make People Funny: Supporting Clients Facing Mortality", type: "keynote", note: "Performance Hall · Rose Zealand · Golden Thread Collaborative" },
+      { time: "10:00 AM", title: "Compliance for Advice-Only Advisors", type: "session", note: "Performance Hall · Kingston Hollman · Just Compliance" },
       { time: "11:15 AM", type: "concurrent", sessions: [
         { title: "Delivering Ongoing Financial Planning", room: "Performance Hall", type: "session", speaker: "Sarah Sprague Gerber · Momentum Financial Planning LLC" },
-        { title: "Delivering Hourly or Project Based Financial Planning", room: "Breakout Room", type: "session" },
+        { title: "Delivering Hourly or Project Based Financial Planning", room: "Breakout Room", type: "session", speaker: "Holly Donaldson · Holly Donaldson Financial Planning" },
       ]},
       { time: "12:15 PM", title: "Lunch & Networking", type: "break", note: "Catered lunch · Open networking with all attendees" },
       { time: "1:30 PM", title: "Reframing the Retirement Premise", type: "keynote", note: "Performance Hall · Barb Clemons · Clemons Financial Education Company" },
-      { time: "2:45 PM", type: "concurrent", sessions: [
-        { title: "Marketing an Advice-Only Practice in 2026", room: "Performance Hall", type: "session" },
-        { title: "Breakout Session · Topic TBD", room: "Breakout Room", type: "session" },
-      ]},
+      { time: "2:45 PM", title: "Marketing an Advice-Only Practice in 2026", type: "session", note: "Performance Hall" },
       { time: "4:00 PM", title: "Closing Keynote", type: "keynote", note: "Performance Hall · Speaker & topic TBD" },
       { time: "5:00 PM", title: "Farewells & Departures", type: "break", note: "Celebrating two great days together" },
     ],
@@ -995,7 +983,7 @@ function Speakers() {
       title: "Financial Planner & Writer",
       org: "Author: Choose FI",
       talk: "The Intersection of Advice-Only and the FIRE Movement",
-      day: "Day 2",
+      day: "Day 1",
       photo: "https://res.cloudinary.com/abundo-wealth-assets/image/upload/v1683570506/Advice-Only-network/advisor-assets/Mam-chris_H_S-15_3_2_b9x7li.jpg",
       photoPosition: "center top",
       bio: "Chris retired from a career as a physical therapist at 41 using principles of traditional retirement planning combined with creative lifestyle design. He is the primary author of Choose FI: Your Blueprint to Financial Independence and writes about wealth building, investing, and the FIRE movement at Can I Retire Yet? He is now an Advice-Only financial planner at Abundo Wealth.",
@@ -1005,7 +993,7 @@ function Speakers() {
       title: "Financial Planner & Death Doula",
       org: "Golden Thread Collaborative",
       talk: "Death and Money Make People Funny: Supporting Clients Facing Mortality",
-      day: "Day 1",
+      day: "Day 2",
       photo: "/rose_zealand.png",
       bio: "Rose Zealand is the founder of Golden Thread Collaborative, where she guides clients through the intersection of money, meaning, and mortality. A CERTIFIED FINANCIAL PLANNER®, Certified Financial Transitionist®, and End of Life Doula, Rose blends financial expertise with soulful care to support clients facing life-limiting diagnoses and their loved ones. Rose helps people navigate life's ultimate threshold with dignity, agency, and intentionality.",
     },
@@ -1045,6 +1033,24 @@ function Speakers() {
       photo: "/alex-ammar.png",
       photoPosition: "center top",
       bio: "Alex Ammar is the founder of Paradox Financial, an Advice-Only financial planning firm. He combines deep financial planning expertise with a strong grasp of digital marketing, helping Advice-Only advisors think strategically about how they show up online and attract the right clients.",
+    },
+    {
+      name: "Holly Donaldson",
+      title: "Financial Planner",
+      org: "Holly Donaldson Financial Planning, LLC",
+      talk: "Delivering Hourly or Project Based Financial Planning",
+      day: "Day 2",
+      photo: "/holly-donaldson.png",
+      bio: "Holly Donaldson is the founder of Holly Donaldson Financial Planning, LLC and has been a fee-only financial planner since 2006. A CFP® and founder of the NAPFA Project-Based Planners Mix Group, Holly is a nationally recognized voice on hourly and project-based planning. She is the author of The Mindful Money Mentality and has been quoted in the Wall Street Journal, CNBC, and InvestmentNews.",
+    },
+    {
+      name: "Kingston Hollman",
+      title: "RIA Compliance Consultant",
+      org: "Just Compliance",
+      talk: "Compliance for Advice-Only Advisors",
+      day: "Day 2",
+      photo: "/kingston-hollman.png",
+      bio: "Kingston Hollman is the Owner and Managing Member of Just Compliance, a Minnesota-based RIA compliance firm. A former Minnesota Securities Examiner and XYPN Compliance Consultant, Kingston has provided compliance guidance to more than 1,000 registered investment advisory firms. He holds a bachelor's degree in Finance and an MBA from Elmhurst University.",
     },
   ];
   const placeholderCount = 0;
@@ -1255,7 +1261,7 @@ function Hotels() {
               Recommended Hotels
             </h2>
             <p style={{ fontFamily: "'Outfit', sans-serif", color: C.grayMid, maxWidth: 600, margin: "0 auto", lineHeight: 1.7 }}>
-              We are currently in the process of securing a conference room block. In the meantime, if you'd like to book your hotel now, we recommend either of the two options below — both are within close walking distance to the venue.
+              Both hotels below are within close walking distance to the venue and are our top recommendations for attendees. Book early to secure your preferred dates!
             </p>
           </div>
         </Reveal>
@@ -1328,16 +1334,6 @@ function Hotels() {
           </Reveal>
 
         </div>
-
-        {/* Coming soon note */}
-        <Reveal delay={0.2}>
-          <div style={{ background: C.white, borderRadius: 10, border: `1px solid ${C.grayLight}`, borderLeft: `4px solid ${C.teal}`, padding: "20px 28px", marginTop: 24 }}>
-            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.88rem", color: C.grayMid, lineHeight: 1.65, margin: 0 }}>
-              <strong style={{ color: C.navy }}>Room block coming soon.</strong> We are actively working to secure a discounted group rate for attendees. Once confirmed, booking details will be shared here and via email. Questions? Reach out at{" "}
-              <a href="mailto:info@adviceonlynetwork.com" style={{ color: C.teal, fontWeight: 600 }}>info@adviceonlynetwork.com</a>.
-            </p>
-          </div>
-        </Reveal>
 
       </div>
     </section>
