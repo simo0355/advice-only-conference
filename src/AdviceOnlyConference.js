@@ -454,7 +454,7 @@ function Nav({ scrolled }) {
               {l}
             </a>
           ))}
-          <a href="https://buy.stripe.com/9B600k2EVdeS8To4ja4Vy0a" target="_blank" rel="noopener noreferrer"
+          <a href="https://buy.stripe.com/9B65kEfrH2Ae0mSaHy4Vy0c" target="_blank" rel="noopener noreferrer"
             className="ticket-btn" style={{ textDecoration: "none" }}>
             Get Tickets
           </a>
@@ -462,7 +462,7 @@ function Nav({ scrolled }) {
 
         {/* Mobile controls — hidden on desktop via CSS */}
         <div className="nav-mobile" style={{ display: "none", alignItems: "center", gap: 12 }}>
-          <a href="https://buy.stripe.com/9B600k2EVdeS8To4ja4Vy0a" target="_blank" rel="noopener noreferrer"
+          <a href="https://buy.stripe.com/9B65kEfrH2Ae0mSaHy4Vy0c" target="_blank" rel="noopener noreferrer"
             className="ticket-btn" style={{ textDecoration: "none", fontSize: "0.78rem", padding: "8px 14px" }}>
             Tickets
           </a>
@@ -519,7 +519,7 @@ function Nav({ scrolled }) {
 
 // ─── Ticker ────────────────────────────────────────────────────────────────
 function Ticker() {
-  const msgs = ["June 23–24, 2026", "Minneapolis, MN", "Open Book Space", "Advice-Only Network", "Pure Advice · No Commissions · No AUM", "The Industry's First Advice-Only Conference", "Early Bird Pricing Now Available"];
+  const msgs = ["June 23–24, 2026", "Minneapolis, MN", "Open Book Space", "Advice-Only Network", "Pure Advice · No Commissions · No AUM", "The Industry's First Advice-Only Conference", "Limited Seats Available"];
   const doubled = [...msgs, ...msgs];
   return (
     <div className="ticker-wrap">
@@ -626,7 +626,7 @@ function Hero() {
       </div>
 
       <div className="fade-up-4 hero-ctas" style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 12, justifyContent: "center", marginBottom: 48, width: isMobile ? "100%" : "auto" }}>
-        <a href="https://buy.stripe.com/9B600k2EVdeS8To4ja4Vy0a" target="_blank" rel="noopener noreferrer" className="cta-primary">Secure Your Spot</a>
+        <a href="https://buy.stripe.com/9B65kEfrH2Ae0mSaHy4Vy0c" target="_blank" rel="noopener noreferrer" className="cta-primary">Secure Your Spot</a>
         <a href="#about" className="cta-secondary" onClick={(e) => { e.preventDefault(); document.getElementById("about")?.scrollIntoView({ behavior: "smooth" }); }}>Learn More</a>
       </div>
 
@@ -676,7 +676,7 @@ function About() {
               </p>
               <div className="about-ctas" style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 12, flexWrap: "wrap" }}>
                 <a href="#agenda" className="cta-primary" style={{ background: C.navy, color: C.white }} onClick={(e) => { e.preventDefault(); document.getElementById("agenda")?.scrollIntoView({ behavior: "smooth" }); }}>View the Agenda</a>
-                <a href="https://buy.stripe.com/9B600k2EVdeS8To4ja4Vy0a" target="_blank" rel="noopener noreferrer" className="cta-primary">Get Your Ticket</a>
+                <a href="https://buy.stripe.com/9B65kEfrH2Ae0mSaHy4Vy0c" target="_blank" rel="noopener noreferrer" className="cta-primary">Get Your Ticket</a>
               </div>
             </div>
           </Reveal>
@@ -927,7 +927,7 @@ function Agenda() {
           <div style={{ textAlign: "center", marginTop: 40, padding: "24px", background: `rgba(24,185,197,0.06)`, borderRadius: 10, border: `1px dashed ${C.teal}` }}>
             <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.95rem", color: C.grayMid }}>
               📬 Want to be notified when the full speaker lineup drops?{" "}
-              <a href="https://buy.stripe.com/9B600k2EVdeS8To4ja4Vy0a" target="_blank" rel="noopener noreferrer" style={{ color: C.teal, fontWeight: 600 }}>Grab your ticket</a> and you'll be the first to know.
+              <a href="https://buy.stripe.com/9B65kEfrH2Ae0mSaHy4Vy0c" target="_blank" rel="noopener noreferrer" style={{ color: C.teal, fontWeight: 600 }}>Grab your ticket</a> and you'll be the first to know.
             </p>
           </div>
         </Reveal>
@@ -1346,9 +1346,9 @@ function Tickets() {
   const tiers = [
     {
       name: "General Admission",
-      price: "$299",
-      priceSub: "Early Bird — ends April 15th",
-      priceRegular: "$399 after April 15th",
+      price: "$399",
+      priceSub: "General Admission",
+      priceRegular: "",
       perks: [
         "Full 2-day access (June 23–24)",
         "All keynotes & breakout sessions",
@@ -1375,7 +1375,7 @@ function Tickets() {
               Get Your Ticket
             </h2>
             <p style={{ fontFamily: "'Outfit', sans-serif", color: "rgba(255,255,255,0.55)", fontSize: "0.95rem" }}>
-              Early bird tickets are $299 through April 15th — then $399. Seats are limited.
+              Seats are limited. Secure your spot today.
             </p>
           </div>
         </Reveal>
@@ -1393,7 +1393,7 @@ function Tickets() {
               }}>
                 {t.highlight && (
                   <div style={{ position: "absolute", top: -14, left: "50%", transform: "translateX(-50%)", background: C.teal, color: C.white, fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", padding: "5px 16px", borderRadius: 100, whiteSpace: "nowrap" }}>
-                    🐦 Early Bird Pricing
+                    Limited Seats Available
                   </div>
                 )}
                 <h3 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "1.05rem", color: t.highlight ? C.navy : C.white, marginBottom: 12 }}>{t.name}</h3>
@@ -1410,7 +1410,7 @@ function Tickets() {
                 <button
                   className="cta-primary"
                   style={{ width: "100%", background: t.highlight ? C.navy : C.amber, color: t.highlight ? C.white : C.navy, fontSize: "0.88rem" }}
-                  onClick={() => window.open("https://buy.stripe.com/9B600k2EVdeS8To4ja4Vy0a", "_blank")}
+                  onClick={() => window.open("https://buy.stripe.com/9B65kEfrH2Ae0mSaHy4Vy0c", "_blank")}
                 >
                   {t.cta} →
                 </button>
@@ -1540,7 +1540,7 @@ function FinalCTA() {
             Seats are limited. Don't wait.
           </p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-            <a href="https://buy.stripe.com/9B600k2EVdeS8To4ja4Vy0a" target="_blank" rel="noopener noreferrer" className="cta-primary">Secure Your Spot Today</a>
+            <a href="https://buy.stripe.com/9B65kEfrH2Ae0mSaHy4Vy0c" target="_blank" rel="noopener noreferrer" className="cta-primary">Secure Your Spot Today</a>
             <a href="https://www.adviceonlynetwork.com" target="_blank" rel="noopener noreferrer" className="cta-secondary">
               Visit Advice-Only Network
             </a>
