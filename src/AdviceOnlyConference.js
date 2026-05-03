@@ -771,7 +771,7 @@ function Agenda() {
         { title: "Roundtable 1: Starting as Advice-Only", room: "Performance Hall", type: "session", speaker: "Pricing your first engagements · Finding your first clients · Handling the \"how do you get paid?\" question" },
         { title: "Roundtable 2: Growing Your Advice-Only Practice", room: "Breakout Room", type: "session", speaker: "Raising fees · Systematizing delivery · Marketing at scale · Avoiding burnout" },
       ]},
-      { time: "11:15 AM", title: "Building Your Advice-Only Practice From Scratch: From Compliance to Tech Stack", type: "session", note: "Performance Hall" },
+      { time: "11:15 AM", title: "How to Attract New Clients as an Advice-Only Advisor", type: "session", note: "Performance Hall · Eryn Schultz · Her Personal Finance" },
       { time: "12:30 PM", title: "Lunch & Networking", type: "break", note: "Catered lunch · Open networking with all attendees" },
       { time: "1:30 PM", title: "The Intersection of Advice-Only and the FIRE Movement", type: "keynote", note: "Performance Hall · Chris Mamula · Author: Choose FI" },
       { time: "2:45 PM", title: "The Business Case for Advice-Only", type: "session", note: "Performance Hall · Steven Fox · AdviceOnly" },
@@ -788,8 +788,8 @@ function Agenda() {
       ]},
       { time: "12:15 PM", title: "Lunch & Networking", type: "break", note: "Catered lunch · Open networking with all attendees" },
       { time: "1:30 PM", title: "Reframing the Retirement Premise", type: "keynote", note: "Performance Hall · Barb Clemons · Clemons Financial Education Company" },
-      { time: "2:45 PM", title: "Marketing an Advice-Only Practice in 2026", type: "session", note: "Performance Hall" },
-      { time: "4:00 PM", title: "Closing Keynote", type: "keynote", note: "Performance Hall · Speaker & topic TBD" },
+      { time: "2:45 PM", title: "Planning for the Future: AI & Technology", type: "session", note: "Performance Hall" },
+      { time: "4:00 PM", title: "Closing Keynote", type: "keynote", note: "Performance Hall · Closing of the Advice-Only Conference and Looking Toward the Future" },
       { time: "5:00 PM", title: "Farewells & Departures", type: "break", note: "Celebrating two great days together" },
     ],
   };
@@ -807,9 +807,6 @@ function Agenda() {
             <div className="section-label">Conference Schedule</div>
             <div className="divider divider-center" />
             <h2 className="section-heading" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", marginBottom: 12 }}>Agenda</h2>
-            <p style={{ fontFamily: "'Outfit', sans-serif", color: C.grayMid, fontSize: "0.95rem" }}>
-              Full speaker lineup and session details coming soon. Schedule subject to change.
-            </p>
           </div>
         </Reveal>
 
@@ -926,8 +923,8 @@ function Agenda() {
         <Reveal delay={0.2}>
           <div style={{ textAlign: "center", marginTop: 40, padding: "24px", background: `rgba(24,185,197,0.06)`, borderRadius: 10, border: `1px dashed ${C.teal}` }}>
             <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.95rem", color: C.grayMid }}>
-              📬 Want to be notified when the full speaker lineup drops?{" "}
-              <a href="https://buy.stripe.com/9B65kEfrH2Ae0mSaHy4Vy0c" target="_blank" rel="noopener noreferrer" style={{ color: C.teal, fontWeight: 600 }}>Grab your ticket</a> and you'll be the first to know.
+              Schedule subject to change. Questions? Email us at{" "}
+              <a href="mailto:info@adviceonlynetwork.com" style={{ color: C.teal, fontWeight: 600 }}>info@adviceonlynetwork.com</a>.
             </p>
           </div>
         </Reveal>
@@ -984,8 +981,8 @@ function Speakers() {
       org: "Author: Choose FI",
       talk: "The Intersection of Advice-Only and the FIRE Movement",
       day: "Day 1",
-      photo: "https://res.cloudinary.com/abundo-wealth-assets/image/upload/v1683570506/Advice-Only-network/advisor-assets/Mam-chris_H_S-15_3_2_b9x7li.jpg",
-      photoPosition: "center top",
+      photo: "/chris-mamula.png",
+      photoPosition: "center 15%",
       bio: "Chris retired from a career as a physical therapist at 41 using principles of traditional retirement planning combined with creative lifestyle design. He is the primary author of Choose FI: Your Blueprint to Financial Independence and writes about wealth building, investing, and the FIRE movement at Can I Retire Yet? He is now an Advice-Only financial planner at Abundo Wealth.",
     },
     {
@@ -998,13 +995,13 @@ function Speakers() {
       bio: "Rose Zealand is the founder of Golden Thread Collaborative, where she guides clients through the intersection of money, meaning, and mortality. A CERTIFIED FINANCIAL PLANNER®, Certified Financial Transitionist®, and End of Life Doula, Rose blends financial expertise with soulful care to support clients facing life-limiting diagnoses and their loved ones. Rose helps people navigate life's ultimate threshold with dignity, agency, and intentionality.",
     },
     {
-      name: "Steven Fox",
-      title: "Financial Planner",
-      org: "AdviceOnly",
-      talk: "The Business Case for Advice-Only",
+      name: "Eryn Schultz",
+      title: "Financial Planner & Speaker",
+      org: "Her Personal Finance",
+      talk: "How to Attract New Clients as an Advice-Only Advisor",
       day: "Day 1",
-      photo: "/steven-fox.png",
-      bio: "Steven Fox is the founder of AdviceOnly, a firm dedicated to delivering pure, conflict-free financial advice. He is a passionate advocate for the Advice-Only model and brings a practitioner's perspective to building a sustainable, values-driven financial planning business.",
+      photo: "/eryn-schultz.png",
+      bio: "Eryn Schultz is the founder of Her Personal Finance and Earn with Eryn. A CERTIFIED FINANCIAL PLANNER™ and Harvard MBA, Eryn has helped hundreds of women pay off student loans, build confidence investing, and take control of their financial lives through online classes, workshops, and one-on-one advising. She has spoken at Amazon, Google, and LinkedIn, and has been featured in Forbes, NPR, and the New York Times — where a single feature led to a six-month waitlist for her services.",
     },
     {
       name: "Barb Clemons",
@@ -1016,23 +1013,13 @@ function Speakers() {
       bio: "Barb Clemons is the founder of Clemons Financial Education Company and holds the CFP®, CLU®, ChFC®, CTFA, and AEP® designations. Her presentation challenges the conventional notion of retirement — tracing its origins to the industrial revolution and asking why, given research showing that early retirement correlates with declining health and shorter lives, we continue to pursue it. Barb helps advisors and their clients reframe what they're truly seeking and how to plan for a life of purpose and fulfillment.",
     },
     {
-      name: "Sarah Sprague Gerber",
+      name: "Steven Fox",
       title: "Financial Planner",
-      org: "Momentum Financial Planning LLC",
-      talk: "Delivering Ongoing Financial Planning",
-      day: "Day 2",
-      photo: "/sarah_gerber.png",
-      bio: "Sarah Sprague Gerber is the founder and principal financial planner at Momentum Financial Planning LLC, where she specializes in helping early-career individuals and new couples build a strong financial foundation. A CFP® and AFC®, Sarah found her way to financial planning through her own experience navigating personal finances after graduating from MIT. She completed UC Berkeley Extension's Personal Financial Planning program in 2018 and earned her CFP® in 2022.",
-    },
-    {
-      name: "Alex Ammar",
-      title: "Financial Planner & Strategist",
-      org: "Paradox Financial",
-      talk: "Optimizing Your Website for SEO & AEO",
+      org: "AdviceOnly",
+      talk: "The Business Case for Advice-Only",
       day: "Day 1",
-      photo: "/alex-ammar.png",
-      photoPosition: "center top",
-      bio: "Alex Ammar is the founder of Paradox Financial, an Advice-Only financial planning firm. He combines deep financial planning expertise with a strong grasp of digital marketing, helping Advice-Only advisors think strategically about how they show up online and attract the right clients.",
+      photo: "/steven-fox.png",
+      bio: "Steven Fox is the founder of AdviceOnly, a firm dedicated to delivering pure, conflict-free financial advice. He is a passionate advocate for the Advice-Only model and brings a practitioner's perspective to building a sustainable, values-driven financial planning business.",
     },
     {
       name: "Holly Donaldson",
@@ -1052,6 +1039,25 @@ function Speakers() {
       photo: "/kingston-hollman.png",
       bio: "Kingston Hollman is the Owner and Managing Member of Just Compliance, a Minnesota-based RIA compliance firm. A former Minnesota Securities Examiner and XYPN Compliance Consultant, Kingston has provided compliance guidance to more than 1,000 registered investment advisory firms. He holds a bachelor's degree in Finance and an MBA from Elmhurst University.",
     },
+    {
+      name: "Sarah Sprague Gerber",
+      title: "Financial Planner",
+      org: "Momentum Financial Planning LLC",
+      talk: "Delivering Ongoing Financial Planning",
+      day: "Day 2",
+      photo: "/sarah_gerber.png",
+      bio: "Sarah Sprague Gerber is the founder and principal financial planner at Momentum Financial Planning LLC, where she specializes in helping early-career individuals and new couples build a strong financial foundation. A CFP® and AFC®, Sarah found her way to financial planning through her own experience navigating personal finances after graduating from MIT. She completed UC Berkeley Extension's Personal Financial Planning program in 2018 and earned her CFP® in 2022.",
+    },
+    {
+      name: "Alex Ammar",
+      title: "Financial Planner & Strategist",
+      org: "Paradox Financial",
+      talk: "Optimizing Your Website for SEO & AEO",
+      day: "Day 1",
+      photo: "/alex-ammar.png",
+      photoPosition: "center 15%",
+      bio: "Alex Ammar is the founder of Paradox Financial, an Advice-Only financial planning firm. He combines deep financial planning expertise with a strong grasp of digital marketing, helping Advice-Only advisors think strategically about how they show up online and attract the right clients.",
+    },
   ];
   const placeholderCount = 0;
 
@@ -1068,12 +1074,12 @@ function Speakers() {
               Meet the Speakers
             </h2>
             <p style={{ fontFamily: "'Outfit', sans-serif", color: "rgba(255,255,255,0.55)", fontSize: "0.95rem", marginTop: 12 }}>
-              More speaker announcements coming soon. Follow us to stay in the loop.
+              An incredible lineup of Advice-Only practitioners and industry leaders.
             </p>
           </div>
         </Reveal>
 
-        <div className="speakers-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 24, marginBottom: 48 }}>
+        <div className="speakers-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 28, marginBottom: 48 }}>
           {/* Confirmed speakers */}
           {confirmed.map((s, i) => (
             <SpeakerCard key={s.name} s={s} delay={i * 0.08} />
