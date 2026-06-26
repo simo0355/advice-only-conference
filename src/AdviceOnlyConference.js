@@ -395,7 +395,7 @@ function Reveal({ children, delay = 0, style = {} }) {
 // ─── Navigation ────────────────────────────────────────────────────────────
 function Nav({ scrolled }) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const links = ["About", "Agenda", "Speakers", "Venue", "Hotels", "Tickets", "FAQ"];
+  const links = ["About", "Agenda", "Tickets", "FAQ"];
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -578,7 +578,6 @@ function Hero() {
 
       <div className="fade-up-4 hero-ctas" style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 12, justifyContent: "center", marginBottom: 48, width: isMobile ? "100%" : "auto" }}>
         <a href="#tickets" className="cta-primary" onClick={(e) => { e.preventDefault(); document.getElementById("tickets")?.scrollIntoView({ behavior: "smooth" }); }}>Pre-Register for Denver 2027</a>
-        <a href="#about" className="cta-secondary" onClick={(e) => { e.preventDefault(); document.getElementById("about")?.scrollIntoView({ behavior: "smooth" }); }}>View 2026 Recap</a>
       </div>
 
       {/* 2027 Denver teaser */}
@@ -608,63 +607,27 @@ function Hero() {
 // ─── About ─────────────────────────────────────────────────────────────────
 function About() {
   const isMobile = useIsMobile();
-  const stats = [
-    { value: "2", label: "Full Days" },
-    { value: "3", label: "Unique Spaces" },
-    { value: "75+", label: "Attendees" },
-    { value: "10+", label: "Expert Speakers" },
-  ];
   return (
     <section id="about" style={{ padding: isMobile ? "60px 20px" : "96px 32px", background: C.creamLight }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <div className="about-grid" style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 40 : 80, alignItems: "center" }}>
-          <Reveal>
-            <div>
-              <div className="section-label">About the Conference</div>
-              <div className="divider" />
-              <h2 className="section-heading" style={{ fontSize: "clamp(2.2rem, 4vw, 3.2rem)", marginBottom: 24 }}>
-                Where the Advice<span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 400, fontSize: "0.9em" }}>-</span>Only Movement Comes Alive
-              </h2>
-              <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "1.05rem", lineHeight: 1.75, color: C.bodyText, marginBottom: 20 }}>
-                The Advice-Only Conference is the first of its kind gathering exclusively for Advice-Only financial planners. Hosted by The Advice-Only Network in the heart of downtown Minneapolis, this is your chance to connect with the most forward-thinking minds in Advice-Only financial planning.
-              </p>
-              <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "1.05rem", lineHeight: 1.75, color: C.bodyText, marginBottom: 32 }}>
-                No product pitches. No commission-hungry sales reps. Just real advisors doing real work for real people — and two days to celebrate what makes our model the future of financial planning.
-              </p>
-              <div className="about-ctas" style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 12, flexWrap: "wrap" }}>
-                <a href="#agenda" className="cta-primary" style={{ background: C.navy, color: C.white }} onClick={(e) => { e.preventDefault(); document.getElementById("agenda")?.scrollIntoView({ behavior: "smooth" }); }}>View the Agenda</a>
-                <a href="https://buy.stripe.com/9B65kEfrH2Ae0mSaHy4Vy0c" target="_blank" rel="noopener noreferrer" className="cta-primary">Get Your Ticket</a>
-              </div>
+      <div style={{ maxWidth: 780, margin: "0 auto" }}>
+        <Reveal>
+          <div>
+            <div className="section-label">About the Conference</div>
+            <div className="divider" />
+            <h2 className="section-heading" style={{ fontSize: "clamp(2.2rem, 4vw, 3.2rem)", marginBottom: 24 }}>
+              Where the Advice<span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 400, fontSize: "0.9em" }}>-</span>Only Movement Comes Alive
+            </h2>
+            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "1.05rem", lineHeight: 1.75, color: C.bodyText, marginBottom: 20 }}>
+              The Advice-Only Conference is the first of its kind gathering exclusively for Advice-Only financial planners. Hosted by The Advice-Only Network in the heart of downtown Minneapolis, this is your chance to connect with the most forward-thinking minds in Advice-Only financial planning.
+            </p>
+            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "1.05rem", lineHeight: 1.75, color: C.bodyText, marginBottom: 32 }}>
+              No product pitches. No commission-hungry sales reps. Just real advisors doing real work for real people — and two days to celebrate what makes our model the future of financial planning.
+            </p>
+            <div className="about-ctas" style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 12, flexWrap: "wrap" }}>
+              <a href="#agenda" className="cta-primary" style={{ background: C.navy, color: C.white }} onClick={(e) => { e.preventDefault(); document.getElementById("agenda")?.scrollIntoView({ behavior: "smooth" }); }}>View the Agenda</a>
             </div>
-          </Reveal>
-
-          <Reveal delay={0.15}>
-            <div>
-              {/* Stats grid */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1, background: C.grayLight, borderRadius: 10, overflow: "hidden", boxShadow: "0 12px 40px rgba(11,31,58,0.08)", marginBottom: 28 }}>
-                {stats.map(({ value, label }, i) => (
-                  <div key={label} className="stats-cell" style={{
-                    background: i % 2 === 0 ? C.navy : C.navyDark,
-                    padding: isMobile ? "24px 16px" : "36px 28px",
-                    textAlign: "center",
-                  }}>
-                    <div className="stats-value" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: isMobile ? "2.4rem" : "3.2rem", color: C.amber, lineHeight: 1 }}>{value}</div>
-                    <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 500, fontSize: "0.8rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)", marginTop: 8 }}>{label}</div>
-                  </div>
-                ))}
-              </div>
-              {/* Quote */}
-              <div style={{ background: C.white, borderLeft: `4px solid ${C.teal}`, borderRadius: "0 8px 8px 0", padding: "20px 24px", boxShadow: "0 4px 20px rgba(11,31,58,0.06)" }}>
-                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: "1.15rem", color: C.navy, lineHeight: 1.55 }}>
-                  "Advice-only is not just a business model — it's a commitment to the client. Come celebrate it with us."
-                </p>
-                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.8rem", fontWeight: 600, color: C.teal, marginTop: 10, letterSpacing: "0.06em" }}>
-                  — The Advice-Only Network Team
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -891,417 +854,7 @@ function Agenda() {
 }
 
 // ─── Speakers ──────────────────────────────────────────────────────────────
-function SpeakerCard({ s, delay }) {
-  const [expanded, setExpanded] = useState(false);
-  const isMobile = useIsMobile();
-  return (
-    <Reveal delay={delay} style={{ height: "100%" }}>
-      <div className="speaker-card" style={{ background: "rgba(255,255,255,0.05)", border: `1px solid rgba(24,185,197,0.25)`, borderRadius: 12, overflow: "hidden", display: "flex", flexDirection: "column", height: "100%" }}>
-        <div style={{ position: "relative", height: isMobile ? "60vw" : "min(70vw, 300px)", overflow: "hidden", background: "rgba(255,255,255,0.04)" }}>
-          <img src={s.photo} alt={s.name} className="speaker-photo" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: s.photoPosition || "center 35%" }} />
-          <div style={{ position: "absolute", top: 12, right: 12, background: C.amber, color: C.white, fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "0.68rem", letterSpacing: "0.08em", textTransform: "uppercase", padding: "4px 10px", borderRadius: 100 }}>
-            {s.day}
-          </div>
-        </div>
-        <div style={{ padding: "20px 22px 24px", flex: 1, display: "flex", flexDirection: "column" }}>
-          <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.35rem", color: C.white, marginBottom: 2 }}>{s.name}</div>
-          <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 500, fontSize: "0.85rem", color: C.teal, marginBottom: 2 }}>{s.title}</div>
-          <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.82rem", color: "rgba(255,255,255,0.4)", marginBottom: 16 }}>{s.org}</div>
-          <button
-            onClick={() => setExpanded(!expanded)}
-            style={{ background: "rgba(255,255,255,0.05)", border: `1px solid rgba(255,255,255,0.1)`, borderRadius: 6, padding: "11px 14px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", marginBottom: expanded ? 12 : 0, transition: "background 0.2s" }}
-          >
-            <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.85rem", color: "rgba(255,255,255,0.7)", letterSpacing: "0.04em" }}>
-              {expanded ? "Hide Details" : "Presentation & Bio"}
-            </span>
-            <span style={{ color: C.teal, fontSize: "0.9rem", transition: "transform 0.25s", display: "inline-block", transform: expanded ? "rotate(180deg)" : "rotate(0deg)" }}>▾</span>
-          </button>
-          <div style={{ maxHeight: expanded ? 600 : 0, overflow: "hidden", transition: "max-height 0.35s ease" }}>
-            <div style={{ background: "rgba(255,255,255,0.05)", borderLeft: `3px solid ${C.amber}`, borderRadius: "0 6px 6px 0", padding: "10px 14px", marginBottom: 12 }}>
-              <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.72rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: C.amber, marginBottom: 3 }}>Presentation</div>
-              <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.92rem", color: C.white }}>{s.talk}</div>
-            </div>
-            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.85rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, margin: 0 }}>{s.bio}</p>
-          </div>
-        </div>
-      </div>
-    </Reveal>
-  );
-}
 
-function Speakers() {
-  const isMobile = useIsMobile();
-  const confirmed = [
-    {
-      name: "Chris Mamula",
-      title: "Financial Planner & Writer",
-      org: "Author: Choose FI",
-      talk: "The Intersection of Advice-Only and the FIRE Movement",
-      day: "Day 1",
-      photo: "/chris-mamula.png",
-      photoPosition: "center 15%",
-      bio: "Chris retired from a career as a physical therapist at 41 using principles of traditional retirement planning combined with creative lifestyle design. He is the primary author of Choose FI: Your Blueprint to Financial Independence and writes about wealth building, investing, and the FIRE movement at Can I Retire Yet? He is now an Advice-Only financial planner at Abundo Wealth.",
-    },
-    {
-      name: "Rose Zealand",
-      title: "Financial Planner & Death Doula",
-      org: "Golden Thread Collaborative",
-      talk: "Death and Money Make People Funny: Supporting Clients Facing Mortality",
-      day: "Day 2",
-      photo: "/rose_zealand.png",
-      bio: "Rose Zealand is the founder of Golden Thread Collaborative, where she guides clients through the intersection of money, meaning, and mortality. A CERTIFIED FINANCIAL PLANNER®, Certified Financial Transitionist®, and End of Life Doula, Rose blends financial expertise with soulful care to support clients facing life-limiting diagnoses and their loved ones. Rose helps people navigate life's ultimate threshold with dignity, agency, and intentionality.",
-    },
-    {
-      name: "Eryn Schultz",
-      title: "Financial Planner & Speaker",
-      org: "Her Personal Finance",
-      talk: "How to Attract New Clients as an Advice-Only Advisor",
-      day: "Day 1",
-      photo: "/eryn-schultz.png",
-      bio: "Eryn Schultz is the founder of Her Personal Finance and Earn with Eryn. A CERTIFIED FINANCIAL PLANNER™ and Harvard MBA, Eryn has helped hundreds of women pay off student loans, build confidence investing, and take control of their financial lives through online classes, workshops, and one-on-one advising. She has spoken at Amazon, Google, and LinkedIn, and has been featured in Forbes, NPR, and the New York Times — where a single feature led to a six-month waitlist for her services.",
-    },
-    {
-      name: "Barb Clemons",
-      title: "Financial Planner & Educator",
-      org: "Clemons Financial Education Company",
-      talk: "Reframing the Retirement Premise",
-      day: "Day 2",
-      photo: "/barb-clemons.png",
-      bio: "Barb Clemons is the founder of Clemons Financial Education Company and holds the CFP®, CLU®, ChFC®, CTFA, and AEP® designations. Her presentation challenges the conventional notion of retirement — tracing its origins to the industrial revolution and asking why, given research showing that early retirement correlates with declining health and shorter lives, we continue to pursue it. Barb helps advisors and their clients reframe what they're truly seeking and how to plan for a life of purpose and fulfillment.",
-    },
-    {
-      name: "Steven Fox",
-      title: "Financial Planner",
-      org: "AdviceOnly",
-      talk: "The Business Case for Advice-Only",
-      day: "Day 1",
-      photo: "/steven-fox.png",
-      bio: "Steven Fox is the founder of AdviceOnly, a firm dedicated to delivering pure, conflict-free financial advice. He is a passionate advocate for the Advice-Only model and brings a practitioner's perspective to building a sustainable, values-driven financial planning business.",
-    },
-    {
-      name: "Holly Donaldson",
-      title: "Financial Planner",
-      org: "Holly Donaldson Financial Planning, LLC",
-      talk: "Delivering Hourly or Project Based Financial Planning",
-      day: "Day 2",
-      photo: "/holly-donaldson.png",
-      bio: "Holly Donaldson is the founder of Holly Donaldson Financial Planning, LLC and has been a fee-only financial planner since 2006. A CFP® and founder of the NAPFA Project-Based Planners Mix Group, Holly is a nationally recognized voice on hourly and project-based planning. She is the author of The Mindful Money Mentality and has been quoted in the Wall Street Journal, CNBC, and InvestmentNews.",
-    },
-    {
-      name: "Kingston Hollman",
-      title: "RIA Compliance Consultant",
-      org: "Just Compliance",
-      talk: "Compliance for Advice-Only Advisors",
-      day: "Day 2",
-      photo: "/kingston-hollman.png",
-      bio: "Kingston Hollman is the Owner and Managing Member of Just Compliance, a Minnesota-based RIA compliance firm. A former Minnesota Securities Examiner and XYPN Compliance Consultant, Kingston has provided compliance guidance to more than 1,000 registered investment advisory firms. He holds a bachelor's degree in Finance and an MBA from Elmhurst University.",
-    },
-    {
-      name: "Sarah Sprague Gerber",
-      title: "Financial Planner",
-      org: "Momentum Financial Planning LLC",
-      talk: "Delivering Ongoing Financial Planning",
-      day: "Day 2",
-      photo: "/sarah_gerber.png",
-      bio: "Sarah Sprague Gerber is the founder and principal financial planner at Momentum Financial Planning LLC, where she specializes in helping early-career individuals and new couples build a strong financial foundation. A CFP® and AFC®, Sarah found her way to financial planning through her own experience navigating personal finances after graduating from MIT. She completed UC Berkeley Extension's Personal Financial Planning program in 2018 and earned her CFP® in 2022.",
-    },
-    {
-      name: "Alex Ammar",
-      title: "Financial Planner & Strategist",
-      org: "Paradox Financial",
-      talk: "Optimizing Your Website for SEO & AEO",
-      day: "Day 1",
-      photo: "/alex-ammar.png",
-      photoPosition: "center 15%",
-      bio: "Alex Ammar is the founder of Paradox Financial, an Advice-Only financial planning firm. He combines deep financial planning expertise with a strong grasp of digital marketing, helping Advice-Only advisors think strategically about how they show up online and attract the right clients.",
-    },
-  ];
-  const placeholderCount = 0;
-
-  return (
-    <section id="speakers" style={{ padding: isMobile ? "60px 20px" : "96px 32px", background: C.navy }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <Reveal>
-          <div style={{ textAlign: "center", marginBottom: 60 }}>
-            <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.75rem", letterSpacing: "0.18em", textTransform: "uppercase", color: C.teal }}>
-              Industry Leaders & Visionaries
-            </div>
-            <div style={{ width: 56, height: 3, background: C.amber, margin: "14px auto 24px", borderRadius: 2 }} />
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "clamp(2rem, 4vw, 3rem)", color: C.white, lineHeight: 1.1 }}>
-              Meet the Speakers
-            </h2>
-            <p style={{ fontFamily: "'Outfit', sans-serif", color: "rgba(255,255,255,0.55)", fontSize: "0.95rem", marginTop: 12 }}>
-              An incredible lineup of Advice-Only practitioners and industry leaders.
-            </p>
-          </div>
-        </Reveal>
-
-        <div className="speakers-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 28, marginBottom: 48 }}>
-          {/* Confirmed speakers */}
-          {confirmed.map((s, i) => (
-            <SpeakerCard key={s.name} s={s} delay={i * 0.08} />
-          ))}
-
-          {/* Placeholder cards */}
-          {Array.from({ length: placeholderCount }).map((_, n) => (
-            <Reveal key={n} delay={(confirmed.length + n) * 0.08}>
-              <div className="speaker-card" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 12, padding: "32px 24px", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 260 }}>
-                <div style={{ width: 80, height: 80, borderRadius: "50%", background: `rgba(24,185,197,0.1)`, border: `2px dashed rgba(24,185,197,0.25)`, margin: "0 auto 16px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <span style={{ fontSize: "1.8rem" }}>🎙️</span>
-                </div>
-                <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "1rem", color: C.white, marginBottom: 4 }}>
-                  Coming Soon
-                </div>
-                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.8rem", color: "rgba(255,255,255,0.3)" }}>
-                  Announcement Pending
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal>
-          <div style={{ textAlign: "center" }}>
-            <p style={{ fontFamily: "'Outfit', sans-serif", color: "rgba(255,255,255,0.5)", fontSize: "0.9rem", marginBottom: 20 }}>
-              Interested in speaking at the Advice-Only Conference?
-            </p>
-            <a
-              href="mailto:info@adviceonlynetwork.com?subject=Speaking Interest - Advice-Only Conference 2026"
-              style={{ display: "inline-block", border: `1px solid rgba(24,185,197,0.5)`, color: C.teal, padding: "12px 28px", borderRadius: 4, fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.88rem", letterSpacing: "0.06em", textTransform: "uppercase", transition: "all 0.2s" }}
-            >
-              Apply to Speak →
-            </a>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-// ─── Venue ─────────────────────────────────────────────────────────────────
-function Venue() {
-  const isMobile = useIsMobile();
-  const spaces = [
-    {
-      name: "Performance Hall",
-      role: "Main Conference Space",
-      sqft: "1,701",
-      capacity: "150",
-      desc: "Our primary gathering space — a dramatic performance hall with exposed brick walls, flexible seating, and full AV capabilities. This is where the magic happens: keynotes, panels, and plenary sessions.",
-      link: "https://www.peerspace.com/pages/listings/61f3120bbdb172000d3c7d71",
-    },
-    {
-      name: "Breakout Room",
-      role: "Breakout Space",
-      sqft: "816",
-      capacity: "36",
-      desc: "A beautifully lit meeting room with natural light and movable furniture. Perfect for intimate breakout sessions, workshops, and afternoon roundtable discussions.",
-      link: "https://www.peerspace.com/pages/listings/61f30706bdb172000d3c7797",
-    },
-    {
-      name: "Meeting Room",
-      role: "Networking Space",
-      sqft: "300",
-      capacity: "10",
-      desc: "A cozy, light-filled room with a private outdoor patio overlooking downtown Minneapolis. Ideal for intimate sessions, one-on-ones, and peer networking.",
-      link: "https://www.peerspace.com/pages/listings/641ca432464ca6000e035350",
-    },
-  ];
-  return (
-    <section id="venue" style={{ padding: isMobile ? "60px 20px" : "96px 32px", background: C.cream }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <Reveal>
-          <div style={{ textAlign: "center", marginBottom: 60 }}>
-            <div className="section-label">Where We're Gathering</div>
-            <div className="divider divider-center" />
-            <h2 className="section-heading" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", marginBottom: 12 }}>
-              Open Book Space · Minneapolis
-            </h2>
-            <p style={{ fontFamily: "'Outfit', sans-serif", color: C.grayMid, fontSize: "0.98rem", maxWidth: 560, margin: "0 auto" }}>
-              Nestled in the heart of downtown Minneapolis, Open Book is a stunning literary and creative center with exposed brick, soaring ceilings, and a warm, inspiring atmosphere.
-            </p>
-          </div>
-        </Reveal>
-
-        <div className="venue-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24, marginBottom: 48, alignItems: "stretch" }}>
-          {spaces.map((s, i) => (
-            <Reveal key={s.name} delay={i * 0.1} style={{ height: "100%" }}>
-              <div className="venue-card" style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-                <div style={{ background: i === 0 ? C.navy : i === 1 ? C.tealDark : C.amberDark, padding: "28px 24px 20px", display: "flex", alignItems: "flex-end", justifyContent: "space-between" }}>
-                  <div>
-                    <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.7rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)", marginBottom: 6 }}>{s.role}</div>
-                    <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.5rem", color: C.white }}>{s.name}</h3>
-                  </div>
-                </div>
-                <div style={{ padding: "20px 24px 24px", display: "flex", flexDirection: "column", flex: 1 }}>
-                  <div style={{ display: "flex", gap: 16, marginBottom: 16 }}>
-                    <div style={{ textAlign: "center", background: C.creamLight, borderRadius: 6, padding: "10px 14px" }}>
-                      <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.4rem", color: C.navy }}>{s.sqft}</div>
-                      <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.68rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: C.grayMid }}>sq ft</div>
-                    </div>
-                    <div style={{ textAlign: "center", background: C.creamLight, borderRadius: 6, padding: "10px 14px" }}>
-                      <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.4rem", color: C.navy }}>{s.capacity}</div>
-                      <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.68rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: C.grayMid }}>capacity</div>
-                    </div>
-                  </div>
-                  <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.9rem", color: C.grayMid, lineHeight: 1.65, marginBottom: 16, flex: 1 }}>{s.desc}</p>
-
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
-        {/* Google Maps Embed */}
-        <Reveal>
-          <div style={{ borderRadius: 12, overflow: "hidden", height: 380, position: "relative", border: `1px solid ${C.grayLight}`, boxShadow: "0 8px 32px rgba(11,31,58,0.08)" }}>
-            <iframe
-              title="Open Book Space - Minneapolis"
-              src="https://www.google.com/maps?q=1011+Washington+Ave+S,+Minneapolis,+MN+55415&output=embed"
-              width="100%"
-              height="100%"
-              style={{ border: 0, display: "block" }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-            {/* Overlay pill with address + directions button */}
-            <div className="map-overlay" style={{
-              position: "absolute",
-              bottom: 16,
-              left: "50%",
-              transform: "translateX(-50%)",
-              background: "rgba(255,255,255,0.97)",
-              backdropFilter: "blur(8px)",
-              borderRadius: 100,
-              padding: "10px 10px 10px 20px",
-              display: "flex",
-              alignItems: "center",
-              gap: 14,
-              boxShadow: "0 4px 24px rgba(11,31,58,0.15)",
-            }}>
-              <span style={{ fontSize: "1rem" }}>📍</span>
-              <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.88rem", color: C.navy }}>
-                1011 Washington Ave S, Minneapolis, MN 55415
-              </span>
-              <a
-                href="https://maps.google.com/?q=Open+Book+Minneapolis+1011+Washington+Ave+S"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="cta-primary"
-                style={{ background: C.navy, color: C.white, padding: "8px 18px", fontSize: "0.78rem", borderRadius: 100, letterSpacing: "0.04em" }}
-              >
-                Get Directions →
-              </a>
-            </div>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-// ─── Hotels ────────────────────────────────────────────────────────────────
-function Hotels() {
-  const isMobile = useIsMobile();
-  const amenities = [
-    { icon: "🍹", label: "W XYZ Bar", desc: "Socialize at the lively on-site W XYZ bar — perfect for connecting with fellow attendees after sessions" },
-    { icon: "📶", label: "Free Wi-Fi", desc: "Complimentary high-speed Wi-Fi throughout the hotel for all guests" },
-    { icon: "💪", label: "24/7 Fitness Center", desc: "Round-the-clock gym to keep your routine going during the conference" },
-    { icon: "🚇", label: "Light Rail Access", desc: "Easy access to Light Rail — connect to the venue, airport, and all of downtown" },
-  ];
-
-  return (
-    <section id="hotels" style={{ padding: isMobile ? "60px 20px" : "96px 32px", background: C.creamLight }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-
-        {/* Header */}
-        <Reveal>
-          <div style={{ textAlign: "center", marginBottom: 56 }}>
-            <div className="section-label">Where to Stay</div>
-            <div className="divider divider-center" />
-            <h2 className="section-heading" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", marginBottom: 12 }}>
-              Recommended Hotels
-            </h2>
-            <p style={{ fontFamily: "'Outfit', sans-serif", color: C.grayMid, maxWidth: 600, margin: "0 auto", lineHeight: 1.7 }}>
-              Both hotels below are within close walking distance to the venue and are our top recommendations for attendees. Book early to secure your preferred dates!
-            </p>
-          </div>
-        </Reveal>
-
-        {/* Two hotel cards */}
-        <div className="hotel-grid" style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(440px, 1fr))", gap: 24 }}>
-
-          {/* Aloft */}
-          <Reveal delay={0.1}>
-            <div style={{ background: C.white, borderRadius: 16, overflow: "hidden", border: `1px solid ${C.grayLight}`, boxShadow: "0 8px 32px rgba(11,31,58,0.08)", height: "100%", display: "flex", flexDirection: "column" }}>
-              <div style={{ background: `linear-gradient(135deg, ${C.navy} 0%, #0F2847 100%)`, padding: isMobile ? "20px 20px" : "28px 32px" }}>
-                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.7rem", color: C.white, lineHeight: 1.05, marginBottom: 8 }}>
-                  Aloft Minneapolis
-                </h3>
-                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.85rem", color: "rgba(255,255,255,0.5)", display: "flex", alignItems: "center", gap: 6 }}>
-                  <span>📍</span>
-                  <span>900 Washington Avenue South, Minneapolis, MN 55415</span>
-                </div>
-              </div>
-              <div style={{ padding: isMobile ? "20px" : "24px 32px 32px", flex: 1, display: "flex", flexDirection: "column" }}>
-                <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.95rem", color: C.bodyText, lineHeight: 1.75, marginBottom: 24, flex: 1 }}>
-                  A vibrant, loft-inspired hotel in the Mill District, directly across the street from the conference venue. Features the W XYZ bar, indoor pool, and energetic communal spaces.
-                </p>
-                <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 12, flexWrap: "wrap" }}>
-                  <a href="https://www.marriott.com/en-us/hotels/mspal-aloft-minneapolis/overview/" target="_blank" rel="noopener noreferrer"
-                    className="cta-primary" style={{ background: C.navy, color: C.white, fontSize: "0.9rem", padding: "14px 24px", textAlign: "center" }}>
-                    View Hotel →
-                  </a>
-                  <a href="https://maps.google.com/?q=Aloft+Minneapolis+900+Washington+Avenue+South" target="_blank" rel="noopener noreferrer"
-                    style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", border: `2px solid ${C.grayLight}`, color: C.grayMid, fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.9rem", letterSpacing: "0.04em", padding: "12px 22px", borderRadius: 4, transition: "border-color 0.2s, color 0.2s" }}
-                    onMouseEnter={e => { e.currentTarget.style.borderColor = C.navy; e.currentTarget.style.color = C.navy; }}
-                    onMouseLeave={e => { e.currentTarget.style.borderColor = C.grayLight; e.currentTarget.style.color = C.grayMid; }}>
-                    📍 Directions
-                  </a>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-
-          {/* Moxy */}
-          <Reveal delay={0.15}>
-            <div style={{ background: C.white, borderRadius: 16, overflow: "hidden", border: `1px solid ${C.grayLight}`, boxShadow: "0 8px 32px rgba(11,31,58,0.08)", height: "100%", display: "flex", flexDirection: "column" }}>
-              <div style={{ background: `linear-gradient(135deg, #0F2847 0%, #0A3D62 100%)`, padding: isMobile ? "20px" : "28px 32px" }}>
-                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.7rem", color: C.white, lineHeight: 1.05, marginBottom: 8 }}>
-                  Moxy Minneapolis Downtown
-                </h3>
-                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.85rem", color: "rgba(255,255,255,0.5)", display: "flex", alignItems: "center", gap: 6 }}>
-                  <span>📍</span>
-                  <span>247 Chicago Avenue South, Minneapolis, MN 55415</span>
-                </div>
-              </div>
-              <div style={{ padding: isMobile ? "20px" : "24px 32px 32px", flex: 1, display: "flex", flexDirection: "column" }}>
-                <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.95rem", color: C.bodyText, lineHeight: 1.75, marginBottom: 24, flex: 1 }}>
-                  A hip, modern hotel right in the heart of Downtown East within short walking distance from the venue. Known for its playful energy, Bar Moxy, and lively communal lobby spaces.
-                </p>
-                <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 12, flexWrap: "wrap" }}>
-                  <a href="https://www.marriott.com/en-us/hotels/mspod-moxy-minneapolis-downtown/overview/" target="_blank" rel="noopener noreferrer"
-                    className="cta-primary" style={{ background: C.navy, color: C.white, fontSize: "0.9rem", padding: "14px 24px", textAlign: "center" }}>
-                    View Hotel →
-                  </a>
-                  <a href="https://maps.google.com/?q=Moxy+Minneapolis+Downtown+247+Chicago+Avenue+South" target="_blank" rel="noopener noreferrer"
-                    style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", border: `2px solid ${C.grayLight}`, color: C.grayMid, fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.9rem", letterSpacing: "0.04em", padding: "12px 22px", borderRadius: 4, transition: "border-color 0.2s, color 0.2s" }}
-                    onMouseEnter={e => { e.currentTarget.style.borderColor = C.navy; e.currentTarget.style.color = C.navy; }}
-                    onMouseLeave={e => { e.currentTarget.style.borderColor = C.grayLight; e.currentTarget.style.color = C.grayMid; }}>
-                    📍 Directions
-                  </a>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-
-        </div>
-
-      </div>
-    </section>
-  );
-}
 
 // ─── Tickets ───────────────────────────────────────────────────────────────
 function Tickets() {
@@ -1516,7 +1069,7 @@ function Footer() {
           </div>
           <div>
             <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "0.78rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: 16 }}>Quick Links</div>
-            {["About", "Agenda", "Speakers", "Venue", "Hotels", "Tickets", "FAQ"].map((l) => (
+            {["About", "Agenda", "Tickets", "FAQ"].map((l) => (
               <div key={l} style={{ marginBottom: 8 }}>
                 <a href={`#${l.toLowerCase()}`} style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.9rem", color: "rgba(255,255,255,0.5)", transition: "color 0.2s" }}
                   onMouseEnter={e => e.target.style.color = C.white}
@@ -1567,9 +1120,6 @@ export default function AdviceOnlyConference() {
       <About />
       <WhyAttend />
       <Agenda />
-      <Speakers />
-      <Venue />
-      <Hotels />
       <Tickets />
       <FAQ />
       <PressStrip />
