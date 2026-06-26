@@ -421,7 +421,7 @@ function Nav({ scrolled }) {
             Advice<span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 400, fontSize: "1.2rem" }}>-</span>Only
           </span>
           <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 500, fontSize: "0.65rem", color: C.amber, letterSpacing: "0.2em", textTransform: "uppercase" }}>
-            Denver 2027
+            Conference · Denver 2027
           </span>
         </a>
 
@@ -685,7 +685,6 @@ function Tickets() {
   const perks = [
     "Full 2-day conference access",
     "All keynotes & breakout sessions",
-    "Lunch both days",
     "Evening networking event",
     "Peer connections & community",
     "Early Bird pricing — locked in now",
