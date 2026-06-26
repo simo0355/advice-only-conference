@@ -733,7 +733,9 @@ function Tickets() {
                 ))}
               </ul>
               <a
-                href="mailto:info@adviceonlynetwork.com?subject=2027 Early Bird Pre-Registration"
+                href="https://buy.stripe.com/9B65kEfrH2Ae0mSaHy4Vy0c"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="cta-primary"
                 style={{ display: "block", background: C.navy, color: C.white, fontSize: "0.88rem", textAlign: "center" }}
               >
@@ -864,7 +866,7 @@ function FinalCTA() {
             Pre-register now to lock in our Early Bird rate of $399.
           </p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-            <a href="mailto:info@adviceonlynetwork.com?subject=2027 Early Bird Pre-Registration" className="cta-primary">Pre-Register for $399</a>
+            <a href="https://buy.stripe.com/9B65kEfrH2Ae0mSaHy4Vy0c" target="_blank" rel="noopener noreferrer" className="cta-primary">Pre-Register for $399</a>
             <a href="https://www.adviceonlynetwork.com" target="_blank" rel="noopener noreferrer" className="cta-secondary">
               Visit Advice-Only Network
             </a>
