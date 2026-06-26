@@ -395,7 +395,7 @@ function Reveal({ children, delay = 0, style = {} }) {
 // ─── Navigation ────────────────────────────────────────────────────────────
 function Nav({ scrolled }) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const links = ["About", "Agenda", "Tickets", "FAQ"];
+  const links = ["About", "Tickets", "FAQ"];
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -421,7 +421,7 @@ function Nav({ scrolled }) {
             Advice<span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 400, fontSize: "1.2rem" }}>-</span>Only
           </span>
           <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 500, fontSize: "0.65rem", color: C.amber, letterSpacing: "0.2em", textTransform: "uppercase" }}>
-            Conference · Minneapolis 2026
+            Denver 2027
           </span>
         </a>
 
@@ -623,9 +623,7 @@ function About() {
             <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "1.05rem", lineHeight: 1.75, color: C.bodyText, marginBottom: 32 }}>
               No product pitches. No commission-hungry sales reps. Just real advisors doing real work for real people — and two days to celebrate what makes our model the future of financial planning.
             </p>
-            <div className="about-ctas" style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 12, flexWrap: "wrap" }}>
-              <a href="#agenda" className="cta-primary" style={{ background: C.navy, color: C.white }} onClick={(e) => { e.preventDefault(); document.getElementById("agenda")?.scrollIntoView({ behavior: "smooth" }); }}>View the Agenda</a>
-            </div>
+            <a href="#tickets" className="cta-primary" style={{ background: C.navy, color: C.white }} onClick={(e) => { e.preventDefault(); document.getElementById("tickets")?.scrollIntoView({ behavior: "smooth" }); }}>Pre-Register for Denver 2027</a>
           </div>
         </Reveal>
       </div>
@@ -679,181 +677,6 @@ function WhyAttend() {
   );
 }
 
-// ─── Agenda ────────────────────────────────────────────────────────────────
-function Agenda() {
-  const [day, setDay] = useState(1);
-  const isMobile = useIsMobile();
-  const agenda = {
-    1: [
-      { time: "8:00 AM", title: "Registration & Morning Coffee", type: "break", note: "Performance Hall Lobby" },
-      { time: "9:00 AM", title: "Opening Keynote", type: "keynote", note: "Performance Hall · Welcome to the Advice-Only Conference — Setting the stage for two transformative days" },
-      { time: "10:00 AM", type: "concurrent", sessions: [
-        { title: "Mixer 1: Starting as Advice-Only", room: "Performance Hall", type: "session", speaker: "A networking session to connect with others who are just getting started on their Advice-Only journey" },
-        { title: "Mixer 2: Established Advice-Only Practitioners", room: "Breakout Room", type: "session", speaker: "A networking session to connect with fellow experienced Advice-Only advisors" },
-      ]},
-      { time: "11:15 AM", title: "How to Attract New Clients as an Advice-Only Advisor", type: "session", note: "Performance Hall · Eryn Schultz · Her Personal Finance" },
-      { time: "12:30 PM", title: "Lunch & Networking", type: "break", note: "Catered lunch · Open networking with all attendees" },
-      { time: "1:30 PM", title: "The Intersection of Advice-Only and the FIRE Movement", type: "keynote", note: "Performance Hall · Chris Mamula · Author: Choose FI" },
-      { time: "2:45 PM", title: "The Business Case for Advice-Only", type: "session", note: "Performance Hall · Steven Fox · AdviceOnly" },
-      { time: "4:00 PM", title: "Optimizing Your Website for SEO & AEO", type: "session", note: "Performance Hall · Alex Ammar · Paradox Financial" },
-      { time: "5:30 PM", title: "Evening Event & Networking 🎉", type: "break", note: "Minneapolis Pickleball Club · Food, drink, and pickleball!" },
-    ],
-    2: [
-      { time: "8:30 AM", title: "Morning Coffee", type: "break", note: "Come early, connect deeply" },
-      { time: "9:00 AM", title: "Death and Money Make People Funny: Supporting Clients Facing Mortality", type: "keynote", note: "Performance Hall · Rose Zealand · Golden Thread Collaborative" },
-      { time: "10:00 AM", title: "Compliance for Advice-Only Advisors", type: "session", note: "Performance Hall · Kingston Hollman · Just Compliance" },
-      { time: "11:15 AM", type: "concurrent", sessions: [
-        { title: "Delivering Ongoing Financial Planning", room: "Performance Hall", type: "session", speaker: "Sarah Sprague Gerber · Momentum Financial Planning LLC" },
-        { title: "Delivering Hourly or Project Based Financial Planning", room: "Breakout Room", type: "session", speaker: "Holly Donaldson · Holly Donaldson Financial Planning" },
-      ]},
-      { time: "12:15 PM", title: "Lunch & Networking", type: "break", note: "Catered lunch · Open networking with all attendees" },
-      { time: "1:30 PM", title: "Reframing the Retirement Premise", type: "keynote", note: "Performance Hall · Barb Clemons · Clemons Financial Education Company" },
-      { time: "2:45 PM", title: "How to use AI in your practice in 2026 and beyond", type: "session", note: "Performance Hall" },
-      { time: "4:00 PM", title: "Closing Keynote", type: "keynote", note: "Performance Hall · Closing of the Advice-Only Conference and Looking Toward the Future" },
-      { time: "5:00 PM", title: "Farewells & Departures", type: "break", note: "Celebrating two great days together" },
-    ],
-  };
-  const typeColors = {
-    keynote: { bg: `rgba(11,31,58,0.06)`, border: C.navy, dot: C.navy },
-    session: { bg: `rgba(24,185,197,0.07)`, border: C.teal, dot: C.teal },
-    workshop: { bg: `rgba(159,140,73,0.08)`, border: C.amber, dot: C.amber },
-    break: { bg: `rgba(154,146,134,0.06)`, border: C.grayMid, dot: C.grayMid },
-  };
-  return (
-    <section id="agenda" style={{ padding: isMobile ? "60px 20px" : "96px 32px", background: C.creamLight }}>
-      <div style={{ maxWidth: 900, margin: "0 auto" }}>
-        <Reveal>
-          <div style={{ textAlign: "center", marginBottom: 48 }}>
-            <div className="section-label">Conference Schedule</div>
-            <div className="divider divider-center" />
-            <h2 className="section-heading" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", marginBottom: 12 }}>Agenda</h2>
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.1}>
-          <div style={{ display: "flex", gap: 12, justifyContent: "center", marginBottom: 24 }}>
-            {[1, 2].map((d) => (
-              <button key={d} onClick={() => setDay(d)} className={`agenda-tab ${day === d ? "active" : "inactive"}`}>
-                Day {d} · June {22 + d}
-              </button>
-            ))}
-          </div>
-        </Reveal>
-
-        {/* Legend */}
-        <Reveal delay={0.15}>
-          <div style={{ display: "flex", gap: 20, justifyContent: "center", flexWrap: "wrap", marginBottom: 36 }}>
-            {[
-              { color: C.navy, label: "Keynote" },
-              { color: C.teal, label: "Breakout Session" },
-              { color: C.grayMid, label: "Break / Networking" },
-            ].map(({ color, label }) => (
-              <div key={label} style={{ display: "flex", alignItems: "center", gap: 7 }}>
-                <div style={{ width: 10, height: 10, borderRadius: "50%", background: color, flexShrink: 0 }} />
-                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.78rem", fontWeight: 500, color: C.grayMid }}>{label}</span>
-              </div>
-            ))}
-          </div>
-        </Reveal>
-
-        <div style={{ position: "relative" }}>
-          {/* Timeline line - hidden on mobile */}
-          {!isMobile && <div style={{ position: "absolute", left: 78, top: 0, bottom: 0, width: 2, background: C.grayLight }} />}
-
-          {agenda[day].map((item, i) => {
-            // ── Concurrent / parallel sessions ──
-            if (item.type === "concurrent") {
-              return (
-                <Reveal key={i} delay={i * 0.05}>
-                  {isMobile ? (
-                    <div style={{ marginBottom: 12 }}>
-                      <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "0.85rem", color: C.grayMid, marginBottom: 6, letterSpacing: "0.03em" }}>{item.time}</div>
-                      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                        {item.sessions.map((s, si) => {
-                          const col = typeColors[s.type];
-                          return (
-                            <div key={si} style={{ background: col.bg, borderLeft: `3px solid ${col.border}`, borderRadius: "0 8px 8px 0", padding: "12px 16px" }}>
-                              <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.95rem", color: C.navy, marginBottom: 5 }}>{s.title}</div>
-                              <div style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(11,31,58,0.06)", borderRadius: 100, padding: "3px 10px" }}>
-                                <span style={{ fontSize: "0.7rem" }}>📍</span>
-                                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.78rem", fontWeight: 600, color: C.grayMid }}>{s.room}</span>
-                              </div>
-                              {s.speaker && <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.82rem", color: C.grayMid, marginTop: 5 }}>{s.speaker}</div>}
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  ) : (
-                    <div style={{ display: "flex", gap: 24, marginBottom: 10, alignItems: "flex-start" }}>
-                      <div style={{ minWidth: 68, textAlign: "right", fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.8rem", color: C.grayMid, paddingTop: 14, letterSpacing: "0.03em", flexShrink: 0 }}>{item.time}</div>
-                      <div style={{ position: "relative", zIndex: 1, marginTop: 16, flexShrink: 0 }}>
-                        <div style={{ width: 12, height: 12, borderRadius: "50%", background: C.teal, border: `3px solid ${C.creamLight}` }} />
-                      </div>
-                      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
-                        {item.sessions.map((s, si) => {
-                          const col = typeColors[s.type];
-                          return (
-                            <div key={si} style={{ background: col.bg, borderLeft: `3px solid ${col.border}`, borderRadius: "0 8px 8px 0", padding: "12px 16px" }}>
-                              <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.92rem", color: C.navy, marginBottom: 5 }}>{s.title}</div>
-                              <div style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(11,31,58,0.06)", borderRadius: 100, padding: "3px 10px" }}>
-                                <span style={{ fontSize: "0.65rem" }}>📍</span>
-                                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.72rem", fontWeight: 600, color: C.grayMid, letterSpacing: "0.04em" }}>{s.room}</span>
-                              </div>
-                              {s.speaker && <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.75rem", color: C.grayMid, marginTop: 5 }}>{s.speaker}</div>}
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  )}
-                </Reveal>
-              );
-            }
-
-            // ── Single session ──
-            const col = typeColors[item.type];
-            return (
-              <Reveal key={i} delay={i * 0.05}>
-                {isMobile ? (
-                  <div style={{ marginBottom: 10 }}>
-                    <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "0.85rem", color: C.grayMid, marginBottom: 6, letterSpacing: "0.03em" }}>{item.time}</div>
-                    <div style={{ background: col.bg, borderLeft: `3px solid ${col.border}`, borderRadius: "0 8px 8px 0", padding: "12px 16px" }}>
-                      <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.95rem", color: C.navy }}>{item.title}</div>
-                      {item.note && <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.82rem", color: C.grayMid, marginTop: 3 }}>{item.note}</div>}
-                    </div>
-                  </div>
-                ) : (
-                  <div style={{ display: "flex", gap: 24, marginBottom: 10, alignItems: "flex-start" }}>
-                    <div style={{ minWidth: 68, textAlign: "right", fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.8rem", color: C.grayMid, paddingTop: 14, letterSpacing: "0.03em" }}>{item.time}</div>
-                    <div style={{ position: "relative", zIndex: 1, marginTop: 16 }}>
-                      <div style={{ width: 12, height: 12, borderRadius: "50%", background: col.dot, border: `3px solid ${C.creamLight}`, flexShrink: 0 }} />
-                    </div>
-                    <div style={{ flex: 1, background: col.bg, borderLeft: `3px solid ${col.border}`, borderRadius: "0 8px 8px 0", padding: "12px 18px", marginBottom: 4 }}>
-                      <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "1rem", color: C.navy }}>{item.title}</div>
-                      {item.note && <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.82rem", color: C.grayMid, marginTop: 3 }}>{item.note}</div>}
-                    </div>
-                  </div>
-                )}
-              </Reveal>
-            );
-          })}
-        </div>
-
-        <Reveal delay={0.2}>
-          <div style={{ textAlign: "center", marginTop: 40, padding: "24px", background: `rgba(24,185,197,0.06)`, borderRadius: 10, border: `1px dashed ${C.teal}` }}>
-            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.95rem", color: C.grayMid }}>
-              Schedule subject to change. Questions? Email us at{" "}
-              <a href="mailto:info@adviceonlynetwork.com" style={{ color: C.teal, fontWeight: 600 }}>info@adviceonlynetwork.com</a>.
-            </p>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-// ─── Speakers ──────────────────────────────────────────────────────────────
 
 
 // ─── Tickets ───────────────────────────────────────────────────────────────
@@ -1069,7 +892,7 @@ function Footer() {
           </div>
           <div>
             <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "0.78rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: 16 }}>Quick Links</div>
-            {["About", "Agenda", "Tickets", "FAQ"].map((l) => (
+            {["About", "Tickets", "FAQ"].map((l) => (
               <div key={l} style={{ marginBottom: 8 }}>
                 <a href={`#${l.toLowerCase()}`} style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.9rem", color: "rgba(255,255,255,0.5)", transition: "color 0.2s" }}
                   onMouseEnter={e => e.target.style.color = C.white}
@@ -1119,7 +942,6 @@ export default function AdviceOnlyConference() {
       <Ticker />
       <About />
       <WhyAttend />
-      <Agenda />
       <Tickets />
       <FAQ />
       <PressStrip />
