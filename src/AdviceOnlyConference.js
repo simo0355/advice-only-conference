@@ -360,27 +360,6 @@ function useIsMobile(breakpoint = 768) {
   return isMobile;
 }
 
-// ─── Countdown Hook ────────────────────────────────────────────────────────
-function useCountdown(targetDate) {
-  const [time, setTime] = useState({ d: 0, h: 0, m: 0, s: 0 });
-  useEffect(() => {
-    const tick = () => {
-      const diff = new Date(targetDate) - new Date();
-      if (diff <= 0) return;
-      setTime({
-        d: Math.floor(diff / 86400000),
-        h: Math.floor((diff % 86400000) / 3600000),
-        m: Math.floor((diff % 3600000) / 60000),
-        s: Math.floor((diff % 60000) / 1000),
-      });
-    };
-    tick();
-    const id = setInterval(tick, 1000);
-    return () => clearInterval(id);
-  }, [targetDate]);
-  return time;
-}
-
 // ─── Scroll Reveal ─────────────────────────────────────────────────────────
 function useReveal() {
   const ref = useRef(null);
@@ -442,7 +421,7 @@ function Nav({ scrolled }) {
             Advice<span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 400, fontSize: "1.2rem" }}>-</span>Only
           </span>
           <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 500, fontSize: "0.65rem", color: C.amber, letterSpacing: "0.2em", textTransform: "uppercase" }}>
-            Conference 2026
+            Conference · Minneapolis 2026
           </span>
         </a>
 
@@ -454,17 +433,17 @@ function Nav({ scrolled }) {
               {l}
             </a>
           ))}
-          <a href="https://buy.stripe.com/9B65kEfrH2Ae0mSaHy4Vy0c" target="_blank" rel="noopener noreferrer"
-            className="ticket-btn" style={{ textDecoration: "none" }}>
-            Get Tickets
+          <a href="#tickets" className="ticket-btn" style={{ textDecoration: "none" }}
+            onClick={(e) => { e.preventDefault(); document.getElementById("tickets")?.scrollIntoView({ behavior: "smooth" }); }}>
+            Denver 2027
           </a>
         </nav>
 
         {/* Mobile controls — hidden on desktop via CSS */}
         <div className="nav-mobile" style={{ display: "none", alignItems: "center", gap: 12 }}>
-          <a href="https://buy.stripe.com/9B65kEfrH2Ae0mSaHy4Vy0c" target="_blank" rel="noopener noreferrer"
-            className="ticket-btn" style={{ textDecoration: "none", fontSize: "0.78rem", padding: "8px 14px" }}>
-            Tickets
+          <a href="#tickets" className="ticket-btn" style={{ textDecoration: "none", fontSize: "0.78rem", padding: "8px 14px" }}
+            onClick={(e) => { e.preventDefault(); document.getElementById("tickets")?.scrollIntoView({ behavior: "smooth" }); }}>
+            Denver 2027
           </a>
           <button onClick={() => setMobileOpen(!mobileOpen)}
             style={{ background: "none", border: "none", cursor: "pointer", padding: 4, display: "flex", flexDirection: "column", gap: 5 }}
@@ -519,7 +498,7 @@ function Nav({ scrolled }) {
 
 // ─── Ticker ────────────────────────────────────────────────────────────────
 function Ticker() {
-  const msgs = ["June 23–24, 2026", "Minneapolis, MN", "Open Book Space", "Advice-Only Network", "Pure Advice · No Commissions · No AUM", "The Industry's First Advice-Only Conference", "Limited Seats Available"];
+  const msgs = ["Thank You Minneapolis!", "Denver, CO · 2027", "Early Bird Tickets from $399", "Advice-Only Network", "Pure Advice · No Commissions · No AUM", "The Industry's Premier Advice-Only Conference", "Pre-Register for 2027"];
   const doubled = [...msgs, ...msgs];
   return (
     <div className="ticker-wrap">
@@ -530,36 +509,8 @@ function Ticker() {
   );
 }
 
-// ─── Countdown Block ───────────────────────────────────────────────────────
-function CountdownUnit({ value, label }) {
-  const isMobile = useIsMobile();
-  return (
-    <div className="countdown-unit" style={{ textAlign: "center", minWidth: isMobile ? 60 : 70 }}>
-      <div className="countdown-value" style={{
-        fontFamily: "'Cormorant Garamond', serif",
-        fontSize: isMobile ? "2rem" : "clamp(2.4rem, 5vw, 3.8rem)",
-        fontWeight: 700,
-        color: C.white,
-        lineHeight: 1,
-        background: "rgba(255,255,255,0.07)",
-        borderRadius: 6,
-        padding: isMobile ? "8px 12px" : "10px 18px",
-        backdropFilter: "blur(4px)",
-        border: "1px solid rgba(255,255,255,0.12)",
-        minWidth: isMobile ? 60 : 82,
-      }}>
-        {String(value).padStart(2, "0")}
-      </div>
-      <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.68rem", fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: C.amber, marginTop: 8 }}>
-        {label}
-      </div>
-    </div>
-  );
-}
-
 // ─── Hero ──────────────────────────────────────────────────────────────────
 function Hero() {
-  const { d, h, m, s } = useCountdown("2026-06-23T08:00:00");
   const isMobile = useIsMobile();
   return (
     <section
@@ -598,14 +549,14 @@ function Hero() {
       </h1>
 
       <p className="fade-up-2" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 400, fontSize: "clamp(1rem, 2.5vw, 1.25rem)", color: "rgba(255,255,255,0.72)", maxWidth: 620, lineHeight: 1.6, marginBottom: 32 }}>
-        Two days. One movement. The only conference built exclusively for Advice-Only financial planners — where pure advice meets real community.
+        Thank you to everyone who joined us in Minneapolis for an unforgettable two days. We're already planning something even bigger — see you in Denver in 2027.
       </p>
 
       <div className="fade-up-3 hero-pills" style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 10, flexWrap: "wrap", justifyContent: "center", alignItems: "center", marginBottom: 40, width: isMobile ? "100%" : "auto" }}>
         {[
-          { icon: "📅", text: "June 23–24, 2026", href: null },
-          { icon: "📍", text: "Open Book Space · Minneapolis, MN", href: "#venue" },
-          { icon: "🎟️", text: "Limited Seats Available", href: "#tickets" },
+          { icon: "✅", text: "Minneapolis 2026 — Thank You!", href: null },
+          { icon: "📍", text: "Denver, CO · 2027", href: null },
+          { icon: "🎟️", text: "Early Bird from $399", href: "#tickets" },
         ].map(({ icon, text, href }) => {
           const inner = (
             <>
@@ -626,20 +577,26 @@ function Hero() {
       </div>
 
       <div className="fade-up-4 hero-ctas" style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 12, justifyContent: "center", marginBottom: 48, width: isMobile ? "100%" : "auto" }}>
-        <a href="https://buy.stripe.com/9B65kEfrH2Ae0mSaHy4Vy0c" target="_blank" rel="noopener noreferrer" className="cta-primary">Secure Your Spot</a>
-        <a href="#about" className="cta-secondary" onClick={(e) => { e.preventDefault(); document.getElementById("about")?.scrollIntoView({ behavior: "smooth" }); }}>Learn More</a>
+        <a href="#tickets" className="cta-primary" onClick={(e) => { e.preventDefault(); document.getElementById("tickets")?.scrollIntoView({ behavior: "smooth" }); }}>Pre-Register for Denver 2027</a>
+        <a href="#about" className="cta-secondary" onClick={(e) => { e.preventDefault(); document.getElementById("about")?.scrollIntoView({ behavior: "smooth" }); }}>View 2026 Recap</a>
       </div>
 
-      {/* Countdown */}
+      {/* 2027 Denver teaser */}
       <div className="fade-up-4" style={{ textAlign: "center" }}>
         <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.72rem", fontWeight: 600, letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", marginBottom: 16 }}>
-          Conference begins in
+          Next Conference
         </div>
-        <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-          <CountdownUnit value={d} label="Days" />
-          <CountdownUnit value={h} label="Hours" />
-          <CountdownUnit value={m} label="Minutes" />
-          <CountdownUnit value={s} label="Seconds" />
+        <div style={{ display: "inline-flex", flexDirection: isMobile ? "column" : "row", gap: 0, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 10, overflow: "hidden" }}>
+          {[
+            { label: "Location", value: "Denver, CO" },
+            { label: "Year", value: "2027" },
+            { label: "Early Bird", value: "$399" },
+          ].map(({ label, value }, i) => (
+            <div key={label} style={{ padding: isMobile ? "16px 24px" : "18px 32px", borderRight: !isMobile && i < 2 ? "1px solid rgba(255,255,255,0.1)" : "none", borderBottom: isMobile && i < 2 ? "1px solid rgba(255,255,255,0.1)" : "none" }}>
+              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "clamp(1.8rem, 4vw, 2.6rem)", color: C.white, lineHeight: 1 }}>{value}</div>
+              <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.68rem", fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: C.amber, marginTop: 6 }}>{label}</div>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -1349,23 +1306,13 @@ function Hotels() {
 // ─── Tickets ───────────────────────────────────────────────────────────────
 function Tickets() {
   const isMobile = useIsMobile();
-  const tiers = [
-    {
-      name: "General Admission",
-      price: "$399",
-      priceSub: "General Admission",
-      priceRegular: "",
-      perks: [
-        "Full 2-day access (June 23–24)",
-        "All keynotes & breakout sessions",
-        "Lunch both days",
-        "Evening event — Night of June 23rd",
-        "Networking & peer connections",
-        "Access to all three Open Book spaces",
-      ],
-      highlight: true,
-      cta: "Register Now",
-    },
+  const perks = [
+    "Full 2-day conference access",
+    "All keynotes & breakout sessions",
+    "Lunch both days",
+    "Evening networking event",
+    "Peer connections & community",
+    "Early Bird pricing — locked in now",
   ];
   return (
     <section id="tickets" style={{ padding: isMobile ? "60px 20px" : "96px 32px", background: `linear-gradient(160deg, ${C.navyDark} 0%, #0F2847 60%, #0A3D62 100%)`, position: "relative", overflow: "hidden" }}>
@@ -1374,61 +1321,57 @@ function Tickets() {
         <Reveal>
           <div style={{ textAlign: "center", marginBottom: 60 }}>
             <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.75rem", letterSpacing: "0.18em", textTransform: "uppercase", color: C.teal }}>
-              Join Us in Minneapolis
+              Coming to Denver, CO
             </div>
             <div style={{ width: 56, height: 3, background: C.amber, margin: "14px auto 24px", borderRadius: 2 }} />
             <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "clamp(2rem, 4vw, 3rem)", color: C.white, marginBottom: 12 }}>
-              Get Your Ticket
+              Be First for 2027
             </h2>
-            <p style={{ fontFamily: "'Outfit', sans-serif", color: "rgba(255,255,255,0.55)", fontSize: "0.95rem" }}>
-              Seats are limited. Secure your spot today.
+            <p style={{ fontFamily: "'Outfit', sans-serif", color: "rgba(255,255,255,0.55)", fontSize: "0.95rem", maxWidth: 520, margin: "0 auto" }}>
+              We're bringing the Advice-Only Conference to Denver in 2027. Pre-register now to lock in our Early Bird rate — the lowest price we'll ever offer.
             </p>
           </div>
         </Reveal>
 
         <div style={{ display: "flex", justifyContent: "center", marginBottom: 48 }}>
-          {tiers.map((t, i) => (
-            <Reveal key={t.name} delay={i * 0.1} style={{ width: "100%", maxWidth: 480 }}>
-              <div style={{
-                background: t.highlight ? C.white : "rgba(255,255,255,0.05)",
-                border: t.highlight ? `2px solid ${C.amber}` : "1px solid rgba(255,255,255,0.1)",
-                borderRadius: 12,
-                padding: "36px 28px",
-                position: "relative",
-                textAlign: "center",
-              }}>
-                {t.highlight && (
-                  <div style={{ position: "absolute", top: -14, left: "50%", transform: "translateX(-50%)", background: C.teal, color: C.white, fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", padding: "5px 16px", borderRadius: 100, whiteSpace: "nowrap" }}>
-                    Limited Seats Available
-                  </div>
-                )}
-                <h3 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "1.05rem", color: t.highlight ? C.navy : C.white, marginBottom: 12 }}>{t.name}</h3>
-                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "3.4rem", color: t.highlight ? C.navy : C.amber, lineHeight: 1, marginBottom: 4 }}>{t.price}</div>
-                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.82rem", fontWeight: 600, color: C.teal, marginBottom: 4 }}>{t.priceSub}</div>
-                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.78rem", color: C.grayMid, marginBottom: 28 }}>{t.priceRegular}</div>
-                <ul style={{ listStyle: "none", marginBottom: 32, textAlign: "left" }}>
-                  {t.perks.map((p) => (
-                    <li key={p} style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.9rem", color: t.highlight ? C.bodyText : "rgba(255,255,255,0.7)", padding: "6px 0", display: "flex", alignItems: "flex-start", gap: 10, borderBottom: `1px solid ${t.highlight ? C.grayLight : "rgba(255,255,255,0.06)"}` }}>
-                      <span style={{ color: C.teal, fontWeight: 700, marginTop: 1 }}>✓</span>{p}
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  className="cta-primary"
-                  style={{ width: "100%", background: t.highlight ? C.navy : C.amber, color: t.highlight ? C.white : C.navy, fontSize: "0.88rem" }}
-                  onClick={() => window.open("https://buy.stripe.com/9B65kEfrH2Ae0mSaHy4Vy0c", "_blank")}
-                >
-                  {t.cta} →
-                </button>
+          <Reveal style={{ width: "100%", maxWidth: 480 }}>
+            <div style={{
+              background: C.white,
+              border: `2px solid ${C.amber}`,
+              borderRadius: 12,
+              padding: "36px 28px",
+              position: "relative",
+              textAlign: "center",
+            }}>
+              <div style={{ position: "absolute", top: -14, left: "50%", transform: "translateX(-50%)", background: C.teal, color: C.white, fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", padding: "5px 16px", borderRadius: 100, whiteSpace: "nowrap" }}>
+                Early Bird · Limited Spots
               </div>
-            </Reveal>
-          ))}
+              <h3 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "1.05rem", color: C.navy, marginBottom: 12 }}>Early Bird — Denver 2027</h3>
+              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "3.4rem", color: C.navy, lineHeight: 1, marginBottom: 4 }}>$399</div>
+              <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.82rem", fontWeight: 600, color: C.teal, marginBottom: 4 }}>Early Bird Pre-Registration</div>
+              <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.78rem", color: C.grayMid, marginBottom: 28 }}>Price will increase as the date approaches</div>
+              <ul style={{ listStyle: "none", marginBottom: 32, textAlign: "left" }}>
+                {perks.map((p) => (
+                  <li key={p} style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.9rem", color: C.bodyText, padding: "6px 0", display: "flex", alignItems: "flex-start", gap: 10, borderBottom: `1px solid ${C.grayLight}` }}>
+                    <span style={{ color: C.teal, fontWeight: 700, marginTop: 1 }}>✓</span>{p}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="mailto:info@adviceonlynetwork.com?subject=2027 Early Bird Pre-Registration"
+                className="cta-primary"
+                style={{ display: "block", background: C.navy, color: C.white, fontSize: "0.88rem", textAlign: "center" }}
+              >
+                Pre-Register Now →
+              </a>
+            </div>
+          </Reveal>
         </div>
 
         <Reveal>
           <div style={{ textAlign: "center", padding: "28px", background: "rgba(255,255,255,0.04)", borderRadius: 10, border: "1px solid rgba(255,255,255,0.08)" }}>
             <p style={{ fontFamily: "'Outfit', sans-serif", color: "rgba(255,255,255,0.5)", fontSize: "0.88rem" }}>
-              Questions about tickets or group rates? Email us at{" "}
+              Questions about the 2027 conference? Email us at{" "}
               <a href="mailto:info@adviceonlynetwork.com" style={{ color: C.teal, fontWeight: 600 }}>info@adviceonlynetwork.com</a>
             </p>
           </div>
@@ -1539,14 +1482,14 @@ function FinalCTA() {
       <Reveal>
         <div style={{ maxWidth: 740, margin: "0 auto", textAlign: "center" }}>
           <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "clamp(2.4rem, 5vw, 4rem)", color: C.white, lineHeight: 1.05, marginBottom: 20 }}>
-            Don't Miss the First-Ever<br /><em style={{ color: C.amber }}>Advice-Only Conference</em>
+            See You in<br /><em style={{ color: C.amber }}>Denver · 2027</em>
           </div>
           <p style={{ fontFamily: "'Outfit', sans-serif", color: "rgba(255,255,255,0.6)", fontSize: "1rem", lineHeight: 1.75, marginBottom: 36, maxWidth: 520, margin: "0 auto 36px" }}>
-            June 23–24, 2026 · Open Book Space · Minneapolis, MN<br />
-            Seats are limited. Don't wait.
+            The Advice-Only Conference is coming to Denver, CO in 2027.<br />
+            Pre-register now to lock in our Early Bird rate of $399.
           </p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-            <a href="https://buy.stripe.com/9B65kEfrH2Ae0mSaHy4Vy0c" target="_blank" rel="noopener noreferrer" className="cta-primary">Secure Your Spot Today</a>
+            <a href="mailto:info@adviceonlynetwork.com?subject=2027 Early Bird Pre-Registration" className="cta-primary">Pre-Register for $399</a>
             <a href="https://www.adviceonlynetwork.com" target="_blank" rel="noopener noreferrer" className="cta-secondary">
               Visit Advice-Only Network
             </a>
@@ -1566,7 +1509,7 @@ function Footer() {
         <div className="footer-grid" style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "2fr 1fr 1fr", gap: isMobile ? 32 : 48, marginBottom: 40 }}>
           <div>
             <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.4rem", color: C.white, marginBottom: 4 }}>Advice-Only Conference</div>
-            <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.75rem", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: C.amber, marginBottom: 16 }}>June 23–24, 2026 · Minneapolis</div>
+            <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.75rem", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: C.amber, marginBottom: 16 }}>Minneapolis 2026 · Denver 2027</div>
             <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.88rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, maxWidth: 320 }}>
               Hosted by The Advice-Only Network — the premier directory for Advice-Only financial planners across the country.
             </p>
