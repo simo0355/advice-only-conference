@@ -618,7 +618,7 @@ function About() {
               Where the Advice<span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 400, fontSize: "0.9em" }}>-</span>Only Movement Comes Alive
             </h2>
             <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "1.05rem", lineHeight: 1.75, color: C.bodyText, marginBottom: 20 }}>
-              The Advice-Only Conference is the first of its kind gathering exclusively for Advice-Only financial planners. Hosted by The Advice-Only Network in the heart of downtown Minneapolis, this is your chance to connect with the most forward-thinking minds in Advice-Only financial planning.
+              The Advice-Only Conference is the only gathering built exclusively for Advice-Only financial planners. Hosted by The Advice-Only Network, it's your chance to connect with the most forward-thinking minds in Advice-Only financial planning.
             </p>
             <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "1.05rem", lineHeight: 1.75, color: C.bodyText, marginBottom: 32 }}>
               No product pitches. No commission-hungry sales reps. Just real advisors doing real work for real people — and two days to celebrate what makes our model the future of financial planning.
@@ -767,7 +767,7 @@ function FAQ() {
     { q: "What does 'Advice-Only' mean?", a: "Advice-Only financial planners charge solely for their advice — no commissions, no assets under management fees, and no product sales. They provide pure, fiduciary guidance with reduced conflicts of interest." },
     { q: "What's the dress code?", a: "Come as you are! We want you to be comfortable, so wear whatever you feel good in. This is a welcoming, relaxed environment — there's no need to dress up." },
     { q: "What is your inclusion & harassment policy?", a: "The Advice-Only Conference is committed to being a safe, welcoming, and harassment-free experience for everyone, regardless of gender, gender identity, age, sexual orientation, disability, physical appearance, race, ethnicity, religion, or any other characteristic. We do not tolerate harassment of any kind. All attendees, speakers, sponsors, and staff are expected to treat one another with respect and kindness. Anyone asked to stop harassing behavior is expected to comply immediately. If you experience or witness harassment, please report it to a conference organizer right away. We are here to support you." },
-    { q: "Will sessions be recorded?", a: "The 2026 conference will not be recorded. This first year is all about being in the room — the conversations, connections, and energy that can only happen in person. That said, we hope to have recordings available for future conferences, so stay tuned as the event grows." },
+    { q: "Will sessions be recorded?", a: "We are not planning to record the 2027 conference. It's all about being in the room — the conversations, connections, and energy that can only happen in person. That said, we'll revisit this as the event grows." },
     { q: "Is there a refund policy?", a: "Yes. For Early Bird pre-registrations, if the announced 2027 conference dates don't end up working for you, we will issue a full refund — no questions asked. We want you to pre-register with complete confidence. Just email us at info@adviceonlynetwork.com and we'll take care of it." },
     { q: "How can I become a sponsor?", a: "We're actively seeking sponsors who align with the Advice-Only philosophy. Reach out to us at info@adviceonlynetwork.com to discuss sponsorship opportunities." },
     { q: "Is this event open to press and media?", a: "Yes! We welcome journalists, industry observers, and curious members of the financial media community. If you're interested in attending as a member of the press or covering the Advice-Only movement, please reach out to us at info@adviceonlynetwork.com with a brief note about your outlet or interest. We'll be happy to discuss press access and credentials." },
@@ -827,7 +827,7 @@ function PressStrip() {
           </div>
         </div>
         <a
-          href="mailto:info@adviceonlynetwork.com?subject=Press Inquiry - Advice-Only Conference 2026"
+          href="mailto:info@adviceonlynetwork.com?subject=Press Inquiry - Advice-Only Conference 2027"
           style={{
             display: "inline-block",
             border: `2px solid ${C.navy}`,
@@ -886,7 +886,7 @@ function Footer() {
         <div className="footer-grid" style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "2fr 1fr 1fr", gap: isMobile ? 32 : 48, marginBottom: 40 }}>
           <div>
             <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.4rem", color: C.white, marginBottom: 4 }}>Advice-Only Conference</div>
-            <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.75rem", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: C.amber, marginBottom: 16 }}>Minneapolis 2026 · Denver 2027</div>
+            <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.75rem", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: C.amber, marginBottom: 16 }}>Denver 2027</div>
             <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.88rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, maxWidth: 320 }}>
               Hosted by The Advice-Only Network — the premier directory for Advice-Only financial planners across the country.
             </p>
