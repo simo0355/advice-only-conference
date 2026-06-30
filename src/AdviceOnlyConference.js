@@ -498,7 +498,7 @@ function Nav({ scrolled }) {
 
 // ─── Ticker ────────────────────────────────────────────────────────────────
 function Ticker() {
-  const msgs = ["Thank You Minneapolis!", "Denver, CO · 2027", "Early Bird Tickets from $399", "Advice-Only Network", "Pure Advice · No Commissions · No AUM", "The Industry's Premier Advice-Only Conference", "Pre-Register for 2027"];
+  const msgs = ["Thank You Minneapolis!", "Denver, CO · May 11–12, 2027", "Early Bird Tickets from $399", "Advice-Only Network", "Pure Advice · No Commissions · No AUM", "The Industry's Premier Advice-Only Conference", "Pre-Register for 2027"];
   const doubled = [...msgs, ...msgs];
   return (
     <div className="ticker-wrap">
@@ -555,7 +555,7 @@ function Hero() {
       <div className="fade-up-3 hero-pills" style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 10, flexWrap: "wrap", justifyContent: "center", alignItems: "center", marginBottom: 40, width: isMobile ? "100%" : "auto" }}>
         {[
           { icon: "✅", text: "Minneapolis 2026 — Thank You!", href: null },
-          { icon: "📍", text: "Denver, CO · 2027", href: null },
+          { icon: "📍", text: "Denver, CO · May 11–12, 2027", href: null },
           { icon: "🎟️", text: "Early Bird from $399", href: "#tickets" },
         ].map(({ icon, text, href }) => {
           const inner = (
@@ -588,7 +588,7 @@ function Hero() {
         <div style={{ display: "inline-flex", flexDirection: isMobile ? "column" : "row", gap: 0, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 10, overflow: "hidden" }}>
           {[
             { label: "Location", value: "Denver, CO" },
-            { label: "Year", value: "2027" },
+            { label: "Dates", value: "May 11–12" },
             { label: "Early Bird", value: "$399" },
           ].map(({ label, value }, i) => (
             <div key={label} style={{ padding: isMobile ? "16px 24px" : "18px 32px", borderRight: !isMobile && i < 2 ? "1px solid rgba(255,255,255,0.1)" : "none", borderBottom: isMobile && i < 2 ? "1px solid rgba(255,255,255,0.1)" : "none" }}>
@@ -703,7 +703,7 @@ function Tickets() {
               Be First for 2027
             </h2>
             <p style={{ fontFamily: "'Outfit', sans-serif", color: "rgba(255,255,255,0.55)", fontSize: "0.95rem", maxWidth: 520, margin: "0 auto" }}>
-              We're bringing the Advice-Only Conference to Denver in 2027. Pre-register now to lock in our Early Bird rate — the lowest price we'll ever offer.
+              Join us in Denver, CO on May 11–12, 2027. Pre-register now to lock in our Early Bird rate — the lowest price we'll ever offer.
             </p>
           </div>
         </Reveal>
@@ -768,7 +768,7 @@ function FAQ() {
     { q: "What's the dress code?", a: "Come as you are! We want you to be comfortable, so wear whatever you feel good in. This is a welcoming, relaxed environment — there's no need to dress up." },
     { q: "What is your inclusion & harassment policy?", a: "The Advice-Only Conference is committed to being a safe, welcoming, and harassment-free experience for everyone, regardless of gender, gender identity, age, sexual orientation, disability, physical appearance, race, ethnicity, religion, or any other characteristic. We do not tolerate harassment of any kind. All attendees, speakers, sponsors, and staff are expected to treat one another with respect and kindness. Anyone asked to stop harassing behavior is expected to comply immediately. If you experience or witness harassment, please report it to a conference organizer right away. We are here to support you." },
     { q: "Will sessions be recorded?", a: "We are not planning to record the 2027 conference. It's all about being in the room — the conversations, connections, and energy that can only happen in person. That said, we'll revisit this as the event grows." },
-    { q: "Is there a refund policy?", a: "Yes. For Early Bird pre-registrations, if the announced 2027 conference dates don't end up working for you, we will issue a full refund — no questions asked. We want you to pre-register with complete confidence. Just email us at info@adviceonlynetwork.com and we'll take care of it." },
+    { q: "Is there a refund policy?", a: "Yes. For Early Bird pre-registrations, if May 11–12, 2027 doesn't end up working for you, we will issue a full refund — no questions asked. We want you to pre-register with complete confidence. Just email us at info@adviceonlynetwork.com and we'll take care of it." },
     { q: "How can I become a sponsor?", a: "We're actively seeking sponsors who align with the Advice-Only philosophy. Reach out to us at info@adviceonlynetwork.com to discuss sponsorship opportunities." },
     { q: "Is this event open to press and media?", a: "Yes! We welcome journalists, industry observers, and curious members of the financial media community. If you're interested in attending as a member of the press or covering the Advice-Only movement, please reach out to us at info@adviceonlynetwork.com with a brief note about your outlet or interest. We'll be happy to discuss press access and credentials." },
   ];
@@ -859,10 +859,10 @@ function FinalCTA() {
       <Reveal>
         <div style={{ maxWidth: 740, margin: "0 auto", textAlign: "center" }}>
           <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "clamp(2.4rem, 5vw, 4rem)", color: C.white, lineHeight: 1.05, marginBottom: 20 }}>
-            See You in<br /><em style={{ color: C.amber }}>Denver · 2027</em>
+            See You in<br /><em style={{ color: C.amber }}>Denver · May 2027</em>
           </div>
           <p style={{ fontFamily: "'Outfit', sans-serif", color: "rgba(255,255,255,0.6)", fontSize: "1rem", lineHeight: 1.75, marginBottom: 36, maxWidth: 520, margin: "0 auto 36px" }}>
-            The Advice-Only Conference is coming to Denver, CO in 2027.<br />
+            May 11–12, 2027 · Denver, CO<br />
             Pre-register now to lock in our Early Bird rate of $399.
           </p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
@@ -886,7 +886,7 @@ function Footer() {
         <div className="footer-grid" style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "2fr 1fr 1fr", gap: isMobile ? 32 : 48, marginBottom: 40 }}>
           <div>
             <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.4rem", color: C.white, marginBottom: 4 }}>Advice-Only Conference</div>
-            <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.75rem", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: C.amber, marginBottom: 16 }}>Denver 2027</div>
+            <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.75rem", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: C.amber, marginBottom: 16 }}>May 11–12, 2027 · Denver, CO</div>
             <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "0.88rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, maxWidth: 320 }}>
               Hosted by The Advice-Only Network — the premier directory for Advice-Only financial planners across the country.
             </p>
