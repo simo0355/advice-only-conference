@@ -51,8 +51,6 @@ globalStyle.textContent = `
     section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 56px !important; padding-bottom: 56px !important; }
 
     /* Hero pills — stack vertically */
-    .hero-pills { flex-direction: column !important; width: 100%; }
-    .hero-pill { width: 100% !important; justify-content: center !important; padding: 13px 20px !important; font-size: 0.95rem !important; }
     .hero-ctas { flex-direction: column !important; width: 100%; gap: 12px !important; }
 
     /* Agenda — hide desktop timeline line */
@@ -101,10 +99,6 @@ globalStyle.textContent = `
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(28px); }
     to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes ticker {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
   }
   @keyframes pulse {
     0%, 100% { box-shadow: 0 0 0 0 rgba(159,140,73,0.4); }
@@ -270,31 +264,6 @@ globalStyle.textContent = `
   .faq-answer.open {
     opacity: 1;
   }
-  .ticker-wrap {
-    overflow: hidden;
-    background: ${C.teal};
-    padding: 11px 0;
-    white-space: nowrap;
-  }
-  .ticker-inner {
-    display: inline-block;
-    animation: ticker 30s linear infinite;
-    white-space: nowrap;
-  }
-  .ticker-inner span {
-    display: inline-block;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 600;
-    font-size: 0.78rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: ${C.navy};
-    padding: 0 32px;
-  }
-  .ticker-inner span::after {
-    content: '✦';
-    margin-left: 32px;
-  }
   .speaker-card {
     background: ${C.white};
     border-radius: 8px;
@@ -417,10 +386,10 @@ function Nav({ scrolled }) {
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", height: 72, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         {/* Logo */}
         <a href="/" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ display: "flex", flexDirection: "column", lineHeight: 1, textDecoration: "none" }}>
-          <span style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.35rem", color: C.white, letterSpacing: "0.02em" }}>
-            Advice<span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 400, fontSize: "1.2rem" }}>-</span>Only
+          <span style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.6rem", color: C.white, letterSpacing: "0.02em" }}>
+            Advice<span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 500, fontSize: "1.4rem" }}>-</span>Only
           </span>
-          <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 500, fontSize: "0.65rem", color: C.amber, letterSpacing: "0.2em", textTransform: "uppercase" }}>
+          <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.72rem", color: C.amber, letterSpacing: "0.2em", textTransform: "uppercase", marginTop: 6 }}>
             Conference · Denver 2027
           </span>
         </a>
@@ -496,19 +465,6 @@ function Nav({ scrolled }) {
   );
 }
 
-// ─── Ticker ────────────────────────────────────────────────────────────────
-function Ticker() {
-  const msgs = ["Thank You Minneapolis!", "Denver, CO · May 11–12, 2027", "Early Bird Tickets from $399", "Advice-Only Network", "Pure Advice · No Commissions · No AUM", "The Industry's Premier Advice-Only Conference", "Pre-Register for 2027"];
-  const doubled = [...msgs, ...msgs];
-  return (
-    <div className="ticker-wrap">
-      <div className="ticker-inner">
-        {doubled.map((m, i) => <span key={i}>{m}</span>)}
-      </div>
-    </div>
-  );
-}
-
 // ─── Hero ──────────────────────────────────────────────────────────────────
 function Hero() {
   const isMobile = useIsMobile();
@@ -551,30 +507,6 @@ function Hero() {
       <p className="fade-up-2" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 400, fontSize: "clamp(1rem, 2.5vw, 1.25rem)", color: "rgba(255,255,255,0.72)", maxWidth: 620, lineHeight: 1.6, marginBottom: 32 }}>
         Thank you to everyone who joined us in Minneapolis for an unforgettable two days. We're already planning something even bigger — see you in Denver in 2027.
       </p>
-
-      <div className="fade-up-3 hero-pills" style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 10, flexWrap: "wrap", justifyContent: "center", alignItems: "center", marginBottom: 40, width: isMobile ? "100%" : "auto" }}>
-        {[
-          { icon: "✅", text: "Minneapolis 2026 — Thank You!", href: null },
-          { icon: "📍", text: "Denver, CO · May 11–12, 2027", href: null },
-          { icon: "🎟️", text: "Early Bird from $399", href: "#tickets" },
-        ].map(({ icon, text, href }) => {
-          const inner = (
-            <>
-              <span>{icon}</span>
-              <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: isMobile ? "0.95rem" : "0.88rem", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>{text}</span>
-            </>
-          );
-          const sharedStyle = { display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 100, padding: isMobile ? "12px 20px" : "8px 16px", textDecoration: "none", transition: "background 0.2s", width: isMobile ? "100%" : "auto" };
-          return href ? (
-            <a key={text} href={href} className="hero-pill" onClick={(e) => { e.preventDefault(); document.getElementById(href.slice(1))?.scrollIntoView({ behavior: "smooth" }); }} style={{ ...sharedStyle, cursor: "pointer" }}
-              onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,0.14)"}
-              onMouseLeave={e => e.currentTarget.style.background = "rgba(255,255,255,0.07)"}
-            >{inner}</a>
-          ) : (
-            <div key={text} className="hero-pill" style={sharedStyle}>{inner}</div>
-          );
-        })}
-      </div>
 
       <div className="fade-up-4 hero-ctas" style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 12, justifyContent: "center", marginBottom: 48, width: isMobile ? "100%" : "auto" }}>
         <a href="#tickets" className="cta-primary" onClick={(e) => { e.preventDefault(); document.getElementById("tickets")?.scrollIntoView({ behavior: "smooth" }); }}>Pre-Register for Denver 2027</a>
@@ -940,7 +872,6 @@ export default function AdviceOnlyConference() {
     <div style={{ fontFamily: "'Outfit', sans-serif" }}>
       <Nav scrolled={scrolled} />
       <Hero />
-      <Ticker />
       <About />
       <WhyAttend />
       <Tickets />

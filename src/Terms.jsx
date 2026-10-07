@@ -90,7 +90,7 @@ function Divider() {
 export default function Terms() {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Terms & Conditions — The Advice-Only Conference 2026";
+    document.title = "Terms & Conditions — The Advice-Only Conference 2027";
   }, []);
 
   return (
@@ -104,7 +104,7 @@ export default function Terms() {
               Advice<span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 400 }}>-</span>Only
             </span>
             <span style={{ display: "block", fontFamily: "'Outfit', sans-serif", fontWeight: 500, fontSize: "0.6rem", color: C.amber, letterSpacing: "0.2em", textTransform: "uppercase" }}>
-              Conference 2026
+              Conference 2027
             </span>
           </a>
           <a href="/" style={{
@@ -130,7 +130,7 @@ export default function Terms() {
           fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "0.72rem",
           letterSpacing: "0.18em", textTransform: "uppercase", color: C.teal, marginBottom: 14
         }}>
-          The Advice-Only Conference 2026
+          The Advice-Only Conference 2027
         </div>
         <h1 style={{
           fontFamily: "'Cormorant Garamond', serif", fontWeight: 700,
@@ -143,7 +143,7 @@ export default function Terms() {
           fontFamily: "'Outfit', sans-serif", fontSize: "0.88rem",
           color: "rgba(255,255,255,0.5)", margin: 0
         }}>
-          June 23–24, 2026 · Open Book Space · Minneapolis, MN · Last updated February 2026
+          May 11–12, 2027 · Denver, CO · Last updated October 2026
         </p>
       </div>
 
@@ -157,7 +157,7 @@ export default function Terms() {
           borderRadius: "0 8px 8px 0", padding: "20px 24px", marginBottom: 48
         }}>
           <P>
-            By purchasing a ticket to the Advice-Only Conference 2026 ("the Conference"), you ("Attendee")
+            By purchasing a ticket to the Advice-Only Conference 2027 ("the Conference"), you ("Attendee")
             agree to be bound by these Terms & Conditions. These terms apply to all attendees, speakers,
             sponsors, and guests. Questions can be directed to{" "}
             <a href="mailto:info@adviceonlynetwork.com" style={{ color: C.teal, fontWeight: 600 }}>
@@ -184,9 +184,9 @@ export default function Terms() {
         <Section number="02" title="Refund & Cancellation Policy">
           <P>The Organizer understands that plans change. The following refund schedule applies:</P>
           <BulletList items={[
-            "Cancellations more than 60 days before the Conference (before April 24, 2026): Full refund.",
-            "Cancellations between 30 and 60 days before the Conference (April 24 – May 24, 2026): 50% refund.",
-            "Cancellations within 30 days of the Conference (after May 24, 2026): No refund.",
+            "Cancellations more than 60 days before the Conference (before March 12, 2027): Full refund.",
+            "Cancellations between 30 and 60 days before the Conference (March 12 – April 11, 2027): 50% refund.",
+            "Cancellations within 30 days of the Conference (after April 11, 2027): No refund.",
           ]} />
           <P>
             Ticket transfers are permitted at any time at no charge. To transfer your ticket, email{" "}
